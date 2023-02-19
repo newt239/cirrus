@@ -15,6 +15,7 @@
     "@mantine/core": "^5.10.4",
     "@mantine/form": "^5.10.4",
     "@mantine/hooks": "^5.10.4",
+    "@supabase/auth-helpers-nextjs": "^0.5.4",
     "@supabase/supabase-js": "^2.8.0",
     "dayjs": "^1.11.7",
     "next": "13.1.6",
@@ -31,6 +32,7 @@
     "eslint": "^8.34.0",
     "eslint-config-next": "^13.1.6",
     "eslint-config-prettier": "^8.6.0",
-    "prettier": "^2.8.4"
+    "prettier": "^2.8.4",
+    "supabase": "^1.38.5"
   }
 }
