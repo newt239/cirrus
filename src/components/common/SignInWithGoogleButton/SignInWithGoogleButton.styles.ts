@@ -5,7 +5,7 @@ export default createStyles(() => ({
     transition: "background-color .3s, box-shadow .3s",
     padding: "12px 16px 12px 42px",
     border: "none",
-    borderRadius: "3px",
+    borderRadius: "5px",
     boxShadow: "0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25)",
     color: "#757575",
     fontSize: "14px",
