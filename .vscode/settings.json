@@ -5,5 +5,6 @@
     "source.addMissingImports": true,
     "source.fixAll.eslint": true
   },
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }
