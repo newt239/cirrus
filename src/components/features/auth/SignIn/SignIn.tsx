@@ -7,14 +7,14 @@ import { Title } from "@mantine/core";
 import SignInWithGoogleButton from "@/components/common/SignInWithGoogleButton/SignInWithGoogleButton";
 import supabase from "@/utils/supabase";
 
-const CreateUser = () => {
+const SignIn = () => {
   useEffect(() => {
-    const showUserInfo = async () => {
+    const userInfo = async () => {
       const { data, error } = await supabase.auth.getSession();
       console.log(data);
       console.log(error);
     };
-    showUserInfo();
+    userInfo();
   });
 
   const signIn = async () => {
@@ -31,4 +31,4 @@ const CreateUser = () => {
   );
 };
 
-export default CreateUser;
+export default SignIn;

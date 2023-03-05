@@ -2873,6 +2873,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jotai@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "jotai@npm:2.0.3"
+  peerDependencies:
+    react: ">=17.0.0"
+  peerDependenciesMeta:
+    react:
+      optional: true
+  checksum: 634ef837062c1910a2559cc037186a4f57b23b20b8a8332ec327aa0da56ce37db255d6e7d31f641c0d6ebdb16f4b9a0f7a7ec73f3810090b464566f6323dfffa
+  languageName: node
+  linkType: hard
+
 "js-sdsl@npm:^4.1.4":
   version: 4.3.0
   resolution: "js-sdsl@npm:4.3.0"
@@ -3083,6 +3095,7 @@ __metadata:
     eslint-config-next: "npm:^13.1.6"
     eslint-config-prettier: "npm:^8.6.0"
     gsap: "npm:^3.11.4"
+    jotai: "npm:^2.0.3"
     next: "npm:^13.2.3"
     prettier: "npm:^2.8.4"
     react: "npm:18.2.0"
