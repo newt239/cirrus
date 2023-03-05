@@ -1,9 +1,20 @@
+import { useEffect } from "react";
+
 import { Title } from "@mantine/core";
 
 import SignInWithGoogleButton from "@/components/common/SignInWithGoogleButton/SignInWithGoogleButton";
 import supabase from "@/utils/supabase";
 
 const CreateUser = () => {
+  useEffect(() => {
+    const showUserInfo = async () => {
+      const { data, error } = await supabase.auth.getSession();
+      console.log(data);
+      console.log(error);
+    };
+    showUserInfo();
+  });
+
   const signIn = async () => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
@@ -13,7 +24,7 @@ const CreateUser = () => {
   return (
     <div>
       <Title order={2}>サインイン</Title>
-      <SignInWithGoogleButton />
+      <SignInWithGoogleButton onClick={signIn} />
     </div>
   );
 };
