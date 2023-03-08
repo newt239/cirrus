@@ -2,7 +2,7 @@
 
 import { Title } from "@mantine/core";
 
-import SignInWithGoogleButton from "@/components/common/SignInWithGoogleButton/SignInWithGoogleButton";
+import SignInWithGoogleButton from "@/components/common/SignInWithGoogleButton";
 import supabase from "@/utils/supabase";
 
 const SignIn = () => {
