@@ -1,6 +1,6 @@
 "use client";
 
-import SignInWithGoogleButton from "@/components/common/SignInWithGoogleButton";
+import SignInWithGoogleButton from "@/components/blocks/SignInWithGoogleButton";
 import supabase from "@/utils/supabase";
 
 const SignIn = () => {

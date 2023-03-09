@@ -2,8 +2,8 @@
 
 import { useAtomValue } from "jotai";
 
-import AppHeader from "@/components/block/AppHeader";
-import ProjectList from "@/components/block/ProjectList";
+import ProjectList from "@/components/features/dashboard/ProjectList";
+import AppHeader from "@/components/features/header/AppHeader";
 import { sessionAtom } from "@/store/jotai";
 
 const Home: React.FC = () => {

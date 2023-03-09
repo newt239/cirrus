@@ -2,8 +2,8 @@ import "server-only";
 
 import "@/app/globals.css";
 
-import SupabaseListener from "@/components/supabase-listener";
-import SupabaseProvider from "@/components/supabase-provider";
+import SupabaseListener from "@/components/common/supabase-listener";
+import SupabaseProvider from "@/components/common/supabase-provider";
 import supabase from "@/utils/supabase";
 
 type Props = {

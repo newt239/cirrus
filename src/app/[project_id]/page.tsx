@@ -1,4 +1,4 @@
-import StudioHeader from "@/components/block/StudioHeader";
+import StudioHeader from "@/components/features/header/StudioHeader";
 import { getProjectInfo } from "@/utils/db";
 import "server-only";
 
