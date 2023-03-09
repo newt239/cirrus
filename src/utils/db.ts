@@ -19,6 +19,18 @@ export const getProjectInfo = async (id: string) => {
   if (error || !data || data.length !== 1) {
     return null;
   } else {
-    return data[0] as ProjectDBProps;
+    return data[0];
+  }
+};
+
+export const getBlocks = async (project_id: string) => {
+  const { data, error } = await supabase
+    .from("blocks")
+    .select("*")
+    .eq("project_id", project_id);
+  if (error || !data) {
+    return null;
+  } else {
+    return data;
   }
 };
