@@ -19,9 +19,7 @@ const Header = () => {
 
   useEffect(() => {
     supabase.auth.getSession().then((r) => {
-      if (r.data.session) {
-        setSession(r.data.session);
-      }
+      setSession(r.data.session);
     });
   }, []);
 

@@ -1,38 +1,51 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Avatar, Box, Button, Popover, Text } from "@mantine/core";
+import { ActionIcon, Avatar, Menu } from "@mantine/core";
+import { IconLogout } from "@tabler/icons-react";
+import { useSetAtom } from "jotai";
 
 import type { User } from "@supabase/supabase-js";
 
+import { sessionAtom } from "@/store/jotai";
 import supabase from "@/utils/supabase";
 
 const Account = () => {
+  const router = useRouter();
+  const setSesion = useSetAtom(sessionAtom);
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     supabase.auth.getUser().then((r) => {
       setUser(r.data.user);
+      console.log(r.data.user);
     });
-    console.log(user);
   }, []);
 
+  const signOut = async () => {
+    await supabase.auth.signOut();
+    setSesion(null);
+    router.push("/");
+  };
+
   return (
-    <Box>
-      <Popover>
-        <Popover.Target>
-          <Avatar
-            src={user?.user_metadata.avatar_url}
-            alt="ユーザーアバター"
-            component={Button}
-          />
-        </Popover.Target>
-        <Popover.Dropdown>
-          <Text>hi</Text>
-        </Popover.Dropdown>
-      </Popover>
-    </Box>
+    <Menu arrowPosition="side">
+      <Menu.Target>
+        <Avatar
+          src={user ? user.user_metadata.avatar_url : null}
+          alt="アカウント情報"
+          component={ActionIcon}
+          color="blue"
+        />
+      </Menu.Target>
+      <Menu.Dropdown>
+        <Menu.Item onClick={signOut} icon={<IconLogout />}>
+          ログアウト
+        </Menu.Item>
+      </Menu.Dropdown>
+    </Menu>
   );
 };
 

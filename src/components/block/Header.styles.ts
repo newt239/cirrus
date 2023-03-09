@@ -4,7 +4,8 @@ export default createStyles(() => ({
   header: {
     display: "flex",
     justifyContent: "space-between",
-    padding: "1rem",
+    alignItems: "center",
+    padding: "1rem 2rem",
     position: "sticky",
     top: 0,
     zIndex: 1100,
