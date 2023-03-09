@@ -25,7 +25,7 @@ const Project: React.FC<Props> = ({ id, name, thumbnail }) => {
       <Group position="apart" mt="md" mb="xs">
         <Text weight={500}>{name}</Text>
       </Group>
-      <NextLink href={`/${id}/studio`}>
+      <NextLink href={`/${id}/`}>
         <Button fullWidth variant="light">
           開く
         </Button>

@@ -20,7 +20,6 @@ const Account = () => {
   useEffect(() => {
     supabase.auth.getUser().then((r) => {
       setUser(r.data.user);
-      console.log(r.data.user);
     });
   }, []);
 

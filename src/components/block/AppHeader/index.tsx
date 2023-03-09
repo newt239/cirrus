@@ -5,15 +5,14 @@ import { Suspense, useEffect } from "react";
 import { Title } from "@mantine/core";
 import { useAtom } from "jotai";
 
-import Account from "../features/auth/Account";
-import SignIn from "../features/auth/SignIn";
+import useStyles from "./styles";
 
-import useStyles from "./Header.styles";
-
+import Account from "@/components/features/auth/Account";
+import SignIn from "@/components/features/auth/SignIn";
 import { sessionAtom } from "@/store/jotai";
 import supabase from "@/utils/supabase";
 
-const Header = () => {
+const AppHeader = () => {
   const { classes } = useStyles();
   const [session, setSession] = useAtom(sessionAtom);
 
@@ -33,4 +32,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default AppHeader;

@@ -2,16 +2,15 @@ import "server-only";
 
 import "@/app/globals.css";
 
-import Header from "@/components/block/Header";
 import SupabaseListener from "@/components/supabase-listener";
 import SupabaseProvider from "@/components/supabase-provider";
 import supabase from "@/utils/supabase";
 
-export default async function RootLayout({
-  children,
-}: {
+type Props = {
   children: React.ReactNode;
-}) {
+};
+
+export default async function RootLayout({ children }: Props) {
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -22,7 +21,6 @@ export default async function RootLayout({
       <body>
         <SupabaseProvider>
           <SupabaseListener serverAccessToken={session?.access_token} />
-          <Header />
           {children}
         </SupabaseProvider>
       </body>

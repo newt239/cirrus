@@ -3096,6 +3096,7 @@ __metadata:
     eslint-config-prettier: "npm:^8.6.0"
     gsap: "npm:^3.11.4"
     jotai: "npm:^2.0.3"
+    nanoid: "npm:^4.0.1"
     next: "npm:^13.2.3"
     prettier: "npm:^2.8.4"
     react: "npm:18.2.0"
@@ -3244,6 +3245,15 @@ __metadata:
   bin:
     nanoid: bin/nanoid.cjs
   checksum: 53d605377c76614170df4b5a8d3fa21f13c7077453a77e2393a9fe3df5722022f6b94a671f406b51f81e9c937a6928555c1589e3c46a0d9d29f31872d1362246
+  languageName: node
+  linkType: hard
+
+"nanoid@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "nanoid@npm:4.0.1"
+  bin:
+    nanoid: bin/nanoid.js
+  checksum: e90f231678bc2d212a371922333ea81dcff8788fd8dbea92e12a6cb29ff1321d32890fefc46e31279e539eda868bd2c68084dcdd3b1cd5511453c957410ee9eb
   languageName: node
   linkType: hard
 
