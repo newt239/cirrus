@@ -12,9 +12,9 @@ const Control: React.FC = () => {
   const tl = gsap.timeline();
   const playAnime = () => {
     for (const block of blocks) {
-      const final_state = block.initial_state as gsap.TweenVars;
+      const final_state = block.final_state as gsap.TweenVars;
       tl.to(`#object-${block.id}`, {
-        duration: block.duration,
+        duration: block.duration / 1000,
         ...final_state,
       });
     }
