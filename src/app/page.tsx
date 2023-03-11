@@ -4,6 +4,7 @@ import { useAtomValue } from "jotai";
 
 import ProjectList from "@/components/features/dashboard/ProjectList";
 import AppHeader from "@/components/features/header/AppHeader";
+import Hero from "@/components/features/home/Hero";
 import { sessionAtom } from "@/store/jotai";
 
 const Home: React.FC = () => {
@@ -12,7 +13,7 @@ const Home: React.FC = () => {
   return (
     <div>
       <AppHeader />
-      {session && <ProjectList />}
+      {session ? <ProjectList /> : <Hero />}
     </div>
   );
 };
