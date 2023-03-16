@@ -5,6 +5,7 @@ import Control from "@/components/features/preview/Control";
 import Preview from "@/components/features/preview/Preview";
 import Property from "@/components/features/property";
 import Timeline from "@/components/features/timeline";
+import { Flex } from "@/lib/mantine/core";
 import { getProjectInfo } from "@/utils/db";
 
 type Props = {
@@ -19,13 +20,13 @@ const Studio = async ({ params }: Props) => {
       {project && (
         <>
           <StudioHeader name={project.name} />
-          <div style={{ display: "flex" }}>
+          <Flex gap="sm" p="sm">
             <div>
               <Preview project_id={project.id} />
               <Control />
             </div>
             <Property />
-          </div>
+          </Flex>
           <Timeline />
         </>
       )}

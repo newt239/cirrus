@@ -2,6 +2,7 @@ import "server-only";
 
 import "@/app/globals.css";
 
+import MantineProvider from "@/components/common/MantineProvider";
 import SupabaseListener from "@/components/common/supabase-listener";
 import SupabaseProvider from "@/components/common/supabase-provider";
 import supabase from "@/utils/supabase";
@@ -21,7 +22,7 @@ export default async function RootLayout({ children }: Props) {
       <body>
         <SupabaseProvider>
           <SupabaseListener serverAccessToken={session?.access_token} />
-          {children}
+          <MantineProvider>{children}</MantineProvider>
         </SupabaseProvider>
       </body>
     </html>

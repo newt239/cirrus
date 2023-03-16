@@ -1,3 +1,5 @@
+"use client";
+
 import { useAtomValue } from "jotai";
 
 import { List, Title } from "@/lib/mantine/core";
