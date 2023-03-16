@@ -17,7 +17,7 @@ const Timeline = () => {
     <List>
       {blocks.map((block) => (
         <List.Item key={block.id}>
-          {block.id} - {block.content}
+          {block.id}
           <Button
             onClick={() => setBlockId(block.id)}
             disabled={currentBlockId === block.id}
