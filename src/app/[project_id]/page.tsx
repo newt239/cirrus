@@ -3,6 +3,7 @@ import "server-only";
 import StudioHeader from "@/components/features/header/StudioHeader";
 import Control from "@/components/features/preview/Control";
 import Preview from "@/components/features/preview/Preview";
+import Timeline from "@/components/features/timeline";
 import { getProjectInfo } from "@/utils/db";
 
 type Props = {
@@ -19,6 +20,7 @@ const Studio = async ({ params }: Props) => {
           <StudioHeader name={project.name} />
           <Preview project_id={project.id} />
           <Control />
+          <Timeline />
         </>
       )}
     </div>

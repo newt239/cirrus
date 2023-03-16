@@ -4,6 +4,8 @@ import { useEffect } from "react";
 
 import { useAtom } from "jotai";
 
+import useStyles from "./styles";
+
 import Block from "@/components/features/preview/Block";
 import { blocksAtom } from "@/store/jotai";
 import { getBlocks } from "@/utils/db";
@@ -13,6 +15,7 @@ type Props = {
 };
 
 const Preview = ({ project_id }: Props) => {
+  const { classes } = useStyles();
   const [blocks, setBlocks] = useAtom(blocksAtom);
 
   useEffect(() => {
@@ -23,17 +26,8 @@ const Preview = ({ project_id }: Props) => {
     });
   });
 
-  if (!blocks) return null;
-
   return (
-    <div
-      style={{
-        width: 600,
-        height: 400,
-        backgroundColor: "black",
-        position: "relative",
-      }}
-    >
+    <div className={classes.preview_container}>
       {blocks.map((block) => (
         <Block key={block.id} block={block} />
       ))}
