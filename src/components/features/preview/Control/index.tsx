@@ -1,9 +1,9 @@
 "use client";
 
-import { Button } from "@mantine/core";
 import { gsap } from "gsap";
 import { useAtomValue } from "jotai";
 
+import { Button } from "@/lib/mantine/core";
 import { blocksAtom } from "@/store/jotai";
 
 const Control: React.FC = () => {

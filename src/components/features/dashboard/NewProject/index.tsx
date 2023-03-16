@@ -2,13 +2,13 @@
 
 import { useRouter } from "next/navigation";
 
-import { Button, Card } from "@mantine/core";
 import { IconSquareRoundedPlus } from "@tabler/icons-react";
 import { useAtomValue } from "jotai";
 import { nanoid } from "nanoid";
 
 import useStyles from "./styles";
 
+import { Button, Card } from "@/lib/mantine/core";
 import { sessionAtom } from "@/store/jotai";
 import supabase from "@/utils/supabase";
 
@@ -22,7 +22,7 @@ const NewProject: React.FC = () => {
       const id = nanoid(6);
       await supabase
         .from("projects")
-        .insert([{ id, creator: session.user.id }]);
+        .insert([{ id, name: "無題のプロジェクト", creator: session.user.id }]);
       router.push(`/${id}/`);
     }
   };

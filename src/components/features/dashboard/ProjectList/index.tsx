@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from "react";
 
-import { Grid } from "@mantine/core";
 
 import NewProject from "../NewProject";
 import Project from "../Project";
 
 import useStyles from "./styles";
 
+import { Grid } from "@/lib/mantine/core";
 import { ProjectDBProps } from "@/types/db";
 import { getProjects } from "@/utils/db";
 

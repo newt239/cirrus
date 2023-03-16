@@ -1,6 +1,6 @@
-import { UnstyledButton } from "@mantine/core";
+import useStyles from "./styles";
 
-import useStyles from "./styles.ts";
+import { UnstyledButton } from "@/lib/mantine/core";
 
 const SignInWithGoogleButton = ({
   ...props

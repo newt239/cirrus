@@ -19,10 +19,14 @@ const Studio = async ({ params }: Props) => {
       {project && (
         <>
           <StudioHeader name={project.name} />
-          <Preview project_id={project.id} />
-          <Control />
+          <div style={{ display: "flex" }}>
+            <div>
+              <Preview project_id={project.id} />
+              <Control />
+            </div>
+            <Property />
+          </div>
           <Timeline />
-          <Property />
         </>
       )}
     </div>

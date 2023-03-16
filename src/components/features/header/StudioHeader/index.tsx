@@ -1,8 +1,7 @@
 "use client";
 
-import { Title } from "@mantine/core";
-
 import useStyles from "@/components/features/header/AppHeader/styles";
+import { Title } from "@/lib/mantine/core";
 
 type Props = {
   name: string;

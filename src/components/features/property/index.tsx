@@ -1,8 +1,6 @@
-"use client";
-
-import { List, Title } from "@mantine/core";
 import { useAtomValue } from "jotai";
 
+import { List, Title } from "@/lib/mantine/core";
 import { currentBlockAtom } from "@/store/jotai";
 
 const Property = () => {
