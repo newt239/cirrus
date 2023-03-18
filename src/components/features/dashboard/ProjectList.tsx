@@ -18,12 +18,12 @@ const ProjectList: React.FC = () => {
   }, []);
 
   return (
-    <Grid sx={{ padding: "1rem" }}>
-      <Grid.Col span={4}>
+    <Grid m={4}>
+      <Grid.Col xs={12} sm={6} md={4} lg={3}>
         <NewProject />
       </Grid.Col>
       {projects.map((project) => (
-        <Grid.Col key={project.id} span={4}>
+        <Grid.Col key={project.id} xs={12} sm={6} md={4} lg={3}>
           <Project id={project.id} name={project.name} />
         </Grid.Col>
       ))}

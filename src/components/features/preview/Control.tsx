@@ -3,19 +3,23 @@
 import { useEffect, useState } from "react";
 
 import { useInterval } from "@mantine/hooks";
+import dayjs from "dayjs";
 import { gsap } from "gsap";
 import { useAtomValue } from "jotai";
 
-import { Button, Flex } from "@/lib/mantine/core";
+import { Button, Flex, Progress } from "@/lib/mantine/core";
 import { blocksAtom } from "@/store/jotai";
 
 const Control: React.FC = () => {
   const blocks = useAtomValue(blocksAtom);
   const [tl, setTl] = useState(gsap.timeline());
-  const [currentMs, setCurrentMs] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+
+  const duration = tl.duration();
+
   const interval = useInterval(() => {
-    if (tl.totalTime() === tl.time()) interval.toggle();
-    setCurrentMs(tl.time());
+    if (duration === tl.time()) interval.toggle();
+    setCurrentTime(tl.time());
   }, 10);
 
   const playAnime = () => {
@@ -35,9 +39,10 @@ const Control: React.FC = () => {
   }, []);
 
   return (
-    <Flex justify="space-between">
+    <Flex justify="space-between" align="center">
       <Button onClick={playAnime}>再生</Button>
-      <div>{currentMs}ms</div>
+      <Progress value={(currentTime / duration) * 100} w="70%" />
+      <div>{dayjs(currentTime * 1000).format("mm:ss")}</div>
     </Flex>
   );
 };
