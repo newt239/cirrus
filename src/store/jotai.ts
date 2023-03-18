@@ -25,7 +25,11 @@ export const currentBlockAtom = atom(
     const index = blocks.findIndex(
       (block) => block.id === get(currentBlockIdAtom)
     );
-    blocks[index] = { ...blocks[index], [value[0]]: value[1] };
-    set(blocksAtom, blocks);
+    set(
+      blocksAtom,
+      blocks.map((block, n) =>
+        n === index ? { ...block, [value[0]]: value[1] } : block
+      )
+    );
   }
 );
