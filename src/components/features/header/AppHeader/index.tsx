@@ -24,7 +24,7 @@ const AppHeader = () => {
 
   return (
     <header className={classes.header}>
-      <Title order={1}>midmotion</Title>
+      <Title order={1}>Cirrus</Title>
       <Suspense fallback={<SignIn />}>
         {session ? <Account /> : <SignIn />}
       </Suspense>
