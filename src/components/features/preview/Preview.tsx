@@ -22,7 +22,7 @@ const Preview = ({ project_id }: Props) => {
         setBlocks(r);
       }
     });
-  });
+  }, []);
 
   return (
     <Box
