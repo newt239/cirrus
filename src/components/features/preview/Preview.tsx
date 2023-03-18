@@ -2,9 +2,8 @@
 
 import { useEffect } from "react";
 
+import { Box } from "@mantine/core";
 import { useAtom } from "jotai";
-
-import useStyles from "./styles";
 
 import Block from "@/components/features/preview/Block";
 import { blocksAtom } from "@/store/jotai";
@@ -15,7 +14,6 @@ type Props = {
 };
 
 const Preview = ({ project_id }: Props) => {
-  const { classes } = useStyles();
   const [blocks, setBlocks] = useAtom(blocksAtom);
 
   useEffect(() => {
@@ -27,11 +25,18 @@ const Preview = ({ project_id }: Props) => {
   });
 
   return (
-    <div className={classes.preview_container}>
+    <Box
+      sx={{
+        width: 600,
+        height: 400,
+        backgroundColor: "black",
+        position: "relative",
+      }}
+    >
       {blocks.map((block) => (
         <Block key={block.id} block={block} />
       ))}
-    </div>
+    </Box>
   );
 };
 export default Preview;

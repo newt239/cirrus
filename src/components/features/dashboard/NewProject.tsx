@@ -6,14 +6,11 @@ import { IconSquareRoundedPlus } from "@tabler/icons-react";
 import { useAtomValue } from "jotai";
 import { nanoid } from "nanoid";
 
-import useStyles from "./styles";
-
 import { Button, Card } from "@/lib/mantine/core";
 import { sessionAtom } from "@/store/jotai";
 import supabase from "@/utils/supabase";
 
 const NewProject: React.FC = () => {
-  const { classes } = useStyles();
   const router = useRouter();
   const session = useAtomValue(sessionAtom);
 
@@ -33,14 +30,14 @@ const NewProject: React.FC = () => {
       padding="lg"
       radius="md"
       withBorder
-      className={classes.card}
+      sx={{ height: "100%" }}
     >
       <Button
         onClick={createNewProject}
         fullWidth
         variant="white"
         leftIcon={<IconSquareRoundedPlus />}
-        className={classes.button}
+        sx={{ height: "100%" }}
       >
         新規作成
       </Button>
