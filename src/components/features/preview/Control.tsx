@@ -12,7 +12,7 @@ import { blocksAtom } from "@/store/jotai";
 
 const Control: React.FC = () => {
   const blocks = useAtomValue(blocksAtom);
-  const [tl, setTl] = useState(gsap.timeline());
+  const [tl] = useState(gsap.timeline());
   const [currentTime, setCurrentTime] = useState(0);
 
   const duration = tl.duration();
