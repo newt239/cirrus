@@ -1,7 +1,9 @@
 "use client";
 
-import { MantineProvider } from "@mantine/core";
+import { createEmotionCache, MantineProvider } from "@mantine/core";
+
+const myCache = createEmotionCache({ key: "mantine" });
 
 export default function Provider({ children }: { children: React.ReactNode }) {
-  return <MantineProvider>{children}</MantineProvider>;
+  return <MantineProvider emotionCache={myCache}>{children}</MantineProvider>;
 }
