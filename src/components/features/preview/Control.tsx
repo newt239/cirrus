@@ -14,15 +14,22 @@ const Control: React.FC = () => {
   const blocks = useAtomValue(blocksAtom);
   const [tl] = useState(gsap.timeline());
   const [currentTime, setCurrentTime] = useState(0);
-
-  const duration = tl.duration();
+  const duration = blocks.reduce(
+    (accumulator, block) => accumulator + block.duration / 1000,
+    0
+  );
 
   const interval = useInterval(() => {
-    if (duration === tl.time()) interval.toggle();
+    if (tl.time() >= duration) interval.toggle();
     setCurrentTime(tl.time());
   }, 10);
 
   const playAnime = () => {
+    if (tl.time() >= duration) {
+      tl.restart();
+      console.log(tl.endTime());
+      setCurrentTime(0);
+    }
     for (const block of blocks) {
       const final_state = block.final_state as gsap.TweenVars;
       tl.to(`#object-${block.id}`, {
