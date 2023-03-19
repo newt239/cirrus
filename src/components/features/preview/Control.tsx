@@ -27,7 +27,6 @@ const Control: React.FC = () => {
   const playAnime = () => {
     if (tl.time() >= duration) {
       tl.restart();
-      console.log(tl.endTime());
       setCurrentTime(0);
     }
     for (const block of blocks) {
@@ -49,7 +48,7 @@ const Control: React.FC = () => {
     <Flex justify="space-between" align="center">
       <Button onClick={playAnime}>再生</Button>
       <Progress value={(currentTime / duration) * 100} w="70%" />
-      <div>{dayjs(currentTime * 1000).format("mm:ss")}</div>
+      <div>{dayjs(Math.min(currentTime, duration) * 1000).format("mm:ss")}</div>
     </Flex>
   );
 };

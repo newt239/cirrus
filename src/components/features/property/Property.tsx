@@ -1,21 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useAtomValue } from "jotai";
 
-import { useAtom } from "jotai";
+import EditContent from "./EditContent";
 
-import { Button, Input, List, Title } from "@/lib/mantine/core";
+import { Group, List, Title } from "@/lib/mantine/core";
 import { currentBlockAtom } from "@/store/jotai";
 
 const Property = () => {
-  const [block, setProperty] = useAtom(currentBlockAtom);
-  const [newContent, setNewContent] = useState(
-    block && block.content ? block.content : ""
-  );
-
-  const changeContent = () => {
-    setProperty(["content", newContent]);
-  };
+  const block = useAtomValue(currentBlockAtom);
 
   if (!block) return null;
 
@@ -24,17 +17,15 @@ const Property = () => {
       <Title order={3}>選択中のブロック</Title>
       <List>
         <List.Item>ブロックID: {block.id}</List.Item>
-        <List.Item>テキスト: {block.content}</List.Item>
+        <List.Item>
+          <Group>
+            <span>テキスト: {block.content}</span>
+            <EditContent />
+          </Group>
+        </List.Item>
         <List.Item>開始時間: {block.start}ms</List.Item>
         <List.Item>継続時間: {block.duration}ms</List.Item>
       </List>
-      <Input
-        value={newContent}
-        onChange={(v) => setNewContent(v.target.value)}
-      />
-      <Button onClick={changeContent} disabled={block.content === newContent}>
-        変更
-      </Button>
     </div>
   );
 };
