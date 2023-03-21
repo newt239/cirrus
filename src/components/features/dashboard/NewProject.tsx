@@ -26,18 +26,12 @@ const NewProject: React.FC = () => {
   };
 
   return (
-    <Card
-      padding="lg"
-      radius="md"
-      shadow="sm"
-      sx={{ height: "100%" }}
-      withBorder
-    >
+    <Card h="100%" padding="lg" radius="md" shadow="sm" withBorder>
       <Button
         fullWidth
+        h="100%"
         leftIcon={<IconSquareRoundedPlus />}
         onClick={createNewProject}
-        sx={{ height: "100%" }}
         variant="white"
       >
         新規作成

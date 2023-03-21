@@ -1,4 +1,4 @@
-import { Box, Title } from "@mantine/core";
+import { Box, Text, Title } from "@mantine/core";
 
 const Hero: React.FC = () => {
   return (
@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
         }}
       >
         <Title order={1}>動画制作を、もっと手軽に。</Title>
-        <p>右上のサインインボタンをクリック</p>
+        <Text>右上のサインインボタンをクリック</Text>
       </Box>
     </main>
   );
