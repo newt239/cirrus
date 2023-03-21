@@ -34,7 +34,7 @@ const Preview = ({ project_id }: Props) => {
       }}
     >
       {blocks.map((block) => (
-        <Block key={block.id} block={block} />
+        <Block block={block} key={block.id} />
       ))}
     </Box>
   );

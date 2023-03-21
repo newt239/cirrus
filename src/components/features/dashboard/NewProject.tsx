@@ -2,11 +2,12 @@
 
 import { useRouter } from "next/navigation";
 
+import { Button, Card } from "@/lib/mantine/core";
+
 import { IconSquareRoundedPlus } from "@tabler/icons-react";
 import { useAtomValue } from "jotai";
 import { nanoid } from "nanoid";
 
-import { Button, Card } from "@/lib/mantine/core";
 import { sessionAtom } from "@/store/jotai";
 import supabase from "@/utils/supabase";
 
@@ -26,18 +27,18 @@ const NewProject: React.FC = () => {
 
   return (
     <Card
-      shadow="sm"
       padding="lg"
       radius="md"
-      withBorder
+      shadow="sm"
       sx={{ height: "100%" }}
+      withBorder
     >
       <Button
-        onClick={createNewProject}
         fullWidth
-        variant="white"
         leftIcon={<IconSquareRoundedPlus />}
+        onClick={createNewProject}
         sx={{ height: "100%" }}
+        variant="white"
       >
         新規作成
       </Button>

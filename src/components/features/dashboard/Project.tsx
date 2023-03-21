@@ -12,17 +12,17 @@ type Props = {
 
 const Project: React.FC<Props> = ({ id, name, thumbnail }) => {
   return (
-    <Card shadow="sm" padding="lg" radius="md" withBorder>
+    <Card p="lg" radius="md" shadow="sm" withBorder>
       <Card.Section>
         <Image
-          src={thumbnail ? thumbnail : null}
-          height={160}
           alt={`${name}のサムネイル`}
+          height={160}
+          src={thumbnail ? thumbnail : null}
           withPlaceholder
         />
       </Card.Section>
 
-      <Group position="apart" mt="md" mb="xs">
+      <Group mb="xs" mt="md" position="apart">
         <Text weight={500}>{name}</Text>
       </Group>
       <NextLink href={`/${id}/`}>

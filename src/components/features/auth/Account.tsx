@@ -3,12 +3,13 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { ActionIcon, Avatar, Menu } from "@/lib/mantine/core";
+
 import { IconLogout } from "@tabler/icons-react";
 import { useSetAtom } from "jotai";
 
 import type { User } from "@supabase/supabase-js";
 
-import { ActionIcon, Avatar, Menu } from "@/lib/mantine/core";
 import { sessionAtom } from "@/store/jotai";
 import supabase from "@/utils/supabase";
 
@@ -33,14 +34,14 @@ const Account = () => {
     <Menu arrowPosition="side">
       <Menu.Target>
         <Avatar
-          src={user ? user.user_metadata.avatar_url : null}
           alt="アカウント情報"
-          component={ActionIcon}
           color="blue"
+          component={ActionIcon}
+          src={user ? user.user_metadata.avatar_url : null}
         />
       </Menu.Target>
       <Menu.Dropdown>
-        <Menu.Item onClick={signOut} icon={<IconLogout />}>
+        <Menu.Item icon={<IconLogout />} onClick={signOut}>
           ログアウト
         </Menu.Item>
       </Menu.Dropdown>

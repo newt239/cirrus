@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 
+import { ActionIcon, Button, Input, Popover } from "@/lib/mantine/core";
+
 import { IconEdit } from "@tabler/icons-react";
 import { useAtom } from "jotai";
 
-import { ActionIcon, Button, Input, Popover } from "@/lib/mantine/core";
 import { currentBlockAtom } from "@/store/jotai";
 
 const EditContent: React.FC = () => {
@@ -29,10 +30,10 @@ const EditContent: React.FC = () => {
       </Popover.Target>
       <Popover.Dropdown>
         <Input
-          value={newContent}
           onChange={(v) => setNewContent(v.target.value)}
+          value={newContent}
         />
-        <Button onClick={changeContent} disabled={block.content === newContent}>
+        <Button disabled={block.content === newContent} onClick={changeContent}>
           変更
         </Button>
       </Popover.Dropdown>

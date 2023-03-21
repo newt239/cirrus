@@ -1,10 +1,10 @@
 "use client";
 
+import { Group, List, Title } from "@/lib/mantine/core";
+
 import { useAtomValue } from "jotai";
 
-import EditContent from "./EditContent";
-
-import { Group, List, Title } from "@/lib/mantine/core";
+import EditContent from "@/components/features/property/EditContent";
 import { currentBlockAtom } from "@/store/jotai";
 
 const Property = () => {

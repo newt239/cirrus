@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from "react";
 
+import { Button, Flex, Progress } from "@/lib/mantine/core";
+
 import { useInterval } from "@mantine/hooks";
 import dayjs from "dayjs";
 import { gsap } from "gsap";
 import { useAtomValue } from "jotai";
 
-import { Button, Flex, Progress } from "@/lib/mantine/core";
 import { blocksAtom } from "@/store/jotai";
 
 const Control: React.FC = () => {
@@ -45,7 +46,7 @@ const Control: React.FC = () => {
   }, []);
 
   return (
-    <Flex justify="space-between" align="center">
+    <Flex align="center" justify="space-between">
       <Button onClick={playAnime}>再生</Button>
       <Progress value={(currentTime / duration) * 100} w="70%" />
       <div>{dayjs(Math.min(currentTime, duration) * 1000).format("mm:ss")}</div>

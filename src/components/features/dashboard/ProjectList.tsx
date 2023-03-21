@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 
+import { Grid } from "@/lib/mantine/core";
+
 import NewProject from "@/components/features/dashboard/NewProject";
 import Project from "@/components/features/dashboard/Project";
-import { Grid } from "@/lib/mantine/core";
 import { ProjectDBProps } from "@/types/db";
 import { getProjects } from "@/utils/db";
 
@@ -19,11 +20,11 @@ const ProjectList: React.FC = () => {
 
   return (
     <Grid m={4}>
-      <Grid.Col xs={12} sm={6} md={4} lg={3}>
+      <Grid.Col lg={3} md={4} sm={6} xs={12}>
         <NewProject />
       </Grid.Col>
       {projects.map((project) => (
-        <Grid.Col key={project.id} xs={12} sm={6} md={4} lg={3}>
+        <Grid.Col key={project.id} lg={3} md={4} sm={6} xs={12}>
           <Project id={project.id} name={project.name} />
         </Grid.Col>
       ))}

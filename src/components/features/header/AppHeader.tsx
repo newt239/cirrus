@@ -2,11 +2,12 @@
 
 import { Suspense, useEffect } from "react";
 
+import { Box, Title } from "@/lib/mantine/core";
+
 import { useAtom } from "jotai";
 
 import Account from "@/components/features/auth/Account";
 import SignIn from "@/components/features/auth/SignIn";
-import { Box, Title } from "@/lib/mantine/core";
 import { sessionAtom } from "@/store/jotai";
 import supabase from "@/utils/supabase";
 

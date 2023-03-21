@@ -1,8 +1,9 @@
 "use client";
 
+import { Box, Button, List, Title } from "@/lib/mantine/core";
+
 import { useAtom, useAtomValue } from "jotai";
 
-import { Box, Button, List, Title } from "@/lib/mantine/core";
 import { blocksAtom, currentBlockIdAtom } from "@/store/jotai";
 
 const Timeline = () => {
@@ -21,8 +22,8 @@ const Timeline = () => {
           <List.Item key={block.id}>
             {block.id}
             <Button
-              onClick={() => setBlockId(block.id)}
               disabled={currentBlockId === block.id}
+              onClick={() => setBlockId(block.id)}
             >
               選択
             </Button>

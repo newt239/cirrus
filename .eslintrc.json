@@ -1,5 +1,6 @@
 {
   "extends": [
+    "next",
     "next/core-web-vitals",
     "plugin:import/recommended",
     "plugin:import/warnings",
@@ -24,6 +25,11 @@
             "pattern": "{react,react-dom/**,react-router-dom,next,next/**}",
             "group": "builtin",
             "position": "before"
+          },
+          {
+            "pattern": "@/lib/mantine/**",
+            "group": "builtin",
+            "position": "before"
           }
         ],
         "pathGroupsExcludedImportTypes": ["builtin"],
@@ -32,6 +38,7 @@
         },
         "newlines-between": "always"
       }
-    ]
+    ],
+    "react/jsx-sort-props": "warn"
   }
 }
