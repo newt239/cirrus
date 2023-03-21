@@ -22,20 +22,16 @@ const Control: React.FC = () => {
   const { current: tl } = useRef(gsap.timeline({ paused: true }));
   const [currentTime, setCurrentTime] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const duration = blocks.reduce(
-    (accumulator, block) => accumulator + block.duration / 1000,
-    0
-  );
+  const [duration, setDuration] = useState(0);
   const isEnded = currentTime >= duration;
 
   const interval = useInterval(() => {
     setCurrentTime(tl.time());
-    console.log([currentTime >= duration, currentTime, duration]);
     if (isEnded) {
       setIsPlaying(false);
       interval.stop();
     }
-  }, 10);
+  }, 100);
 
   useEffect(() => {
     if (isPlaying) {
@@ -52,6 +48,11 @@ const Control: React.FC = () => {
         ...final_state,
       });
     }
+    const newDuration = blocks.reduce(
+      (accumulator, block) => accumulator + block.duration / 1000,
+      0
+    );
+    setDuration(newDuration);
   }, [blocks]);
 
   const playAnime = () => {
