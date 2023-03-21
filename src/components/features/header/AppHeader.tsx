@@ -1,24 +1,17 @@
 "use client";
 
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 
 import { Box, Title } from "@/lib/mantine/core";
 
-import { useAtom } from "jotai";
+import { useAtomValue } from "jotai";
 
 import Account from "@/components/features/auth/Account";
 import SignIn from "@/components/features/auth/SignIn";
 import { sessionAtom } from "@/store/jotai";
-import supabase from "@/utils/supabase";
 
 const AppHeader = () => {
-  const [session, setSession] = useAtom(sessionAtom);
-
-  useEffect(() => {
-    supabase.auth.getSession().then((r) => {
-      setSession(r.data.session);
-    });
-  }, []);
+  const session = useAtomValue(sessionAtom);
 
   return (
     <Box

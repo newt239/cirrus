@@ -1,14 +1,23 @@
 "use client";
 
-import { useAtomValue } from "jotai";
+import { useEffect } from "react";
+
+import { useAtom } from "jotai";
 
 import ProjectList from "@/components/features/dashboard/ProjectList";
 import AppHeader from "@/components/features/header/AppHeader";
 import Hero from "@/components/features/home/Hero";
 import { sessionAtom } from "@/store/jotai";
+import supabase from "@/utils/supabase";
 
 const Home: React.FC = () => {
-  const session = useAtomValue(sessionAtom);
+  const [session, setSession] = useAtom(sessionAtom);
+
+  useEffect(() => {
+    supabase.auth.getSession().then((r) => {
+      setSession(r.data.session);
+    });
+  }, []);
 
   return (
     <div>
