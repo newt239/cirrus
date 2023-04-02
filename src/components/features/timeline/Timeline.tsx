@@ -1,10 +1,10 @@
 "use client";
 
-import { Box, Button, List, Title } from "@/lib/mantine/core";
+import { Box, Button, List, Title } from "~/lib/mantine/core";
 
 import { useAtom, useAtomValue } from "jotai";
 
-import { blocksAtom, currentBlockIdAtom } from "@/store/jotai";
+import { blocksAtom, currentBlockIdAtom } from "~/store/jotai";
 
 const Timeline = () => {
   const blocks = useAtomValue(blocksAtom);

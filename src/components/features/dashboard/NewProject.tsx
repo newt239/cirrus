@@ -2,14 +2,14 @@
 
 import { useRouter } from "next/navigation";
 
-import { Button, Card } from "@/lib/mantine/core";
+import { Button, Card } from "~/lib/mantine/core";
 
 import { IconSquareRoundedPlus } from "@tabler/icons-react";
 import { useAtomValue } from "jotai";
 import { nanoid } from "nanoid";
 
-import { sessionAtom } from "@/store/jotai";
-import supabase from "@/utils/supabase";
+import { sessionAtom } from "~/store/jotai";
+import supabase from "~/utils/supabase";
 
 const NewProject: React.FC = () => {
   const router = useRouter();

@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from "react";
 
-import { Grid } from "@/lib/mantine/core";
+import { Grid } from "~/lib/mantine/core";
 
-import NewProject from "@/components/features/dashboard/NewProject";
-import Project from "@/components/features/dashboard/Project";
-import { ProjectDBProps } from "@/types/db";
-import { getProjects } from "@/utils/db";
+import NewProject from "~/components/features/dashboard/NewProject";
+import Project from "~/components/features/dashboard/Project";
+import { ProjectDBProps } from "~/types/db";
+import { getProjects } from "~/utils/db";
 
 const ProjectList: React.FC = () => {
   const [projects, setProjects] = useState<ProjectDBProps[]>([]);

@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 
-import { ActionIcon, Button, Input, Popover } from "@/lib/mantine/core";
+import { ActionIcon, Button, Input, Popover } from "~/lib/mantine/core";
 
 import { IconEdit } from "@tabler/icons-react";
 import { useAtom } from "jotai";
 
-import { currentBlockAtom } from "@/store/jotai";
+import { currentBlockAtom } from "~/store/jotai";
 
 const EditContent: React.FC = () => {
   const [block, setProperty] = useAtom(currentBlockAtom);

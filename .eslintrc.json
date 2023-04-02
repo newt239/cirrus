@@ -27,7 +27,7 @@
             "position": "before"
           },
           {
-            "pattern": "@/lib/mantine/**",
+            "pattern": "~/lib/mantine/**",
             "group": "builtin",
             "position": "before"
           }

@@ -2,13 +2,13 @@
 
 import { Suspense } from "react";
 
-import { Box, Title } from "@/lib/mantine/core";
+import { Box, Title } from "~/lib/mantine/core";
 
 import { useAtomValue } from "jotai";
 
-import Account from "@/components/features/auth/Account";
-import SignIn from "@/components/features/auth/SignIn";
-import { sessionAtom } from "@/store/jotai";
+import Account from "~/components/features/auth/Account";
+import SignIn from "~/components/features/auth/SignIn";
+import { sessionAtom } from "~/store/jotai";
 
 const AppHeader = () => {
   const session = useAtomValue(sessionAtom);

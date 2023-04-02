@@ -1,4 +1,4 @@
-import { UnstyledButton } from "@/lib/mantine/core";
+import { UnstyledButton } from "~/lib/mantine/core";
 
 const SignInWithGoogleButton = ({
   ...props

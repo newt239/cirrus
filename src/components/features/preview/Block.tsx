@@ -1,4 +1,4 @@
-import { BlockDBProps } from "@/types/db";
+import { BlockDBProps } from "~/types/db";
 
 type Props = {
   block: BlockDBProps;

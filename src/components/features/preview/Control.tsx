@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { ActionIcon, Flex, Progress } from "@/lib/mantine/core";
+import { ActionIcon, Flex, Progress } from "~/lib/mantine/core";
 
 import { useInterval } from "@mantine/hooks";
 import {
@@ -15,7 +15,7 @@ import dayjs from "dayjs";
 import { gsap } from "gsap";
 import { useAtomValue } from "jotai";
 
-import { blocksAtom } from "@/store/jotai";
+import { blocksAtom } from "~/store/jotai";
 
 const Control: React.FC = () => {
   const blocks = useAtomValue(blocksAtom);

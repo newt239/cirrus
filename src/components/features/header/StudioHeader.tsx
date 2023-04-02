@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Title } from "@/lib/mantine/core";
+import { Box, Title } from "~/lib/mantine/core";
 
 type Props = {
   name: string;

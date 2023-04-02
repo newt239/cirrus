@@ -3,15 +3,15 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { ActionIcon, Avatar, Menu } from "@/lib/mantine/core";
+import { ActionIcon, Avatar, Menu } from "~/lib/mantine/core";
 
 import { IconLogout } from "@tabler/icons-react";
 import { useSetAtom } from "jotai";
 
 import type { User } from "@supabase/supabase-js";
 
-import { sessionAtom } from "@/store/jotai";
-import supabase from "@/utils/supabase";
+import { sessionAtom } from "~/store/jotai";
+import supabase from "~/utils/supabase";
 
 const Account = () => {
   const router = useRouter();

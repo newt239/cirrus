@@ -2,7 +2,7 @@
 
 import NextLink from "next/link";
 
-import { Button, Card, Group, Image, Text } from "@/lib/mantine/core";
+import { Button, Card, Group, Image, Text } from "~/lib/mantine/core";
 
 type Props = {
   id: string;

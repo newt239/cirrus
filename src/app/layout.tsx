@@ -1,11 +1,11 @@
 import "server-only";
 
-import "@/app/globals.css";
+import "~/app/globals.css";
 
-import MantineProvider from "@/components/common/MantineProvider";
-import SupabaseListener from "@/components/common/supabase-listener";
-import SupabaseProvider from "@/components/common/supabase-provider";
-import supabase from "@/utils/supabase";
+import MantineProvider from "~/components/common/MantineProvider";
+import SupabaseListener from "~/components/common/SupabaseListner";
+import SupabaseProvider from "~/components/common/SupabaseProvider";
+import supabase from "~/utils/supabase";
 
 type Props = {
   children: React.ReactNode;
