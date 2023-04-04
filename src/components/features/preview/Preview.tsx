@@ -5,9 +5,9 @@ import { useEffect } from "react";
 import { Box } from "@mantine/core";
 import { useAtom } from "jotai";
 
-import { getBlocks } from "~/utils/db";
 import Block from "~/components/features/preview/Block";
 import { blocksAtom } from "~/store/jotai";
+import { getBlocks } from "~/utils/db";
 
 type Props = {
   project_id: string;
