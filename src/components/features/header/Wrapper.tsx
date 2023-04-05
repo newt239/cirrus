@@ -2,7 +2,15 @@
 
 import { usePathname } from "next/navigation";
 
-import { AppShell, Header, MantineProvider } from "~/lib/mantine/core";
+import {
+  AppShell,
+  Header,
+  MantineProvider,
+  Navbar,
+  ScrollArea,
+} from "~/lib/mantine/core";
+
+import Menus from "../menus/Menus";
 
 import DashboardHeader from "./DashboardHeader";
 import HomeHeader from "./HomeHeader";
@@ -33,6 +41,20 @@ const Wrapper = ({ children }: Props) => {
               <StudioHeader />
             )}
           </Header>
+        }
+        navbar={
+          pathname !== "/" && pathname !== "/dashboard" ? (
+            <Navbar
+              fixed={false}
+              p="xs"
+              position={{ top: 0, left: 0 }}
+              width={{ base: 300 }}
+            >
+              <Navbar.Section component={ScrollArea} grow mx="-xs" px="xs">
+                <Menus />
+              </Navbar.Section>
+            </Navbar>
+          ) : undefined
         }
         padding="md"
         styles={(theme) => ({
