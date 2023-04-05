@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 import { useAtom } from "jotai";
 
-import Hero from "~/components/features/home/Hero";
+import ProjectList from "~/components/features/dashboard/ProjectList";
 import { sessionAtom } from "~/store/jotai";
 import supabase from "~/utils/supabase";
 
@@ -17,7 +17,7 @@ const Home: React.FC = () => {
     });
   }, []);
 
-  return <Hero />;
+  return <>{session && <ProjectList />}</>;
 };
 
 export default Home;
