@@ -13,7 +13,7 @@ const SideBar: React.FC = () => {
       </Accordion.Item>
       <Accordion.Item value="history">
         <Accordion.Control>履歴</Accordion.Control>
-        <Accordion.Panel>history</Accordion.Panel>
+        <Accordion.Panel>history will be shown here</Accordion.Panel>
       </Accordion.Item>
     </Accordion>
   );
