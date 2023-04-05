@@ -23,6 +23,10 @@ export const getProjectInfo = async (id: string) => {
   }
 };
 
+export const deleteProject = async (id: string) => {
+  await supabase.from("projects").delete().eq("id", id);
+};
+
 export const getBlocks = async (project_id: string) => {
   const { data, error } = await supabase
     .from("blocks")
