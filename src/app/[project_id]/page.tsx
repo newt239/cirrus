@@ -17,10 +17,9 @@ const Studio = async ({ params }: Props) => {
   const project = await getProjectInfo(params.project_id);
 
   return (
-    <div>
+    <>
       {project && (
         <>
-          <StudioHeader name={project.name} />
           <Flex gap="sm" p="sm">
             <div>
               <Preview project_id={project.id} />
@@ -31,7 +30,7 @@ const Studio = async ({ params }: Props) => {
           <Timeline />
         </>
       )}
-    </div>
+    </>
   );
 };
 
