@@ -48,7 +48,7 @@ const Wrapper = ({ children }: Props) => {
     >
       <ModalsProvider>
         <Flex direction="column" h="100vh">
-          <Header height="auto">
+          <Header height="auto" zIndex={1}>
             {pathname === "/" ? (
               <HomeHeader />
             ) : pathname === "/dashboard" ? (
@@ -61,12 +61,11 @@ const Wrapper = ({ children }: Props) => {
             {pathname !== "/" && pathname !== "/dashboard" ? (
               <Navbar
                 fixed={false}
-                p="xs"
                 position={{ top: 0, left: 0 }}
                 width={{ base: 300 }}
                 zIndex={1}
               >
-                <Navbar.Section component={ScrollArea} grow mx="-xs" px="xs">
+                <Navbar.Section component={ScrollArea} grow>
                   <SideBar />
                 </Navbar.Section>
               </Navbar>

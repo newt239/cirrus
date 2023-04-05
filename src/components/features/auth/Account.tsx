@@ -31,7 +31,7 @@ const Account = () => {
   };
 
   return (
-    <Menu arrowPosition="side">
+    <Menu offset={0} position="bottom-end">
       <Menu.Target>
         <Avatar
           alt="アカウント情報"

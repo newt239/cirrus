@@ -2,14 +2,18 @@ import { Accordion } from "~/lib/mantine/core";
 
 const SideBar: React.FC = () => {
   return (
-    <Accordion defaultValue={["item-1", "item-2"]} multiple>
-      <Accordion.Item value="item-1">
-        <Accordion.Control>control-1</Accordion.Control>
-        <Accordion.Panel>panel-1</Accordion.Panel>
+    <Accordion
+      defaultValue={["asset", "history"]}
+      multiple
+      styles={{ label: { padding: "0.5rem", paddingLeft: 0 } }}
+    >
+      <Accordion.Item value="asset">
+        <Accordion.Control>アセット</Accordion.Control>
+        <Accordion.Panel>アイテムがありません</Accordion.Panel>
       </Accordion.Item>
-      <Accordion.Item value="item-2">
-        <Accordion.Control>control-2</Accordion.Control>
-        <Accordion.Panel>panel-2</Accordion.Panel>
+      <Accordion.Item value="history">
+        <Accordion.Control>履歴</Accordion.Control>
+        <Accordion.Panel>history</Accordion.Panel>
       </Accordion.Item>
     </Accordion>
   );
