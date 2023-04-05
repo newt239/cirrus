@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 
 import {
   AppShell,
+  Aside,
   Box,
   Flex,
   Header,
@@ -14,6 +15,7 @@ import {
 
 import { ModalsProvider } from "@mantine/modals";
 
+import ASideBar from "../aside/AsideBar";
 import SideBar from "../sidebar/SideBar";
 
 import DashboardHeader from "./DashboardHeader";
@@ -79,6 +81,18 @@ const Wrapper = ({ children }: Props) => {
             >
               {children}
             </ScrollArea>
+            {pathname !== "/" && pathname !== "/dashboard" ? (
+              <Aside
+                fixed={false}
+                position={{ top: 0, right: 0 }}
+                width={{ base: 500 }}
+                zIndex={1}
+              >
+                <Aside.Section component={ScrollArea} grow>
+                  <ASideBar />
+                </Aside.Section>
+              </Aside>
+            ) : undefined}
           </Flex>
         </Flex>
       </ModalsProvider>

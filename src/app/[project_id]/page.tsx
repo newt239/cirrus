@@ -1,11 +1,9 @@
 import "server-only";
 
-import { Flex } from "~/lib/mantine/core";
+import { Box, Flex } from "~/lib/mantine/core";
 
-import StudioHeader from "~/components/features/header/StudioHeader";
 import Control from "~/components/features/preview/Control";
 import Preview from "~/components/features/preview/Preview";
-import Property from "~/components/features/property/Property";
 import Timeline from "~/components/features/timeline/Timeline";
 import { getProjectInfo } from "~/utils/db";
 
@@ -20,12 +18,11 @@ const Studio = async ({ params }: Props) => {
     <>
       {project && (
         <>
-          <Flex gap="sm" p="sm">
-            <div>
+          <Flex gap="sm" justify="center" p="sm">
+            <Box>
               <Preview project_id={project.id} />
               <Control />
-            </div>
-            <Property />
+            </Box>
           </Flex>
           <Timeline />
         </>
