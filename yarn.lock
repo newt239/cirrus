@@ -357,6 +357,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mantine/modals@npm:^6.0.6":
+  version: 6.0.6
+  resolution: "@mantine/modals@npm:6.0.6"
+  dependencies:
+    "@mantine/utils": "npm:6.0.6"
+  peerDependencies:
+    "@mantine/core": 6.0.6
+    "@mantine/hooks": 6.0.6
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: ff43e19fe0a8c250b02661e48d9699cb736b7de2c0aa390bb7018a24dd15bcd5e42903eedb00fa00889ca00ca0620a1f9274814ad4b2923cd09cb0352072e4ad
+  languageName: node
+  linkType: hard
+
 "@mantine/next@npm:^6.0.6":
   version: 6.0.6
   resolution: "@mantine/next@npm:6.0.6"
@@ -1359,6 +1373,7 @@ __metadata:
     "@mantine/core": "npm:^6.0.5"
     "@mantine/form": "npm:^6.0.5"
     "@mantine/hooks": "npm:^6.0.5"
+    "@mantine/modals": "npm:^6.0.6"
     "@mantine/next": "npm:^6.0.6"
     "@supabase/auth-helpers-nextjs": "npm:^0.5.4"
     "@supabase/supabase-js": "npm:^2.8.0"
