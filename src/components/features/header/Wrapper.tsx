@@ -12,7 +12,7 @@ import {
   ScrollArea,
 } from "~/lib/mantine/core";
 
-import Menus from "../menus/Menus";
+import SideBar from "../sidebar/SideBar";
 
 import DashboardHeader from "./DashboardHeader";
 import HomeHeader from "./HomeHeader";
@@ -30,9 +30,21 @@ const Wrapper = ({ children }: Props) => {
       theme={{
         fontFamily:
           '"LINESeedJP", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
+        components: {
+          Button: {
+            styles: {
+              root: {
+                fontWeight: "inherit",
+              },
+            },
+          },
+        },
       }}
+      withCSSVariables
+      withGlobalStyles
+      withNormalizeCSS
     >
-      <Header display="flex" height={70} px="lg" py="sm">
+      <Header height="auto">
         {pathname === "/" ? (
           <HomeHeader />
         ) : pathname === "/dashboard" ? (
@@ -48,9 +60,10 @@ const Wrapper = ({ children }: Props) => {
             p="xs"
             position={{ top: 0, left: 0 }}
             width={{ base: 300 }}
+            zIndex={1}
           >
             <Navbar.Section component={ScrollArea} grow mx="-xs" px="xs">
-              <Menus />
+              <SideBar />
             </Navbar.Section>
           </Navbar>
         ) : undefined}

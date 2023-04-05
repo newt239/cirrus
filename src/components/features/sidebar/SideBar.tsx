@@ -1,6 +1,6 @@
 import { Accordion } from "~/lib/mantine/core";
 
-const Menus: React.FC = () => {
+const SideBar: React.FC = () => {
   return (
     <Accordion defaultValue={["item-1", "item-2"]} multiple>
       <Accordion.Item value="item-1">
@@ -15,4 +15,4 @@ const Menus: React.FC = () => {
   );
 };
 
-export default Menus;
+export default SideBar;
