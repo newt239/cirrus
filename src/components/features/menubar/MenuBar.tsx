@@ -5,7 +5,13 @@ import { useRouter, usePathname } from "next/navigation";
 import { Box, Flex, Menu, Text } from "~/lib/mantine/core";
 
 import { modals } from "@mantine/modals";
-import { IconFile, IconSettings, IconTrash } from "@tabler/icons-react";
+import {
+  IconEdit,
+  IconFile,
+  IconSettings,
+  IconShare,
+  IconTrash,
+} from "@tabler/icons-react";
 
 import MenuBarButton from "~/components/blocks/MenuBarButton";
 import { deleteProject } from "~/utils/db";
@@ -31,18 +37,43 @@ const MenuBar: React.FC = () => {
       <Menu offset={0} position="bottom-start" shadow="md" width={200}>
         <Menu.Target>
           <Box>
-            <MenuBarButton leftIcon={<IconFile />}>ファイル</MenuBarButton>
+            <MenuBarButton>ファイル</MenuBarButton>
           </Box>
         </Menu.Target>
-
         <Menu.Dropdown>
-          <Menu.Item icon={<IconSettings size={14} />}>設定</Menu.Item>
+          <Menu.Item disabled icon={<IconSettings size={14} />}>
+            設定
+          </Menu.Item>
           <Menu.Item
             color="red"
             icon={<IconTrash size={14} />}
             onClick={deleteFile}
           >
             ファイルを削除
+          </Menu.Item>
+        </Menu.Dropdown>
+      </Menu>
+      <Menu offset={0} position="bottom-start" shadow="md" width={200}>
+        <Menu.Target>
+          <Box>
+            <MenuBarButton>編集</MenuBarButton>
+          </Box>
+        </Menu.Target>
+        <Menu.Dropdown>
+          <Menu.Item disabled icon={<IconSettings size={14} />}>
+            ああ
+          </Menu.Item>
+        </Menu.Dropdown>
+      </Menu>
+      <Menu offset={0} position="bottom-start" shadow="md" width={200}>
+        <Menu.Target>
+          <Box>
+            <MenuBarButton>共有</MenuBarButton>
+          </Box>
+        </Menu.Target>
+        <Menu.Dropdown>
+          <Menu.Item disabled icon={<IconSettings size={14} />}>
+            ああ
           </Menu.Item>
         </Menu.Dropdown>
       </Menu>

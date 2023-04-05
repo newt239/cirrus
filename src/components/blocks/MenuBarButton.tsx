@@ -8,8 +8,15 @@ const MenuBarButton = ({ children, ...props }: Props) => {
   return (
     <Button
       h="100%"
-      size="xs"
-      sx={{ borderRadius: "0.25rem 0.25rem 0px 0px", borderBottom: "none" }}
+      size="sm"
+      sx={(theme) => ({
+        borderRadius: "0.25rem 0.25rem 0px 0px",
+        borderColor: "transparent",
+        borderBottomColor: theme.colors.gray[2],
+        ":hover": {
+          borderColor: theme.colors.gray[2],
+        },
+      })}
       variant="default"
       {...props}
     >
