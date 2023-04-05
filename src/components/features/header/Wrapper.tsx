@@ -47,35 +47,40 @@ const Wrapper = ({ children }: Props) => {
       withNormalizeCSS
     >
       <ModalsProvider>
-        <Header height="auto">
-          {pathname === "/" ? (
-            <HomeHeader />
-          ) : pathname === "/dashboard" ? (
-            <DashboardHeader />
-          ) : (
-            <StudioHeader />
-          )}
-        </Header>
-        <Flex>
-          {pathname !== "/" && pathname !== "/dashboard" ? (
-            <Navbar
-              fixed={false}
-              p="xs"
-              position={{ top: 0, left: 0 }}
-              width={{ base: 300 }}
-              zIndex={1}
+        <Flex direction="column" h="100vh">
+          <Header height="auto">
+            {pathname === "/" ? (
+              <HomeHeader />
+            ) : pathname === "/dashboard" ? (
+              <DashboardHeader />
+            ) : (
+              <StudioHeader />
+            )}
+          </Header>
+          <Flex h="100%">
+            {pathname !== "/" && pathname !== "/dashboard" ? (
+              <Navbar
+                fixed={false}
+                p="xs"
+                position={{ top: 0, left: 0 }}
+                width={{ base: 300 }}
+                zIndex={1}
+              >
+                <Navbar.Section component={ScrollArea} grow mx="-xs" px="xs">
+                  <SideBar />
+                </Navbar.Section>
+              </Navbar>
+            ) : undefined}
+            <ScrollArea
+              h="100%"
+              sx={(theme) => ({
+                backgroundColor: theme.colors.gray[1],
+              })}
+              w="100%"
             >
-              <Navbar.Section component={ScrollArea} grow mx="-xs" px="xs">
-                <SideBar />
-              </Navbar.Section>
-            </Navbar>
-          ) : undefined}
-          <Box
-            sx={(theme) => ({ backgroundColor: theme.colors.gray[1] })}
-            w="100%"
-          >
-            {children}
-          </Box>
+              {children}
+            </ScrollArea>
+          </Flex>
         </Flex>
       </ModalsProvider>
     </MantineProvider>
