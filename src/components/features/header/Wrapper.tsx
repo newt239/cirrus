@@ -3,9 +3,7 @@
 import { usePathname } from "next/navigation";
 
 import {
-  AppShell,
   Aside,
-  Box,
   Flex,
   Header,
   MantineProvider,
@@ -72,13 +70,7 @@ const Wrapper = ({ children }: Props) => {
                 </Navbar.Section>
               </Navbar>
             ) : undefined}
-            <ScrollArea
-              h="100%"
-              sx={(theme) => ({
-                backgroundColor: theme.colors.gray[1],
-              })}
-              w="100%"
-            >
+            <ScrollArea bg="gray.1" h="100%" w="100%">
               {children}
             </ScrollArea>
             {pathname !== "/" && pathname !== "/dashboard" ? (

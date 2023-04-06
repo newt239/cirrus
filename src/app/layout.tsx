@@ -20,7 +20,6 @@ export default async function RootLayout({ children }: Props) {
 
   return (
     <html lang="ja">
-      <head />
       <body>
         <SupabaseProvider>
           <SupabaseListener serverAccessToken={session?.access_token} />
