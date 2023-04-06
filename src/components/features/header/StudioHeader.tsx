@@ -9,7 +9,7 @@ import MenuBar from "../menubar/MenuBar";
 const StudioHeader: React.FC = () => {
   return (
     <>
-      <Flex align="center" gap="md">
+      <Flex align="center" gap="md" px="md">
         <NextLink href="/dashboard">
           <ActionIcon color="blue" size="lg">
             <IconHome />
