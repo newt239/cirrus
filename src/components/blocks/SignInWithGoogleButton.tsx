@@ -1,16 +1,16 @@
-import { clsx, UnstyledButton } from "~/lib/mantine/core";
+import { UnstyledButton } from "~/lib/mantine/core";
 
 const SignInWithGoogleButton = ({
   ...props
 }: React.ComponentPropsWithRef<"button">) => {
   return (
     <UnstyledButton
-      className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
+      className="inline-flex items-center rounded-lg bg-[#4285F4] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#4285F4]/90 focus:outline-none focus:ring-4 focus:ring-[#4285F4]/50 dark:focus:ring"
       {...props}
     >
       <svg
         aria-hidden="true"
-        className="w-4 h-4 mr-2 -ml-1"
+        className="-ml-1 mr-2 h-4 w-4"
         data-icon="google"
         data-prefix="fab"
         focusable="false"

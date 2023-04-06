@@ -5,13 +5,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { Box, Flex, Menu, Text } from "~/lib/mantine/core";
 
 import { modals } from "@mantine/modals";
-import {
-  IconEdit,
-  IconFile,
-  IconSettings,
-  IconShare,
-  IconTrash,
-} from "@tabler/icons-react";
+import { IconSettings, IconTrash } from "@tabler/icons-react";
 
 import MenuBarButton from "~/components/blocks/MenuBarButton";
 import { deleteProject } from "~/utils/db";

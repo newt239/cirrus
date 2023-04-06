@@ -4,8 +4,10 @@
     "next/core-web-vitals",
     "plugin:import/recommended",
     "plugin:import/warnings",
-    "prettier"
+    "prettier",
+    "plugin:tailwindcss/recommended"
   ],
+  "plugins": ["tailwindcss"],
   "rules": {
     "react-hooks/exhaustive-deps": "off",
     "import/order": [

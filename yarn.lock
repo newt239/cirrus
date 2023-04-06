@@ -1475,6 +1475,7 @@ __metadata:
     eslint: "npm:^8.34.0"
     eslint-config-next: "npm:^13.1.6"
     eslint-config-prettier: "npm:^8.6.0"
+    eslint-plugin-tailwindcss: "npm:^3.11.0"
     gsap: "npm:^3.11.4"
     jotai: "npm:^2.0.3"
     nanoid: "npm:^4.0.1"
@@ -2249,6 +2250,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-tailwindcss@npm:^3.11.0":
+  version: 3.11.0
+  resolution: "eslint-plugin-tailwindcss@npm:3.11.0"
+  dependencies:
+    fast-glob: "npm:^3.2.5"
+    postcss: "npm:^8.4.4"
+  peerDependencies:
+    tailwindcss: ^3.2.2
+  checksum: c16b38df6ba1593f1a424cb499967df18c59776c861c9ddc1055a6bb5851eb9fe7a4a1077fcc6976c56c0a66bdc3ef7bbac7586b828602b928b63271943726cc
+  languageName: node
+  linkType: hard
+
 "eslint-scope@npm:^7.1.1":
   version: 7.1.1
   resolution: "eslint-scope@npm:7.1.1"
@@ -2375,7 +2388,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.2.11, fast-glob@npm:^3.2.12, fast-glob@npm:^3.2.9":
+"fast-glob@npm:^3.2.11, fast-glob@npm:^3.2.12, fast-glob@npm:^3.2.5, fast-glob@npm:^3.2.9":
   version: 3.2.12
   resolution: "fast-glob@npm:3.2.12"
   dependencies:
@@ -4242,7 +4255,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.0.9, postcss@npm:^8.4.21":
+"postcss@npm:^8.0.9, postcss@npm:^8.4.21, postcss@npm:^8.4.4":
   version: 8.4.21
   resolution: "postcss@npm:8.4.21"
   dependencies:

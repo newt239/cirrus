@@ -1,4 +1,4 @@
-import { Box, Button, type ButtonProps } from "~/lib/mantine/core";
+import { Button, clsx, type ButtonProps } from "~/lib/mantine/core";
 
 type Props = {
   children: React.ReactNode;
@@ -7,16 +7,14 @@ type Props = {
 const MenuBarButton = ({ children, ...props }: Props) => {
   return (
     <Button
+      className={clsx(
+        "border-transparent",
+        "rounded-t",
+        "border-b-mantine-gray-2",
+        "hover:border-mantine-gray-2"
+      )}
       h="100%"
       size="sm"
-      sx={(theme) => ({
-        borderRadius: "0.25rem 0.25rem 0px 0px",
-        borderColor: "transparent",
-        borderBottomColor: theme.colors.gray[2],
-        ":hover": {
-          borderColor: theme.colors.gray[2],
-        },
-      })}
       variant="default"
       {...props}
     >

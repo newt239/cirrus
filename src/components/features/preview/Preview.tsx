@@ -2,7 +2,8 @@
 
 import { useEffect } from "react";
 
-import { Box } from "@mantine/core";
+import { Box, clsx } from "~/lib/mantine/core";
+
 import { useAtom } from "jotai";
 
 import Block from "~/components/features/preview/Block";
@@ -25,14 +26,7 @@ const Preview = ({ project_id }: Props) => {
   }, []);
 
   return (
-    <Box
-      sx={{
-        width: 600,
-        height: 400,
-        backgroundColor: "black",
-        position: "relative",
-      }}
-    >
+    <Box className={clsx("w-[600px]", "h-[400px]", "bg-black", "relative")}>
       {blocks.map((block) => (
         <Block block={block} key={block.id} />
       ))}
