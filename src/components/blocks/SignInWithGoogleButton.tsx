@@ -1,38 +1,29 @@
-import { UnstyledButton } from "~/lib/mantine/core";
+import { clsx, UnstyledButton } from "~/lib/mantine/core";
 
 const SignInWithGoogleButton = ({
   ...props
 }: React.ComponentPropsWithRef<"button">) => {
   return (
     <UnstyledButton
-      sx={{
-        transition: "background-color .3s, box-shadow .3s",
-        padding: "8px 16px 8px 42px",
-        borderRadius: "5px",
-        boxShadow: "0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25)",
-        color: "#757575",
-        fontSize: "14px",
-        fontWeight: 500,
-        fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif',
-        backgroundImage:
-          "url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=)",
-        backgroundColor: "white",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "12px 12px",
-        "&:hover": {
-          boxShadow:
-            "0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25)",
-        },
-        "&:active": { backgroundColor: "#eeeeee" },
-        "&:focus": {
-          outline: "none",
-          boxShadow:
-            "0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25), 0 0 0 3px #c8dafc",
-        },
-      }}
+      className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
       {...props}
     >
-      Googleでログイン
+      <svg
+        aria-hidden="true"
+        className="w-4 h-4 mr-2 -ml-1"
+        data-icon="google"
+        data-prefix="fab"
+        focusable="false"
+        role="img"
+        viewBox="0 0 488 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"
+          fill="currentColor"
+        ></path>
+      </svg>
+      Sign in with Google
     </UnstyledButton>
   );
 };
