@@ -2,7 +2,7 @@ import { BackgroundImage, Box, clsx, Text, Title } from "~/lib/mantine/core";
 
 const Hero: React.FC = () => {
   return (
-    <BackgroundImage h="calc(100vh - 105px)" src="/images/hero.png">
+    <BackgroundImage h="100vh" src="/images/hero.png">
       <Box p="lg">
         <Title className={clsx("w-fit", "bg-white")} order={1}>
           動画制作を、もっと手軽に。

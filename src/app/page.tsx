@@ -2,14 +2,14 @@
 
 import { useEffect } from "react";
 
-import { useAtom } from "jotai";
+import { useSetAtom } from "jotai";
 
 import Hero from "~/components/features/home/Hero";
 import { sessionAtom } from "~/store/jotai";
 import supabase from "~/utils/supabase";
 
 const Home: React.FC = () => {
-  const [session, setSession] = useAtom(sessionAtom);
+  const setSession = useSetAtom(sessionAtom);
 
   useEffect(() => {
     supabase.auth.getSession().then((r) => {

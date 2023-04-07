@@ -2,6 +2,8 @@ import "server-only";
 
 import "~/app/globals.css";
 
+import RootStyleRegistry from "./emtion";
+
 import SupabaseListener from "~/components/common/SupabaseListner";
 import SupabaseProvider from "~/components/common/SupabaseProvider";
 import Wrapper from "~/components/features/header/Wrapper";
@@ -23,7 +25,9 @@ export default async function RootLayout({ children }: Props) {
       <body>
         <SupabaseProvider>
           <SupabaseListener serverAccessToken={session?.access_token} />
-          <Wrapper>{children}</Wrapper>
+          <RootStyleRegistry>
+            <Wrapper>{children}</Wrapper>
+          </RootStyleRegistry>
         </SupabaseProvider>
       </body>
     </html>

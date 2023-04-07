@@ -37,6 +37,7 @@ const Account = () => {
           alt="アカウント情報"
           color="blue"
           component={ActionIcon}
+          radius="md"
           src={user ? user.user_metadata.avatar_url : null}
         />
       </Menu.Target>
