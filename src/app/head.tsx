@@ -1,4 +1,4 @@
-export default function Head() {
+const Head = () => {
   return (
     <>
       <title>Cirrus</title>
@@ -10,4 +10,6 @@ export default function Head() {
       <link href="/favicon.ico" rel="icon" />
     </>
   );
-}
+};
+
+export default Head;

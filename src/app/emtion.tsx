@@ -6,11 +6,7 @@ import { CacheProvider } from "@emotion/react";
 import { MantineProvider, useEmotionCache } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
 
-export default function RootStyleRegistry({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const RootStyleRegistry = ({ children }: { children: React.ReactNode }) => {
   const cache = useEmotionCache();
   cache.compat = true;
 
@@ -46,4 +42,6 @@ export default function RootStyleRegistry({
       </MantineProvider>
     </CacheProvider>
   );
-}
+};
+
+export default RootStyleRegistry;

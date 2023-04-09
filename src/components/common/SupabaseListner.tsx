@@ -5,11 +5,11 @@ import { useEffect } from "react";
 
 import { useSupabase } from "~/components/common/SupabaseProvider";
 
-export default function SupabaseListener({
+const SupabaseListener = ({
   serverAccessToken,
 }: {
   serverAccessToken?: string;
-}) {
+}) => {
   const { supabase } = useSupabase();
   const router = useRouter();
 
@@ -28,4 +28,6 @@ export default function SupabaseListener({
   }, [serverAccessToken, router, supabase]);
 
   return null;
-}
+};
+
+export default SupabaseListener;

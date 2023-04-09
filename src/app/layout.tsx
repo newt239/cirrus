@@ -15,7 +15,7 @@ type Props = {
 
 export const revalidate = 0;
 
-export default async function RootLayout({ children }: Props) {
+const RootLayout = async ({ children }: Props) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -32,4 +32,6 @@ export default async function RootLayout({ children }: Props) {
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
