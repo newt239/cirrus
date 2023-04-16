@@ -1,7 +1,11 @@
+import { CSSProperties } from "react";
+
 import { Accordion, Flex, Stack } from "~/lib/mantine/core";
 
 import { useAtomValue } from "jotai";
 
+import AddStyleForm from "./AddStyleForm";
+import EditCSSProperties from "./EditCSSProperties";
 import EditDuration from "./EditDuration";
 import EditStartTime from "./EditStartTime";
 import EditText from "./EditText";
@@ -28,6 +32,13 @@ const ASideBar: React.FC = () => {
               <EditStartTime />
               <EditDuration />
             </Flex>
+            <AddStyleForm block={block} />
+            {Object.keys(block.initial_style).map((property_name, i) => (
+              <EditCSSProperties
+                key={i}
+                property={property_name as keyof CSSProperties}
+              />
+            ))}
           </Stack>
         </Accordion.Panel>
       </Accordion.Item>

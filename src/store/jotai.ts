@@ -58,7 +58,7 @@ export const currentBlockAtom = atom(
               },
             };
           } else {
-            const result = await supabase
+            await supabase
               .from("blocks")
               .update({ [value[0]]: value[1] })
               .match({
