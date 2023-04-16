@@ -22,7 +22,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const Wrapper = ({ children }: Props) => {
+const Wrapper: React.FC<Props> = ({ children }) => {
   const pathname = usePathname();
 
   return (

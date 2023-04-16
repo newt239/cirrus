@@ -4,7 +4,7 @@ import { ActionIcon, Flex, Title } from "~/lib/mantine/core";
 
 import { IconHome } from "@tabler/icons-react";
 
-import MenuBar from "../menubar/MenuBar";
+import MenuBar from "~/components/features/menubar/MenuBar";
 
 const StudioHeader: React.FC = () => {
   return (

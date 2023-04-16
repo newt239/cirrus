@@ -6,7 +6,10 @@ import { CacheProvider } from "@emotion/react";
 import { MantineProvider, useEmotionCache } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
 
-const RootStyleRegistry = ({ children }: { children: React.ReactNode }) => {
+type Props = {
+  children: React.ReactNode;
+};
+const RootStyleRegistry: React.FC<Props> = ({ children }) => {
   const cache = useEmotionCache();
   cache.compat = true;
 

@@ -3,7 +3,7 @@
 import SignInWithGoogleButton from "~/components/blocks/SignInWithGoogleButton";
 import supabase from "~/utils/supabase";
 
-const SignIn = () => {
+const SignIn: React.FC = () => {
   const signIn = async () => {
     await supabase.auth.signInWithOAuth({
       provider: "google",

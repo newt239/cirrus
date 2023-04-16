@@ -2,7 +2,9 @@
 
 import { MantineProvider } from "@mantine/core";
 
-const Provider = ({ children }: { children: React.ReactNode }) => {
+type Props = { children: React.ReactNode };
+
+const Provider: React.FC<Props> = ({ children }) => {
   return <MantineProvider>{children}</MantineProvider>;
 };
 

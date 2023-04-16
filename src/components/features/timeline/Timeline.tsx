@@ -6,7 +6,7 @@ import { useAtom, useAtomValue } from "jotai";
 
 import { blocksAtom, currentBlockIdAtom } from "~/store/jotai";
 
-const Timeline = () => {
+const Timeline: React.FC = () => {
   const blocks = useAtomValue(blocksAtom);
   const [currentBlockId, setCurrentBlockId] = useAtom(currentBlockIdAtom);
 

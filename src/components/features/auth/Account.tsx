@@ -13,7 +13,7 @@ import type { User } from "@supabase/supabase-js";
 import { sessionAtom } from "~/store/jotai";
 import supabase from "~/utils/supabase";
 
-const Account = () => {
+const Account: React.FC = () => {
   const router = useRouter();
   const setSesion = useSetAtom(sessionAtom);
   const [user, setUser] = useState<User | null>(null);

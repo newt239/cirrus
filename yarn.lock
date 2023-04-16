@@ -991,12 +991,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/gotrue-js@npm:^2.18.1":
-  version: 2.20.1
-  resolution: "@supabase/gotrue-js@npm:2.20.1"
+"@supabase/gotrue-js@npm:^2.22.0":
+  version: 2.22.1
+  resolution: "@supabase/gotrue-js@npm:2.22.1"
   dependencies:
     cross-fetch: "npm:^3.1.5"
-  checksum: 39e4fafc6d70657e373820f98f8db493584d4a8fa8059d1c50f76a761a4a30d47490ead372800159b4757c2ade8ec79c84e096443ac5bfca141fb9b1a9abbfa8
+  checksum: 6129157d08778864291dc00a6837f957cf5fe652c5c0fdf20893a67fcba9968b39a6ee9008258578c0c147bb7acc017f90349a28b15c0b6a8190795db2449065
   languageName: node
   linkType: hard
 
@@ -1009,7 +1009,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/realtime-js@npm:^2.7.1":
+"@supabase/realtime-js@npm:^2.7.2":
   version: 2.7.2
   resolution: "@supabase/realtime-js@npm:2.7.2"
   dependencies:
@@ -1020,26 +1020,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/storage-js@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "@supabase/storage-js@npm:2.4.0"
+"@supabase/storage-js@npm:^2.5.1":
+  version: 2.5.1
+  resolution: "@supabase/storage-js@npm:2.5.1"
   dependencies:
     cross-fetch: "npm:^3.1.5"
-  checksum: 9947d8b37a100033c14cb0769280884f93968559d5bf339bf89a883748e894c04745462c63de4fdf5ff5af2e19c9f8043c825f9d105d3148621727ec5149234e
+  checksum: 9caefe658a22a5f3260a08d16d44517a6762330963d8f5f34d0a5be8e3595b24c9fff60d5d515376f0135af39c4874a09c6070542d8b19afad87da874fa36767
   languageName: node
   linkType: hard
 
-"@supabase/supabase-js@npm:^2.15.0":
-  version: 2.15.0
-  resolution: "@supabase/supabase-js@npm:2.15.0"
+"@supabase/supabase-js@npm:^2.20.0":
+  version: 2.20.0
+  resolution: "@supabase/supabase-js@npm:2.20.0"
   dependencies:
     "@supabase/functions-js": "npm:^2.1.0"
-    "@supabase/gotrue-js": "npm:^2.18.1"
+    "@supabase/gotrue-js": "npm:^2.22.0"
     "@supabase/postgrest-js": "npm:^1.1.1"
-    "@supabase/realtime-js": "npm:^2.7.1"
-    "@supabase/storage-js": "npm:^2.4.0"
+    "@supabase/realtime-js": "npm:^2.7.2"
+    "@supabase/storage-js": "npm:^2.5.1"
     cross-fetch: "npm:^3.1.5"
-  checksum: 910db6dc0aefe056877a7addb077253c67a50fc024abfff277f8cb7080f7f7ecf558bb9d182a3be71a60a9c44681fc12a7b286259a320871bfba5379f4ad851b
+  checksum: 4982127ce5c482316d1e5b424e03f64527ca6a8c13833fa835aea4ffa8a12442b57610262f86cfa251b314db677f13d48c7a1744adb66c4793a0a956fd2c5cd9
   languageName: node
   linkType: hard
 
@@ -1713,9 +1713,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001406, caniuse-lite@npm:^1.0.30001449, caniuse-lite@npm:^1.0.30001464":
-  version: 1.0.30001476
-  resolution: "caniuse-lite@npm:1.0.30001476"
-  checksum: 5fc7091c9402c157188480464a3e39508754caffb98b8c74b893c3c292e41a974759ebbd345e0dfa94616b6c018c5b7095122b7b668a6c5d86f26158fbc39fb6
+  version: 1.0.30001477
+  resolution: "caniuse-lite@npm:1.0.30001477"
+  checksum: 595f24f603e6dc7b180684942866a7fb17986e5121082ce222560e62f20fa99dbf5d2c7de9eb79c139fe1cbad60ef65c673547995adce028024bc4e346490354
   languageName: node
   linkType: hard
 
@@ -1789,7 +1789,7 @@ __metadata:
     "@markuplint/jsx-parser": "npm:^3.6.0"
     "@markuplint/react-spec": "npm:^3.6.0"
     "@supabase/auth-helpers-nextjs": "npm:^0.6.0"
-    "@supabase/supabase-js": "npm:^2.15.0"
+    "@supabase/supabase-js": "npm:^2.20.0"
     "@tabler/icons-react": "npm:^2.7.0"
     "@types/node": "npm:^18.15.11"
     "@types/react": "npm:^18.0.33"
@@ -4061,14 +4061,14 @@ __metadata:
   linkType: hard
 
 "jotai@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "jotai@npm:2.0.3"
+  version: 2.0.4
+  resolution: "jotai@npm:2.0.4"
   peerDependencies:
     react: ">=17.0.0"
   peerDependenciesMeta:
     react:
       optional: true
-  checksum: 634ef837062c1910a2559cc037186a4f57b23b20b8a8332ec327aa0da56ce37db255d6e7d31f641c0d6ebdb16f4b9a0f7a7ec73f3810090b464566f6323dfffa
+  checksum: 1d3c0a89146a306dcf90e9d2b8fe4787b2f3d864e8c57411398e2a9cbdfc44f7d420a8fff5dfd53d3b5d1c4c1769fb7283fa5800372112810bd05f94d392db7b
   languageName: node
   linkType: hard
 
@@ -4584,9 +4584,9 @@ __metadata:
   linkType: hard
 
 "minipass@npm:^4.0.0":
-  version: 4.2.5
-  resolution: "minipass@npm:4.2.5"
-  checksum: 9663cd373005095bc6b9f1c779e6beef3269e171a4049c2c6532ae430dea93647bfa6cf4fab43fc908f9e8ad333a3dbaadca20c15eb4ba9b697c764b7be90d65
+  version: 4.2.7
+  resolution: "minipass@npm:4.2.7"
+  checksum: 7fefbeba51e7c139027fba900dd98e267edb0542c707926ee8843f5dca4ff121c509947b3b7a8bb19d1faeae8f5c0b80b87c2c4fc9cb9338c0911f11284d21cc
   languageName: node
   linkType: hard
 
@@ -6216,15 +6216,15 @@ __metadata:
   linkType: hard
 
 "supabase@npm:^1.49.4":
-  version: 1.49.4
-  resolution: "supabase@npm:1.49.4"
+  version: 1.50.0
+  resolution: "supabase@npm:1.50.0"
   dependencies:
     bin-links: "npm:^4.0.1"
     node-fetch: "npm:^3.2.10"
     tar: "npm:6.1.13"
   bin:
     supabase: bin/supabase
-  checksum: 0ed42287487aa062244bcb9ffffe8e1954614b41d8140074a12d6de7923873a9fcb3b6c796d3057882a77245a801f6ce14773c225fd5589e32588da613976bc6
+  checksum: b1e079d7b870455ae8719ee4618e8014487efcb0e283402c6f54a1a276803a5156ccf1c878621e053d262bfa4a8ae2c5aaf187e6838ff3c68b637197ebb1fe63
   languageName: node
   linkType: hard
 

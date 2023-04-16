@@ -14,7 +14,7 @@ type Props = {
   project_id: string;
 };
 
-const Preview = ({ project_id }: Props) => {
+const Preview: React.FC<Props> = ({ project_id }) => {
   const [blocks, setBlocks] = useAtom(blocksAtom);
 
   useEffect(() => {
