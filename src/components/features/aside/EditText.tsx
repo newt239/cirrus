@@ -10,10 +10,19 @@ import { currentBlockAtom } from "~/store/jotai";
 
 const EditText: React.FC = () => {
   const [block, setProperty] = useAtom(currentBlockAtom);
-  const [text, setText] = useState(block && block.content ? block.content : "");
+  const [text, setText] = useState(
+    block && block.initial_style.textContent
+      ? block.initial_style.textContent
+      : ""
+  );
 
   useEffect(() => {
-    setProperty(["content", text]);
+    const updateText = () => {
+      if (block && block.initial_style.textContent !== text) {
+        setProperty(["initial_style", "textContent", text]);
+      }
+    };
+    updateText();
   }, [text]);
 
   if (!block) return null;

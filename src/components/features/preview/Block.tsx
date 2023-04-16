@@ -1,3 +1,5 @@
+import { clsx } from "@mantine/core";
+
 import { BlockDBProps } from "~/types/db";
 
 type Props = {
@@ -5,20 +7,11 @@ type Props = {
 };
 
 const Block: React.FC<Props> = ({ block }) => {
-  const initial_state = block.initial_state as React.CSSProperties;
   return (
     <div
+      className={clsx("absolute", "top-1/2", "left-1/2")}
       id={`object-${block.id}`}
-      style={{
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        ...initial_state,
-      }}
-    >
-      {block.content}
-    </div>
+    />
   );
 };
 

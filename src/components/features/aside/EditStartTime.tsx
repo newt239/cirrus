@@ -11,7 +11,7 @@ import { currentBlockAtom } from "~/store/jotai";
 const EditStartTime: React.FC = () => {
   const [block, setProperty] = useAtom(currentBlockAtom);
   const [startTime, setStartTime] = useState<number | "">(
-    block && block.content ? block.start : 0
+    block ? block.start : 0
   );
 
   useEffect(() => {

@@ -18,11 +18,13 @@ const Preview: React.FC<Props> = ({ project_id }) => {
   const [blocks, setBlocks] = useAtom(blocksAtom);
 
   useEffect(() => {
-    getBlocks(project_id).then((r) => {
-      if (r) {
-        setBlocks(r);
-      }
-    });
+    if (blocks.length === 0) {
+      getBlocks(project_id).then((r) => {
+        if (r) {
+          setBlocks(r);
+        }
+      });
+    }
   }, []);
 
   return (

@@ -23,7 +23,7 @@ const Control: React.FC = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
-  const isEnded = currentTime >= duration;
+  const isEnded = currentTime >= duration && currentTime !== 0;
 
   const interval = useInterval(() => {
     setCurrentTime(tl.time());
@@ -40,31 +40,38 @@ const Control: React.FC = () => {
     return interval.stop;
   }, [isPlaying, currentTime]);
 
-  useEffect(() => {
+  const updateTimeline = () => {
+    tl.progress(0);
+    tl.kill();
+    tl.clear();
+    tl.call(() => interval.start(), [], 0);
     for (const block of blocks) {
-      const final_state = block.final_state as gsap.TweenVars;
+      const initial_state = block.initial_style as gsap.TweenVars;
+      console.log(initial_state);
+      tl.set(`#object-${block.id}`, initial_state, block.start / 1000);
+      const final_state = block.final_style as gsap.TweenVars;
       tl.to(`#object-${block.id}`, {
         duration: block.duration / 1000,
         ...final_state,
       });
     }
+    tl.pause();
     const newDuration = blocks.reduce(
-      (accumulator, block) => accumulator + block.duration / 1000,
+      (accumulator, block) =>
+        Math.max(accumulator, (block.start + block.duration) / 1000),
       0
     );
     setDuration(newDuration);
-  }, [blocks]);
+  };
 
   const playAnime = () => {
     if (!isPlaying) {
-      if (isEnded) {
+      if (isEnded || currentTime === 0) {
+        updateTimeline();
         setCurrentTime(0);
-        tl.restart();
-      } else {
-        tl.play();
       }
+      tl.play();
       setIsPlaying(true);
-      interval.start();
     } else {
       tl.pause();
       interval.stop();
@@ -74,7 +81,7 @@ const Control: React.FC = () => {
 
   const stopAnime = () => {
     setIsPlaying(false);
-    tl.pause(0);
+    updateTimeline();
     interval.stop();
     setCurrentTime(0);
   };
