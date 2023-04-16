@@ -8,6 +8,8 @@ type PropertyInfo = { label: string } & (
   | {
       component: "number";
       default: number;
+      min: number;
+      max: number;
     }
   | {
       component: "color";
@@ -25,5 +27,24 @@ export const cssPropertyInfo: { [key in keyof CSSProperties]: PropertyInfo } = {
     component: "color",
     label: "文字色",
     default: "#000000",
+  },
+  backgroundColor: {
+    component: "color",
+    label: "背景色",
+    default: "#ffffff",
+  },
+  borderRadius: {
+    component: "number",
+    label: "角丸",
+    default: 0,
+    min: 0,
+    max: 100,
+  },
+  opacity: {
+    component: "number",
+    label: "透明度",
+    default: 1,
+    min: 0,
+    max: 1,
   },
 };

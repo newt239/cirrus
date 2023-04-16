@@ -49,7 +49,8 @@ const Control: React.FC = () => {
       const initial_state = block.initial_style as gsap.TweenVars;
       console.log(initial_state);
       tl.set(`#object-${block.id}`, initial_state, block.start / 1000);
-      const final_state = block.final_style as gsap.TweenVars;
+      const { textContent, ...final_state } =
+        block.final_style as gsap.TweenVars;
       tl.to(`#object-${block.id}`, {
         duration: block.duration / 1000,
         ...final_state,

@@ -2,12 +2,22 @@
 
 import { CSSProperties, useEffect, useState } from "react";
 
-import { Box, ColorInput, Divider, Flex } from "~/lib/mantine/core";
+import {
+  ActionIcon,
+  Box,
+  ColorInput,
+  Flex,
+  NumberInput,
+  Text,
+  TextInput,
+} from "~/lib/mantine/core";
 
-import { useAtom } from "jotai";
+import { IconTrash } from "@tabler/icons-react";
+import { useAtom, useSetAtom } from "jotai";
 
 import { cssPropertyInfo } from "~/lib/cssPropertyInfo";
-import { currentBlockAtom } from "~/store/jotai";
+import { blocksAtom, currentBlockAtom } from "~/store/jotai";
+import supabase from "~/utils/supabase";
 
 type Props = {
   property: keyof CSSProperties;
@@ -16,41 +26,85 @@ type Props = {
 const EditCSSProperties: React.FC<Props> = ({ property }) => {
   const propertyInfo = cssPropertyInfo[property];
   const [block, setProperty] = useAtom(currentBlockAtom);
-  const [initialValue, setInitialValue] = useState(
+  const setBlocks = useSetAtom(blocksAtom);
+  const [initialStringValue, setInitialStringValue] = useState<
+    string | undefined
+  >(
     block && block.initial_style[property] ? block.initial_style[property] : ""
   );
-  const [finalValue, setFinalValue] = useState(
+  const [finalStringValue, setFinalStringValue] = useState<string | undefined>(
     block && block.final_style[property] ? block.final_style[property] : ""
+  );
+  const [initialNumberValue, setInitialNumberValue] = useState<number | "">(
+    block && block.initial_style[property]
+      ? Number(block.initial_style[property])
+      : 0
+  );
+  const [finalNumberValue, setFinalNumberValue] = useState<number | "">(
+    block && block.final_style[property]
+      ? Number(block.final_style[property])
+      : 0
   );
 
   useEffect(() => {
     const updateInitialValue = () => {
-      if (block && block.initial_style[property] !== initialValue) {
-        setProperty(["initial_style", property, initialValue || ""]);
+      if (
+        block &&
+        block.initial_style[property] !== initialStringValue &&
+        initialStringValue
+      ) {
+        setProperty(["initial_style", property, initialStringValue]);
       }
     };
     updateInitialValue();
-  }, [initialValue]);
+  }, [initialStringValue]);
 
   useEffect(() => {
     const updateFinalValue = () => {
-      if (block && block.final_style[property] !== finalValue) {
-        setProperty(["final_style", property, initialValue || ""]);
+      if (
+        block &&
+        block.final_style[property] !== finalStringValue &&
+        finalStringValue
+      ) {
+        setProperty(["final_style", property, finalStringValue]);
       }
     };
     updateFinalValue();
-  }, [finalValue]);
+  }, [finalStringValue]);
 
   if (!block || !propertyInfo) return null;
 
   const PropertyInput: React.FC<{ type: "initial" | "final" }> = ({ type }) => {
     switch (propertyInfo.component) {
+      case "text":
+        return (
+          <TextInput
+            onChange={(v) =>
+              type === "initial"
+                ? setInitialStringValue(v.target.value)
+                : setFinalStringValue(v.target.value)
+            }
+            value={type === "initial" ? initialStringValue : finalStringValue}
+          />
+        );
+      case "number":
+        return (
+          <NumberInput
+            onChange={
+              type === "initial" ? setInitialNumberValue : setFinalNumberValue
+            }
+            size="xs"
+            value={type === "initial" ? initialNumberValue : finalNumberValue}
+          />
+        );
       case "color":
         return (
           <ColorInput
-            onChange={type === "initial" ? setInitialValue : setFinalValue}
+            onChange={
+              type === "initial" ? setInitialStringValue : setFinalStringValue
+            }
             size="xs"
-            value={type === "initial" ? initialValue : finalValue}
+            value={type === "initial" ? initialStringValue : finalStringValue}
           />
         );
       default:
@@ -58,9 +112,43 @@ const EditCSSProperties: React.FC<Props> = ({ property }) => {
     }
   };
 
+  const deleteProperty = async () => {
+    setBlocks((blocks) =>
+      blocks.map((b) => {
+        if (b.id === block.id) {
+          const initial_style: { [key in keyof CSSProperties]: string } = {};
+          Object.keys(b.initial_style).map((key) => {
+            if (key !== property) {
+              initial_style[key as keyof CSSProperties] = b.initial_style[key];
+            }
+          });
+          const final_style: { [key in keyof CSSProperties]: string } = {};
+          Object.keys(b.final_style).map((key) => {
+            if (key !== property) {
+              final_style[key as keyof CSSProperties] = b.initial_style[key];
+            }
+          });
+          return { ...b, initial_style, final_style };
+        } else {
+          return b;
+        }
+      })
+    );
+    await supabase
+      .from("styles")
+      .delete()
+      .eq("block_id", block.id)
+      .eq("key", property);
+  };
+
   return (
     <>
-      <Divider label={propertyInfo.label} />
+      <Flex align="center" justify="space-between">
+        <Text fz="sm">{propertyInfo.label}</Text>
+        <ActionIcon onClick={deleteProperty} size="xs">
+          <IconTrash />
+        </ActionIcon>
+      </Flex>
       <Flex gap="xs">
         <PropertyInput type="initial" />
         <Box>→</Box>

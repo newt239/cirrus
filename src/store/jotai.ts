@@ -1,6 +1,9 @@
+import { CSSProperties } from "react";
+
 import { Session } from "@supabase/auth-helpers-nextjs";
 import { atom } from "jotai";
 
+import { cssPropertyInfo } from "~/lib/cssPropertyInfo";
 import { BlockDBProps, BlockProps } from "~/types/db";
 import supabase from "~/utils/supabase";
 
@@ -32,31 +35,28 @@ export const currentBlockAtom = atom(
     const newBlocks = await Promise.all(
       blocks.map(async (block, n) => {
         if (n === index) {
-          if (value[0] === "initial_style") {
-            await supabase
-              .from("styles")
-              .update({ value: value[2] })
-              .match({ block_id: block.id, key: value[1], type: "initial" });
-            return {
-              ...block,
-              initial_style: {
-                ...block.initial_style,
-                [value[1]]: value[2],
-              },
-            };
-          } else if (value[0] === "final_style") {
-            await supabase.from("styles").update({ value: value[2] }).match({
-              block_id: block.id,
-              key: value[1],
-              type: "final",
-            });
-            return {
-              ...block,
-              final_style: {
-                ...block.final_style,
-                [value[1]]: value[2],
-              },
-            };
+          if (value[0] === "initial_style" || value[0] === "final_style") {
+            if (
+              [...Object.keys(cssPropertyInfo), "textContent"].includes(
+                value[1] as string
+              )
+            ) {
+              const style_type =
+                value[0] === "initial_style" ? "initial_style" : "final_style";
+              await supabase.from("styles").upsert({
+                id: `${block.id}-${value[1]}`,
+                block_id: block.id,
+                key: value[1] as keyof CSSProperties,
+                [style_type]: value[2],
+              });
+              return {
+                ...block,
+                [style_type]: {
+                  ...block[style_type],
+                  [value[1]]: value[2],
+                },
+              };
+            } else return block;
           } else {
             await supabase
               .from("blocks")

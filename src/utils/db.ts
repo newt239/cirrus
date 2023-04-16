@@ -30,7 +30,7 @@ export const deleteProject = async (id: string) => {
 export const getBlocks = async (project_id: string) => {
   const { data, error } = await supabase
     .from("blocks")
-    .select("*, styles ( type, key, value )")
+    .select("*, styles ( key, initial_style, final_style )")
     .eq("project_id", project_id);
   if (error || !data) {
     return null;
@@ -40,10 +40,10 @@ export const getBlocks = async (project_id: string) => {
       const final_style: { [T in keyof gsap.TweenVars]: string } = {};
       if (block.styles && Array.isArray(block.styles)) {
         block.styles.map((style) => {
-          if (style.type === "initial") {
-            initial_style[style.key as keyof gsap.TweenVars] = style.value;
-          } else if (style.type === "final") {
-            final_style[style.key as keyof gsap.TweenVars] = style.value;
+          initial_style[style.key as keyof gsap.TweenVars] =
+            style.initial_style;
+          if (style.key !== "textContent") {
+            final_style[style.key as keyof gsap.TweenVars] = style.final_style;
           }
         });
       }
