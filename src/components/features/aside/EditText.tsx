@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { Input } from "~/libs/mantine/core";
+import { TextInput } from "~/libs/mantine/core";
 
 import { useAtom } from "jotai";
 
@@ -28,9 +28,11 @@ const EditText: React.FC = () => {
   if (!block) return null;
 
   return (
-    <Input.Wrapper label="テキスト">
-      <Input onChange={(v) => setText(v.target.value)} value={text} />
-    </Input.Wrapper>
+    <TextInput
+      label="テキスト"
+      onChange={(v) => setText(v.target.value)}
+      value={text}
+    />
   );
 };
 

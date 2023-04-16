@@ -26,7 +26,7 @@ export const cssPropertyInfo: { [key in keyof CSSProperties]: PropertyInfo } = {
   color: {
     component: "color",
     label: "文字色",
-    default: "#000000",
+    default: "#ffffff",
   },
   backgroundColor: {
     component: "color",
