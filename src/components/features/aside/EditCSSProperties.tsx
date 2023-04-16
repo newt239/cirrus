@@ -72,6 +72,32 @@ const EditCSSProperties: React.FC<Props> = ({ property }) => {
     updateFinalValue();
   }, [finalStringValue]);
 
+  useEffect(() => {
+    const updateInitialValue = () => {
+      if (
+        block &&
+        block.initial_style[property] !== initialNumberValue &&
+        initialNumberValue
+      ) {
+        setProperty(["initial_style", property, initialNumberValue.toString()]);
+      }
+    };
+    updateInitialValue();
+  }, [initialNumberValue]);
+
+  useEffect(() => {
+    const updateFinalValue = () => {
+      if (
+        block &&
+        block.final_style[property] !== finalNumberValue &&
+        finalNumberValue
+      ) {
+        setProperty(["final_style", property, finalNumberValue.toString()]);
+      }
+    };
+    updateFinalValue();
+  }, [finalNumberValue]);
+
   if (!block || !propertyInfo) return null;
 
   const PropertyInput: React.FC<{ type: "initial" | "final" }> = ({ type }) => {

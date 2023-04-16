@@ -47,4 +47,11 @@ export const cssPropertyInfo: { [key in keyof CSSProperties]: PropertyInfo } = {
     min: 0,
     max: 1,
   },
+  fontSize: {
+    component: "number",
+    label: "文字サイズ",
+    default: 16,
+    min: 5,
+    max: 100,
+  },
 };
