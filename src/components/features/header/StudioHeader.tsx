@@ -1,6 +1,6 @@
 import NextLink from "next/link";
 
-import { ActionIcon, Flex, Title } from "~/lib/mantine/core";
+import { ActionIcon, Flex, Title } from "~/libs/mantine/core";
 
 import { IconHome } from "@tabler/icons-react";
 

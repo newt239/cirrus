@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Button, List, Title } from "~/lib/mantine/core";
+import { Box, Button, List, Title } from "~/libs/mantine/core";
 
 import { useAtom, useAtomValue } from "jotai";
 

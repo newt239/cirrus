@@ -1,6 +1,6 @@
 import "server-only";
 
-import { Box, Flex } from "~/lib/mantine/core";
+import { Box, Flex } from "~/libs/mantine/core";
 
 import Control from "~/components/features/preview/Control";
 import Preview from "~/components/features/preview/Preview";

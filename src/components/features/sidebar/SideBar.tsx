@@ -1,4 +1,4 @@
-import { Accordion } from "~/lib/mantine/core";
+import { Accordion } from "~/libs/mantine/core";
 
 const SideBar: React.FC = () => {
   return (

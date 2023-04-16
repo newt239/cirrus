@@ -3,7 +3,7 @@ import { CSSProperties } from "react";
 import { Session } from "@supabase/auth-helpers-nextjs";
 import { atom } from "jotai";
 
-import { cssPropertyInfo } from "~/lib/cssPropertyInfo";
+import { cssPropertyInfo } from "~/libs/cssPropertyInfo";
 import { BlockDBProps, BlockProps } from "~/types/db";
 import supabase from "~/utils/supabase";
 

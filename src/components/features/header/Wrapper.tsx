@@ -9,7 +9,7 @@ import {
   Header,
   Navbar,
   ScrollArea,
-} from "~/lib/mantine/core";
+} from "~/libs/mantine/core";
 
 import ASideBar from "../aside/AsideBar";
 import SideBar from "../sidebar/SideBar";

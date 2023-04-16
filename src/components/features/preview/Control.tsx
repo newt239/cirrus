@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { ActionIcon, Flex, Progress } from "~/lib/mantine/core";
+import { ActionIcon, Flex, Progress } from "~/libs/mantine/core";
 
 import { useInterval } from "@mantine/hooks";
 import {

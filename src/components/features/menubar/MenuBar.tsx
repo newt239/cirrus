@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from "next/navigation";
 
-import { Box, Flex, Menu, Text } from "~/lib/mantine/core";
+import { Box, Flex, Menu, Text } from "~/libs/mantine/core";
 
 import { modals } from "@mantine/modals";
 import {

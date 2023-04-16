@@ -1,4 +1,4 @@
-import { BackgroundImage, Box, clsx, Text, Title } from "~/lib/mantine/core";
+import { BackgroundImage, Box, clsx, Text, Title } from "~/libs/mantine/core";
 
 const Hero: React.FC = () => {
   return (

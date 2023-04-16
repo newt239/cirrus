@@ -1,4 +1,4 @@
-import { Box, Flex, Title } from "~/lib/mantine/core";
+import { Box, Flex, Title } from "~/libs/mantine/core";
 
 import SignIn from "../auth/SignIn";
 

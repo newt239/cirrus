@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 
-import { ActionIcon, TextInput } from "~/lib/mantine/core";
+import { ActionIcon, TextInput } from "~/libs/mantine/core";
 
 import { IconPlus } from "@tabler/icons-react";
 import { useSetAtom } from "jotai";
 
-import { cssPropertyInfo } from "~/lib/cssPropertyInfo";
+import { cssPropertyInfo } from "~/libs/cssPropertyInfo";
 import { blocksAtom } from "~/store/jotai";
 import { BlockProps } from "~/types/db";
 import supabase from "~/utils/supabase";

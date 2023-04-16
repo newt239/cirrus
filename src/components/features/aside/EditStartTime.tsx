@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { NumberInput } from "~/lib/mantine/core";
+import { NumberInput } from "~/libs/mantine/core";
 
 import { useAtom } from "jotai";
 

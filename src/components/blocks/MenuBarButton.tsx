@@ -1,4 +1,4 @@
-import { Button, clsx, type ButtonProps } from "~/lib/mantine/core";
+import { Button, clsx, type ButtonProps } from "~/libs/mantine/core";
 
 type Props = {
   children: React.ReactNode;

@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-import { Box, clsx } from "~/lib/mantine/core";
+import { Box, clsx } from "~/libs/mantine/core";
 
 import { useAtom } from "jotai";
 

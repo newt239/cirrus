@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-import { Button, Card } from "~/lib/mantine/core";
+import { Button, Card } from "~/libs/mantine/core";
 
 import { IconSquareRoundedPlus } from "@tabler/icons-react";
 import { useAtomValue } from "jotai";

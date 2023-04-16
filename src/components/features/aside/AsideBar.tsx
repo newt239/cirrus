@@ -1,6 +1,6 @@
 import { CSSProperties } from "react";
 
-import { Accordion, Flex, Stack } from "~/lib/mantine/core";
+import { Accordion, Flex, Stack } from "~/libs/mantine/core";
 
 import { useAtomValue } from "jotai";
 

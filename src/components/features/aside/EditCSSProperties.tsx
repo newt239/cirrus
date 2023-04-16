@@ -10,12 +10,12 @@ import {
   NumberInput,
   Text,
   TextInput,
-} from "~/lib/mantine/core";
+} from "~/libs/mantine/core";
 
 import { IconTrash } from "@tabler/icons-react";
 import { useAtom, useSetAtom } from "jotai";
 
-import { cssPropertyInfo } from "~/lib/cssPropertyInfo";
+import { cssPropertyInfo } from "~/libs/cssPropertyInfo";
 import { blocksAtom, currentBlockAtom } from "~/store/jotai";
 import supabase from "~/utils/supabase";
 

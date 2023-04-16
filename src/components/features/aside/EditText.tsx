@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { Input } from "~/lib/mantine/core";
+import { Input } from "~/libs/mantine/core";
 
 import { useAtom } from "jotai";
 
