@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 import { Box, Flex, Menu, Text } from "~/libs/mantine/core";
@@ -10,6 +11,7 @@ import {
   IconArrowBackUp,
   IconInfoCircle,
   IconSettings,
+  IconShare,
   IconTrash,
 } from "@tabler/icons-react";
 
@@ -89,9 +91,9 @@ const MenuBar: React.FC = () => {
           </Box>
         </Menu.Target>
         <Menu.Dropdown>
-          <Menu.Item disabled icon={<IconSettings size={14} />}>
-            ああ
-          </Menu.Item>
+          <Link href={`/${pathname.split("/")[1]}/theater`} target="_blank">
+            <Menu.Item icon={<IconShare size={14} />}>シェア画面</Menu.Item>
+          </Link>
         </Menu.Dropdown>
       </Menu>
     </Flex>

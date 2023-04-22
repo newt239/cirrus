@@ -10,7 +10,7 @@ type Props = {
   params: { project_id: string };
 };
 
-const Theather = async ({ params }: Props) => {
+const Theater = async ({ params }: Props) => {
   const project = await getProjectInfo(params.project_id);
 
   return (
@@ -27,4 +27,4 @@ const Theather = async ({ params }: Props) => {
   );
 };
 
-export default Theather;
+export default Theater;
