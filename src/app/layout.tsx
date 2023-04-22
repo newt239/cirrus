@@ -2,10 +2,12 @@ import "server-only";
 
 import "~/app/globals.css";
 
+import { Flex } from "~/libs/mantine/core";
+
 import RootStyleRegistry from "./emtion";
 
 import SupabaseProvider from "~/components/common/SupabaseProvider";
-import Wrapper from "~/components/features/header/Wrapper";
+import Header from "~/components/features/header/Header";
 
 type Props = {
   children: React.ReactNode;
@@ -19,7 +21,10 @@ const RootLayout = async ({ children }: Props) => {
       <body>
         <SupabaseProvider>
           <RootStyleRegistry>
-            <Wrapper>{children}</Wrapper>
+            <Flex direction="column" h="100vh">
+              <Header />
+              <Flex h="100%">{children}</Flex>
+            </Flex>
           </RootStyleRegistry>
         </SupabaseProvider>
       </body>
