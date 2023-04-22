@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import { Box, Flex, Menu, Text } from "~/libs/mantine/core";
 
@@ -18,9 +18,12 @@ import {
 import MenuBarButton from "~/components/blocks/MenuBarButton";
 import { deleteProject } from "~/utils/db";
 
-const MenuBar: React.FC = () => {
+type Props = {
+  project_id: string;
+};
+
+const MenuBar: React.FC<Props> = ({ project_id }) => {
   const router = useRouter();
-  const pathname = usePathname();
 
   const fileDetail = () =>
     modals.openConfirmModal({
@@ -28,7 +31,7 @@ const MenuBar: React.FC = () => {
       children: <Text size="sm">〇〇</Text>,
       labels: { confirm: "閉じる", cancel: "閉じる" },
       onConfirm: async () => {
-        await deleteProject(pathname.split("/")[1]);
+        await deleteProject(project_id);
         router.push("/dashboard");
       },
     });
@@ -40,13 +43,13 @@ const MenuBar: React.FC = () => {
       labels: { confirm: "削除する", cancel: "やめる" },
       confirmProps: { color: "red" },
       onConfirm: async () => {
-        await deleteProject(pathname.split("/")[1]);
+        await deleteProject(project_id);
         router.push("/dashboard");
       },
     });
 
   return (
-    <Flex mx="xs">
+    <Flex>
       <Menu offset={0} position="bottom-start" shadow="md" width={200}>
         <Menu.Target>
           <Box>
@@ -91,7 +94,7 @@ const MenuBar: React.FC = () => {
           </Box>
         </Menu.Target>
         <Menu.Dropdown>
-          <Link href={`/${pathname.split("/")[1]}/theater`} target="_blank">
+          <Link href={`/${project_id}/theater`} target="_blank">
             <Menu.Item icon={<IconShare size={14} />}>シェア画面</Menu.Item>
           </Link>
         </Menu.Dropdown>

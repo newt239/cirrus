@@ -12,7 +12,7 @@ const Header: React.FC = () => {
   const pathname = usePathname();
 
   return (
-    <MantineHeader height="auto" zIndex={1}>
+    <MantineHeader height="auto" withBorder={false} zIndex={1}>
       {pathname === "/" ? (
         <HomeHeader />
       ) : pathname === "/dashboard" ? (

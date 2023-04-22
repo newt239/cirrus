@@ -14,7 +14,9 @@ const MenuBarButton = ({ children, ...props }: Props) => {
         "hover:border-mantine-gray-2"
       )}
       h="100%"
-      size="sm"
+      px="sm"
+      py="sm"
+      size="md"
       variant="default"
       {...props}
     >
