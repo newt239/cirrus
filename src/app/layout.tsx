@@ -23,7 +23,7 @@ const RootLayout = async ({ children }: Props) => {
           <RootStyleRegistry>
             <Flex direction="column" h="100vh">
               <Header />
-              <Flex h="100%">{children}</Flex>
+              {children}
             </Flex>
           </RootStyleRegistry>
         </SupabaseProvider>

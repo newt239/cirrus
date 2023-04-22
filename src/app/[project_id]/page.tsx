@@ -1,8 +1,6 @@
-import "server-only";
+"use client";
 
-import { usePathname } from "next/navigation";
-
-import { Aside, Box, Flex, Navbar, ScrollArea } from "~/libs/mantine/core";
+import { Aside, Box, Flex, Navbar } from "~/libs/mantine/core";
 
 import ASideBar from "~/components/features/aside/AsideBar";
 import Control from "~/components/features/preview/Control";
@@ -16,18 +14,17 @@ type Props = {
 };
 
 const Theather = async ({ params }: Props) => {
-  const pathname = usePathname();
   const project = await getProjectInfo(params.project_id);
 
   return (
-    <>
+    <Flex h="100%">
       <Navbar
         fixed={false}
         position={{ top: 0, left: 0 }}
         width={{ base: 300 }}
         zIndex={1}
       >
-        <Navbar.Section component={ScrollArea} grow>
+        <Navbar.Section grow>
           <SideBar />
         </Navbar.Section>
       </Navbar>
@@ -50,11 +47,11 @@ const Theather = async ({ params }: Props) => {
         width={{ base: 500 }}
         zIndex={1}
       >
-        <Aside.Section component={ScrollArea} grow>
+        <Aside.Section grow>
           <ASideBar />
         </Aside.Section>
       </Aside>
-    </>
+    </Flex>
   );
 };
 
