@@ -72,3 +72,26 @@ export const currentBlockAtom = atom(
     set(blocksAtom, newBlocks);
   }
 );
+
+type NewBlockAtomArgTuple = ["add", BlockDBProps] | ["delete", string];
+
+export const newBlocksAtom = atom(
+  (get) => {
+    return get(blocksAtom);
+  },
+  async (get, set, value: NewBlockAtomArgTuple) => {
+    const blocks = get(blocksAtom);
+    if (value[0] === "add") {
+      const initial_style: { [T in keyof gsap.TweenVars]: string } = {};
+      const final_style: { [T in keyof gsap.TweenVars]: string } = {};
+      const newBlocks = [
+        ...blocks,
+        { ...value[1], initial_style, final_style },
+      ];
+      set(blocksAtom, newBlocks);
+    } else {
+      const newBlocks = blocks.filter((block) => block.id !== value[1]);
+      set(blocksAtom, newBlocks);
+    }
+  }
+);

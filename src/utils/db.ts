@@ -1,3 +1,5 @@
+import { nanoid } from "nanoid";
+
 import supabase from "./supabase";
 
 import { ProjectDBProps } from "~/types/db";
@@ -52,4 +54,12 @@ export const getBlocks = async (project_id: string) => {
     });
     return editedData;
   }
+};
+
+export const addBlock = async (project_id: string) => {
+  const id = nanoid();
+  const newBlock = await supabase
+    .from("blocks")
+    .insert([{ id, project_id, name: "無題のプロジェクト" }]);
+  return newBlock;
 };
