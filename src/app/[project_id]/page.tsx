@@ -1,12 +1,10 @@
-"use client";
-
-import { Aside, Box, Flex, Navbar } from "~/libs/mantine/core";
+import { Box, Flex } from "~/libs/mantine/core";
 
 import ASideBar from "~/components/features/aside/AsideBar";
 import MenuBar from "~/components/features/menubar/MenuBar";
 import Control from "~/components/features/preview/Control";
 import Preview from "~/components/features/preview/Preview";
-import SideBar from "~/components/features/sidebar/SideBar";
+import SideBar from "~/components/features/side/SideBar";
 import Timeline from "~/components/features/timeline/Timeline";
 import { getProjectInfo } from "~/utils/db";
 
@@ -23,16 +21,7 @@ const Theather = async ({ params }: Props) => {
     <Flex direction="column">
       <MenuBar project_id={project?.id} />
       <Flex h="100%">
-        <Navbar
-          fixed={false}
-          position={{ top: 0, left: 0 }}
-          width={{ base: 300 }}
-          zIndex={1}
-        >
-          <Navbar.Section grow>
-            <SideBar />
-          </Navbar.Section>
-        </Navbar>
+        <SideBar project_id={project.id} />
         <Box bg="gray.1" h="100%" w="100%">
           <Flex gap="sm" justify="center" p="sm">
             <Box>
@@ -42,16 +31,7 @@ const Theather = async ({ params }: Props) => {
           </Flex>
           <Timeline />
         </Box>
-        <Aside
-          fixed={false}
-          position={{ top: 0, right: 0 }}
-          width={{ base: 500 }}
-          zIndex={1}
-        >
-          <Aside.Section grow>
-            <ASideBar />
-          </Aside.Section>
-        </Aside>
+        <ASideBar />
       </Flex>
     </Flex>
   );

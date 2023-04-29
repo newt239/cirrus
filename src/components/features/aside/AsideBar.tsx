@@ -1,6 +1,8 @@
+"use client";
+
 import { CSSProperties } from "react";
 
-import { Accordion, Flex, Stack } from "~/libs/mantine/core";
+import { Accordion, Aside, Flex, Stack } from "~/libs/mantine/core";
 
 import { useAtomValue } from "jotai";
 
@@ -18,31 +20,40 @@ const ASideBar: React.FC = () => {
   if (!block) return null;
 
   return (
-    <Accordion
-      defaultValue={["asset", "history"]}
-      multiple
-      styles={{ label: { padding: "0.5rem", paddingLeft: 0 } }}
+    <Aside
+      fixed={false}
+      position={{ top: 0, right: 0 }}
+      width={{ base: 500 }}
+      zIndex={1}
     >
-      <Accordion.Item value="asset">
-        <Accordion.Control>選択中のブロック</Accordion.Control>
-        <Accordion.Panel>
-          <Stack spacing="xs">
-            <EditText />
-            <Flex gap="xs">
-              <EditStartTime />
-              <EditDuration />
-            </Flex>
-            <AddStyleForm block={block} />
-            {Object.keys(block.initial_style).map((property_name, i) => (
-              <EditCSSProperties
-                key={i}
-                property={property_name as keyof CSSProperties}
-              />
-            ))}
-          </Stack>
-        </Accordion.Panel>
-      </Accordion.Item>
-    </Accordion>
+      <Aside.Section grow>
+        <Accordion
+          defaultValue={["asset", "history"]}
+          multiple
+          styles={{ label: { padding: "0.5rem", paddingLeft: 0 } }}
+        >
+          <Accordion.Item value="asset">
+            <Accordion.Control>選択中のブロック</Accordion.Control>
+            <Accordion.Panel>
+              <Stack spacing="xs">
+                <EditText />
+                <Flex gap="xs">
+                  <EditStartTime />
+                  <EditDuration />
+                </Flex>
+                <AddStyleForm block={block} />
+                {Object.keys(block.initial_style).map((property_name, i) => (
+                  <EditCSSProperties
+                    key={i}
+                    property={property_name as keyof CSSProperties}
+                  />
+                ))}
+              </Stack>
+            </Accordion.Panel>
+          </Accordion.Item>
+        </Accordion>
+      </Aside.Section>
+    </Aside>
   );
 };
 

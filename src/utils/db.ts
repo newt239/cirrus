@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { nanoid } from "nanoid";
 
 import supabase from "./supabase";
@@ -58,8 +59,17 @@ export const getBlocks = async (project_id: string) => {
 
 export const addBlock = async (project_id: string) => {
   const id = nanoid();
-  const newBlock = await supabase
+  await supabase.from("blocks").insert([
+    {
+      id,
+      project_id,
+      created_at: dayjs().toString(),
+      name: "無題のプロジェクト",
+    },
+  ]);
+  const { data: newBlock } = await supabase
     .from("blocks")
-    .insert([{ id, project_id, name: "無題のプロジェクト" }]);
-  return newBlock;
+    .select("*")
+    .eq("id", id);
+  return newBlock ? newBlock[0] : null;
 };
