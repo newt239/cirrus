@@ -51,10 +51,14 @@ const Control: React.FC = () => {
       tl.set(`#object-${block.id}`, initial_state, block.start / 1000);
       const { textContent, ...final_state } =
         block.final_style as gsap.TweenVars;
-      tl.to(`#object-${block.id}`, {
-        duration: block.duration / 1000,
-        ...final_state,
-      });
+      tl.to(
+        `#object-${block.id}`,
+        {
+          duration: block.duration / 1000,
+          ...final_state,
+        },
+        block.start / 1000
+      );
     }
     tl.pause();
     const newDuration = blocks.reduce(
