@@ -4,23 +4,24 @@ import { useEffect, useState } from "react";
 
 import { NumberInput } from "~/libs/mantine/core";
 
-import { useAtom } from "jotai";
+import { useSetAtom } from "jotai";
 
-import { currentBlockAtom } from "~/store/jotai";
+import { setPropertyAtom } from "~/store/jotai";
+import { BlockProps } from "~/types/db";
 
-const EditDuration: React.FC = () => {
-  const [block, setProperty] = useAtom(currentBlockAtom);
-  const [duration, setDuration] = useState<number | "">(
-    block ? block.duration : 0
-  );
+type Props = {
+  block: BlockProps;
+};
+
+const EditDuration: React.FC<Props> = ({ block }) => {
+  const setProperty = useSetAtom(setPropertyAtom);
+  const [duration, setDuration] = useState<number | "">(block.duration);
 
   useEffect(() => {
     if (duration !== "") {
       setProperty(["duration", duration]);
     }
   }, [duration]);
-
-  if (!block) return null;
 
   return (
     <NumberInput

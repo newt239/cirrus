@@ -1,6 +1,6 @@
 "use client";
 
-import { CSSProperties } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 
 import { Accordion, Aside, Flex, Stack } from "~/libs/mantine/core";
 
@@ -10,12 +10,26 @@ import AddStyleForm from "./AddStyleForm";
 import EditCSSProperties from "./EditCSSProperties";
 import EditDuration from "./EditDuration";
 import EditStartTime from "./EditStartTime";
-import EditText from "./EditText";
 
-import { currentBlockAtom } from "~/store/jotai";
+import { currentBlockIdAtom } from "~/store/jotai";
+import { BlockProps } from "~/types/db";
+import { getBlock } from "~/utils/db";
 
 const ASideBar: React.FC = () => {
-  const block = useAtomValue(currentBlockAtom);
+  const blockId = useAtomValue(currentBlockIdAtom);
+  const [block, setBlock] = useState<BlockProps | null>(null);
+
+  useEffect(() => {
+    const getCurrentBlock = async () => {
+      if (blockId) {
+        console.log(blockId);
+        setBlock(await getBlock(blockId));
+      } else {
+        return null;
+      }
+    };
+    getCurrentBlock();
+  }, [blockId]);
 
   if (!block) return null;
 
@@ -36,14 +50,14 @@ const ASideBar: React.FC = () => {
             <Accordion.Control>選択中のブロック</Accordion.Control>
             <Accordion.Panel>
               <Stack spacing="xs">
-                <EditText />
                 <Flex gap="xs">
-                  <EditStartTime />
-                  <EditDuration />
+                  <EditStartTime block={block} />
+                  <EditDuration block={block} />
                 </Flex>
                 <AddStyleForm block={block} />
                 {Object.keys(block.initial_style).map((property_name, i) => (
                   <EditCSSProperties
+                    block={block}
                     key={i}
                     property={property_name as keyof CSSProperties}
                   />

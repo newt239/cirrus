@@ -20,13 +20,15 @@ type CurrentBlockAtomArgTuple =
   | ["initial_style", keyof gsap.TweenVars, string]
   | ["final_style", keyof gsap.TweenVars, string];
 
-export const currentBlockAtom = atom(
-  (get) => {
-    const currentBlock = get(blocksAtom).find(
-      (block) => block.id === get(currentBlockIdAtom)
-    );
-    return currentBlock ? currentBlock : null;
-  },
+export const currentBlockAtom = atom((get) => {
+  const currentBlock = get(blocksAtom).find(
+    (block) => block.id === get(currentBlockIdAtom)
+  );
+  return currentBlock ? currentBlock : null;
+});
+
+export const setPropertyAtom = atom(
+  null,
   async (get, set, value: CurrentBlockAtomArgTuple) => {
     const blocks = get(blocksAtom);
     const index = blocks.findIndex(

@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import { nanoid } from "nanoid";
 
 import supabase from "./supabase";
@@ -28,6 +27,29 @@ export const getProjectInfo = async (id: string) => {
 
 export const deleteProject = async (id: string) => {
   await supabase.from("projects").delete().eq("id", id);
+};
+
+export const getBlock = async (id: string) => {
+  const { data, error } = await supabase
+    .from("blocks")
+    .select("*, styles ( key, initial_style, final_style )")
+    .eq("id", id);
+  if (error || !data || data.length !== 1) {
+    return null;
+  } else {
+    const initial_style: { [T in keyof gsap.TweenVars]: string } = {};
+    const final_style: { [T in keyof gsap.TweenVars]: string } = {};
+    if (data[0].styles && Array.isArray(data[0].styles)) {
+      data[0].styles.map((style) => {
+        initial_style[style.key as keyof gsap.TweenVars] = style.initial_style;
+        if (style.key !== "textContent") {
+          final_style[style.key as keyof gsap.TweenVars] = style.final_style;
+        }
+      });
+    }
+    const { styles, ...rest } = data[0];
+    return { ...rest, initial_style, final_style };
+  }
 };
 
 export const getBlocks = async (project_id: string) => {
@@ -63,7 +85,6 @@ export const addBlock = async (project_id: string) => {
     {
       id,
       project_id,
-      created_at: dayjs().toString(),
       name: "無題のプロジェクト",
     },
   ]);
