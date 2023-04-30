@@ -4,39 +4,44 @@ import { ColorInput, TextInput } from "~/libs/mantine/core";
 
 import { useSetAtom } from "jotai";
 
-import { PropertyInfo } from "~/libs/cssPropertyInfo";
-import { setPropertyAtom } from "~/store/jotai";
-import { BlockProps } from "~/types/db";
+import { StyleVarsProps } from "~/libs/cssStyleVars";
+import { updateStyleAtom } from "~/store/jotai";
+import { BlockDBProps } from "~/types/db";
 
 type Props = {
   type: "initial" | "final";
-  property_name: string;
-  component_type: Omit<PropertyInfo["component"], "number">;
-  block: BlockProps;
+  style_name: string;
+  initial_value: string;
+  component_type: Omit<StyleVarsProps["component"], "number">;
+  block: BlockDBProps;
 };
 
-const PropertyInput: React.FC<Props> = ({
+const StyleInput: React.FC<Props> = ({
   type,
-  property_name,
+  style_name,
+  initial_value,
   component_type,
   block,
 }) => {
-  const setProperty = useSetAtom(setPropertyAtom);
+  const updateStyle = useSetAtom(updateStyleAtom);
   const [value, setValue] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!value && block) {
-      console.log("hey");
-      const initial = block ? block.initial_style[property_name] : "";
-      const final = block ? block.final_style[property_name] : "";
-      const newValue = type === "initial" ? initial : final;
-      setValue(newValue);
-    }
+    console.log("he");
   }, []);
 
   useEffect(() => {
-    if (block && value) {
-      setProperty([`${type}_style`, property_name, value]);
+    setValue(initial_value);
+  }, [block.id]);
+
+  useEffect(() => {
+    if (value && value !== initial_value) {
+      updateStyle({
+        block_id: block.id,
+        key: style_name,
+        type,
+        value,
+      });
     }
   }, [value]);
 
@@ -62,4 +67,4 @@ const PropertyInput: React.FC<Props> = ({
   }
 };
 
-export default PropertyInput;
+export default StyleInput;

@@ -5,7 +5,7 @@ import { Box, Button } from "~/libs/mantine/core";
 import { IconPlus } from "@tabler/icons-react";
 import { useSetAtom } from "jotai";
 
-import { newBlocksAtom } from "~/store/jotai";
+import { setBlockAtom } from "~/store/jotai";
 import { addBlock } from "~/utils/db";
 
 type Props = {
@@ -13,7 +13,7 @@ type Props = {
 };
 
 const AddBlock: React.FC<Props> = ({ project_id }) => {
-  const setNewBlock = useSetAtom(newBlocksAtom);
+  const setNewBlock = useSetAtom(setBlockAtom);
 
   const addNewBlock = async () => {
     const newBlock = await addBlock(project_id);

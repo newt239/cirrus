@@ -15,10 +15,11 @@ import dayjs from "dayjs";
 import { gsap } from "gsap";
 import { useAtomValue } from "jotai";
 
-import { blocksAtom } from "~/store/jotai";
+import { blocksAtom, stylesAtom } from "~/store/jotai";
 
 const Control: React.FC = () => {
   const blocks = useAtomValue(blocksAtom);
+  const styles = useAtomValue(stylesAtom);
   const { current: tl } = useRef(gsap.timeline({ paused: true }));
   const [currentTime, setCurrentTime] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -45,11 +46,17 @@ const Control: React.FC = () => {
     tl.kill();
     tl.clear();
     tl.call(() => interval.start(), [], 0);
-    for (const block of blocks) {
-      const initial_state = block.initial_style as gsap.TweenVars;
+    blocks.map((block) => {
+      const blockStyles = styles.filter((style) => style.block_id === block.id);
+      const initial_state = {} as gsap.TweenVars;
+      const final_state = {} as gsap.TweenVars;
+      blockStyles.map((style) => {
+        initial_state[style.key] = style.initial_style;
+        if (style.key !== "textContent") {
+          final_state[style.key] = style.final_style;
+        }
+      });
       tl.set(`#object-${block.id}`, initial_state, block.start / 1000);
-      const { textContent, ...final_state } =
-        block.final_style as gsap.TweenVars;
       tl.to(
         `#object-${block.id}`,
         {
@@ -58,7 +65,7 @@ const Control: React.FC = () => {
         },
         block.start / 1000
       );
-    }
+    });
     tl.pause();
     const newDuration = blocks.reduce(
       (accumulator, block) =>

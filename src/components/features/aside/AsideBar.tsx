@@ -1,35 +1,27 @@
 "use client";
 
-import { CSSProperties, useEffect, useState } from "react";
+import { useMemo } from "react";
 
 import { Accordion, Aside, Divider, Flex, Stack } from "~/libs/mantine/core";
 
 import { useAtomValue } from "jotai";
 
-import AddStyleForm from "./AddStyleForm";
-import EditCSSProperties from "./EditCSSProperties";
+import AddStyleInput from "./AddStyleInput";
+import EditCSSStyleInput from "./EditCSSStyleInput";
 import EditDuration from "./EditDuration";
 import EditStartTime from "./EditStartTime";
 
-import { currentBlockIdAtom } from "~/store/jotai";
-import { BlockProps } from "~/types/db";
-import { getBlock } from "~/utils/db";
+import { StyleVarsProps } from "~/libs/cssStyleVars";
+import {
+  currentBlockAtom,
+  currentBlockIdAtom,
+  currentBlockStylesAtom,
+} from "~/store/jotai";
 
 const ASideBar: React.FC = () => {
   const blockId = useAtomValue(currentBlockIdAtom);
-  const [block, setBlock] = useState<BlockProps | null>(null);
-
-  useEffect(() => {
-    const getCurrentBlock = async () => {
-      if (blockId) {
-        console.log(blockId);
-        setBlock(await getBlock(blockId));
-      } else {
-        return null;
-      }
-    };
-    getCurrentBlock();
-  }, [blockId]);
+  const block = useAtomValue(useMemo(() => currentBlockAtom, [blockId]));
+  const styles = useAtomValue(useMemo(() => currentBlockStylesAtom, [blockId]));
 
   if (!block) return null;
 
@@ -55,12 +47,16 @@ const ASideBar: React.FC = () => {
                   <EditDuration block={block} />
                 </Flex>
                 <Divider />
-                <AddStyleForm block={block} />
-                {Object.keys(block.initial_style).map((property_name, i) => (
-                  <EditCSSProperties
+                <AddStyleInput
+                  block={block}
+                  style_keys={styles.map((style) => style.key)}
+                />
+                {styles.map((style, i) => (
+                  <EditCSSStyleInput
                     block={block}
                     key={i}
-                    property={property_name as keyof CSSProperties}
+                    property={style.key as keyof StyleVarsProps}
+                    style={style}
                   />
                 ))}
               </Stack>

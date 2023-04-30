@@ -4,10 +4,10 @@ import { useEffect } from "react";
 
 import { Box, clsx } from "~/libs/mantine/core";
 
-import { useAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
 
 import Block from "~/components/features/preview/Block";
-import { blocksAtom } from "~/store/jotai";
+import { blocksAtom, stylesAtom } from "~/store/jotai";
 import { getBlocks } from "~/utils/db";
 
 type Props = {
@@ -16,12 +16,14 @@ type Props = {
 
 const Preview: React.FC<Props> = ({ project_id }) => {
   const [blocks, setBlocks] = useAtom(blocksAtom);
+  const setStyles = useSetAtom(stylesAtom);
 
   useEffect(() => {
     if (blocks.length === 0) {
       getBlocks(project_id).then((r) => {
         if (r) {
-          setBlocks(r);
+          setBlocks(r.blocks);
+          setStyles(r.styles);
         }
       });
     }
