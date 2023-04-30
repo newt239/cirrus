@@ -36,11 +36,7 @@ const PropertyInput: React.FC<Props> = ({
 
   useEffect(() => {
     if (block && value) {
-      if (type === "initial") {
-        setProperty(["initial_style", property_name, value]);
-      } else if (type === "final") {
-        setProperty(["final_style", property_name, value]);
-      }
+      setProperty([`${type}_style`, property_name, value]);
     }
   }, [value]);
 

@@ -49,8 +49,8 @@ const AddStyleForm: React.FC<Props> = ({ block }) => {
         id: `${block.id}-${value}`,
         block_id: block.id,
         key: value,
-        initial_value: propertyInfo.default.toString(),
-        final_value: propertyInfo.default.toString(),
+        initial_style: propertyInfo.default.toString(),
+        final_style: propertyInfo.default.toString(),
       });
       setValue("");
     }
@@ -58,8 +58,8 @@ const AddStyleForm: React.FC<Props> = ({ block }) => {
 
   return (
     <TextInput
-      label="スタイルを追加"
       onChange={(v) => setValue(v.target.value)}
+      placeholder="スタイルを追加"
       rightSection={
         <ActionIcon
           disabled={
@@ -68,11 +68,13 @@ const AddStyleForm: React.FC<Props> = ({ block }) => {
             Object.keys(block.initial_style).includes(value)
           }
           onClick={addStyle}
+          variant="gradient"
         >
           <IconPlus />
         </ActionIcon>
       }
       value={value}
+      variant="filled"
     />
   );
 };

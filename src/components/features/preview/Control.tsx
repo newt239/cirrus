@@ -47,7 +47,6 @@ const Control: React.FC = () => {
     tl.call(() => interval.start(), [], 0);
     for (const block of blocks) {
       const initial_state = block.initial_style as gsap.TweenVars;
-      console.log(initial_state);
       tl.set(`#object-${block.id}`, initial_state, block.start / 1000);
       const { textContent, ...final_state } =
         block.final_style as gsap.TweenVars;

@@ -68,4 +68,12 @@ export const cssPropertyInfo: { [key in keyof gsap.TweenVars]: PropertyInfo } =
       max: 100,
       change: true,
     },
+    translateX: {
+      component: "number",
+      label: "X軸移動",
+      default: 0,
+      min: -1000,
+      max: 1000,
+      change: true,
+    },
   };

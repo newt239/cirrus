@@ -2,7 +2,7 @@
 
 import { CSSProperties, useEffect, useState } from "react";
 
-import { Accordion, Aside, Flex, Stack } from "~/libs/mantine/core";
+import { Accordion, Aside, Divider, Flex, Stack } from "~/libs/mantine/core";
 
 import { useAtomValue } from "jotai";
 
@@ -54,6 +54,7 @@ const ASideBar: React.FC = () => {
                   <EditStartTime block={block} />
                   <EditDuration block={block} />
                 </Flex>
+                <Divider />
                 <AddStyleForm block={block} />
                 {Object.keys(block.initial_style).map((property_name, i) => (
                   <EditCSSProperties

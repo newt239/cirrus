@@ -15,21 +15,21 @@ type Props = {
 
 const PropertyInput: React.FC<Props> = ({ type, property_name, block }) => {
   const setProperty = useSetAtom(setPropertyAtom);
-  const initial = block ? Number(block.initial_style[property_name]) : "";
-  const final = block ? Number(block.final_style[property_name]) : "";
-  const [numberValue, setNumberValue] = useState<number | "" | null>(null);
+  const [numberValue, setNumberValue] = useState<number | "">("");
 
   useEffect(() => {
-    setNumberValue(type === "initial" ? initial : final);
+    if (numberValue === "" && block) {
+      console.log("aa");
+      const initial = block ? block.initial_style[property_name] : "";
+      const final = block ? block.final_style[property_name] : "";
+      const newValue = type === "initial" ? initial : final;
+      setNumberValue(Number(newValue));
+    }
   }, []);
 
   useEffect(() => {
     if (block && numberValue) {
-      if (type === "initial" && initial !== numberValue) {
-        setProperty(["initial_style", property_name, numberValue.toString()]);
-      } else if (type === "final" && final !== numberValue) {
-        setProperty(["final_style", property_name, numberValue.toString()]);
-      }
+      setProperty([`${type}_style`, property_name, numberValue]);
     }
   }, [numberValue]);
 
@@ -37,7 +37,7 @@ const PropertyInput: React.FC<Props> = ({ type, property_name, block }) => {
     <NumberInput
       onChange={(v) => setNumberValue(v)}
       size="xs"
-      value={numberValue ? numberValue : ""}
+      value={numberValue}
     />
   );
 };

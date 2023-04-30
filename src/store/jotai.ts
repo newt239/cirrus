@@ -17,8 +17,8 @@ type CurrentBlockAtomArgTuple =
   | {
       [T in keyof BlockDBProps]: [T, BlockDBProps[T]];
     }[keyof BlockDBProps]
-  | ["initial_style", keyof gsap.TweenVars, string]
-  | ["final_style", keyof gsap.TweenVars, string];
+  | ["initial_style", keyof gsap.TweenVars, string | number]
+  | ["final_style", keyof gsap.TweenVars, string | number];
 
 export const currentBlockAtom = atom((get) => {
   const currentBlock = get(blocksAtom).find(
