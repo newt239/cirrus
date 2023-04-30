@@ -9,7 +9,7 @@ type Props = {
 const Block: React.FC<Props> = ({ block }) => {
   return (
     <div
-      className={clsx("absolute", "top-1/2", "left-1/2")}
+      className={clsx("absolute", "top-1/2", "left-1/2", "hidden")}
       id={`object-${block.id}`}
     />
   );

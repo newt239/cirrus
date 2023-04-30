@@ -56,7 +56,11 @@ const Control: React.FC = () => {
           final_state[style.key] = style.final_style;
         }
       });
-      tl.set(`#object-${block.id}`, initial_state, block.start / 1000);
+      tl.set(
+        `#object-${block.id}`,
+        { ...initial_state, display: "block" },
+        block.start / 1000
+      );
       tl.to(
         `#object-${block.id}`,
         {
@@ -64,6 +68,11 @@ const Control: React.FC = () => {
           ...final_state,
         },
         block.start / 1000
+      );
+      tl.set(
+        `#object-${block.id}`,
+        { display: "none" },
+        (block.start + block.duration) / 1000
       );
     });
     tl.pause();
