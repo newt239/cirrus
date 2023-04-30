@@ -109,6 +109,7 @@ export const addStyleAtom = atom(
       initial_style: styleInfo.default.toString(),
       final_style: styleInfo.default.toString(),
       change: styleInfo.change,
+      available: true,
     };
     await supabase.from("styles").insert(newStyle);
     set(stylesAtom, [...styles, newStyle]);
@@ -155,6 +156,29 @@ export const deleteStyleAtom = atom(
         return false;
       } else return true;
     });
+    set(stylesAtom, newStyles);
+  }
+);
+
+export const updateAvailabilityAtom = atom(
+  null,
+  async (get, set, value: string) => {
+    const styles = get(stylesAtom);
+    const newStyles = await Promise.all(
+      styles.map(async (style) => {
+        if (style.block_id === value) {
+          const newStyle = {
+            ...style,
+            available: !style.available,
+          };
+          await supabase
+            .from("styles")
+            .update(newStyle)
+            .match({ id: style.id });
+          return newStyle;
+        } else return style;
+      })
+    );
     set(stylesAtom, newStyles);
   }
 );

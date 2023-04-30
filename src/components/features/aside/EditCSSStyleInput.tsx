@@ -2,13 +2,13 @@
 
 import { ActionIcon, Box, Flex, Text } from "~/libs/mantine/core";
 
-import { IconTrash } from "@tabler/icons-react";
+import { IconEye, IconEyeOff, IconTrash } from "@tabler/icons-react";
 import { useSetAtom } from "jotai";
 
 import StyleInput from "~/components/blocks/StyleInput";
 import PropertyNumberInput from "~/components/blocks/StyleNumberInput";
 import { StyleVarsProps, styleVars } from "~/libs/cssStyleVars";
-import { deleteStyleAtom } from "~/store/jotai";
+import { deleteStyleAtom, updateAvailabilityAtom } from "~/store/jotai";
 import { BlockDBProps, StyleDBProps } from "~/types/db";
 
 type Props = {
@@ -20,8 +20,14 @@ type Props = {
 const EditCSSStyleInput: React.FC<Props> = ({ property, block, style }) => {
   const styleInfo = styleVars[property];
   const deleteStyle = useSetAtom(deleteStyleAtom);
+  const updateAvailability = useSetAtom(updateAvailabilityAtom);
 
-  const handleClick = () => {
+  // WIP: styleを一時的にオフにする
+  const handleChangeAvailability = () => {
+    updateAvailability(style.id);
+  };
+
+  const handleDeleteTrash = () => {
     deleteStyle({
       block_id: block.id,
       key: property,
@@ -32,9 +38,14 @@ const EditCSSStyleInput: React.FC<Props> = ({ property, block, style }) => {
     <>
       <Flex align="center" justify="space-between">
         <Text fz="sm">{styleInfo.label}</Text>
-        <ActionIcon onClick={handleClick} size="xs">
-          <IconTrash />
-        </ActionIcon>
+        <Flex align="right">
+          <ActionIcon onClick={handleChangeAvailability} size="sm">
+            {style.available ? <IconEye /> : <IconEyeOff />}
+          </ActionIcon>
+          <ActionIcon onClick={handleDeleteTrash} size="sm">
+            <IconTrash />
+          </ActionIcon>
+        </Flex>
       </Flex>
       <Flex gap="xs">
         {styleInfo.component === "number" ? (

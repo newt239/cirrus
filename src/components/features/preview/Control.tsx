@@ -47,7 +47,9 @@ const Control: React.FC = () => {
     tl.clear();
     tl.call(() => interval.start(), [], 0);
     blocks.map((block) => {
-      const blockStyles = styles.filter((style) => style.block_id === block.id);
+      const blockStyles = styles.filter(
+        (style) => style.block_id === block.id && style.available
+      );
       const initial_state = {} as gsap.TweenVars;
       const final_state = {} as gsap.TweenVars;
       blockStyles.map((style) => {
