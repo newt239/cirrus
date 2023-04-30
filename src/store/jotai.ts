@@ -124,18 +124,23 @@ type UpdateStyleAtomArg = {
 
 export const updateStyleAtom = atom(
   null,
-  (get, set, value: UpdateStyleAtomArg) => {
+  async (get, set, value: UpdateStyleAtomArg) => {
     const styles = get(stylesAtom);
-    const newStyles = styles.map((style) => {
-      if (style.block_id === value.block_id && style.key === value.key) {
-        const newStyle = {
-          ...style,
-          [`${value.type}_style`]: value.value,
-        };
-        supabase.from("styles").update(newStyle).match({ id: style.id });
-        return newStyle;
-      } else return style;
-    });
+    const newStyles = await Promise.all(
+      styles.map(async (style) => {
+        if (style.block_id === value.block_id && style.key === value.key) {
+          const newStyle = {
+            ...style,
+            [`${value.type}_style`]: value.value,
+          };
+          await supabase
+            .from("styles")
+            .update(newStyle)
+            .match({ id: style.id });
+          return newStyle;
+        } else return style;
+      })
+    );
     set(stylesAtom, newStyles);
   }
 );

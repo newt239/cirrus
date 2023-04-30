@@ -27,10 +27,6 @@ const StyleInput: React.FC<Props> = ({
   const [value, setValue] = useState<string | null>(null);
 
   useEffect(() => {
-    console.log("he");
-  }, []);
-
-  useEffect(() => {
     setValue(initial_value);
   }, [block.id]);
 
