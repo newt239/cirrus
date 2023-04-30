@@ -59,11 +59,11 @@ export const styleVars: { [key in keyof gsap.TweenVars]: StyleVarsProps } = {
     max: 1,
     change: true,
   },
-  fontSize: {
+  scale: {
     component: "number",
-    label: "文字サイズ",
-    default: 16,
-    min: 5,
+    label: "大きさ",
+    default: 1,
+    min: 0,
     max: 100,
     change: true,
   },
