@@ -75,4 +75,12 @@ export const styleVars: { [key in keyof gsap.TweenVars]: StyleVarsProps } = {
     max: 1000,
     change: true,
   },
+  translateY: {
+    component: "number",
+    label: "Y軸移動",
+    default: 0,
+    min: -1000,
+    max: 1000,
+    change: true,
+  },
 };

@@ -50,7 +50,9 @@ const Control: React.FC = () => {
       const blockStyles = styles.filter(
         (style) => style.block_id === block.id && style.available
       );
-      const initial_state = {} as gsap.TweenVars;
+      const initial_state = {
+        zIndex: block.layer,
+      } as gsap.TweenVars;
       const final_state = {} as gsap.TweenVars;
       blockStyles.map((style) => {
         initial_state[style.key] = style.initial_style;
