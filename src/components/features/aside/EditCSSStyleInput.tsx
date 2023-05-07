@@ -51,7 +51,7 @@ const EditCSSStyleInput: React.FC<Props> = ({ property, block, style }) => {
         {styleInfo.component === "number" ? (
           <PropertyNumberInput
             block={block}
-            initial_value={Number(style.initial_style)}
+            initial={Number(style.initial_style)}
             style_name={property}
             type="initial"
           />
@@ -59,7 +59,7 @@ const EditCSSStyleInput: React.FC<Props> = ({ property, block, style }) => {
           <StyleInput
             block={block}
             component_type={styleInfo.component}
-            initial_value={style.initial_style}
+            initial={style.initial_style}
             style_name={property}
             type="initial"
           />
@@ -70,7 +70,7 @@ const EditCSSStyleInput: React.FC<Props> = ({ property, block, style }) => {
             {styleInfo.component === "number" ? (
               <PropertyNumberInput
                 block={block}
-                initial_value={Number(style.initial_style)}
+                initial={Number(style.final_style)}
                 style_name={property}
                 type="final"
               />
@@ -78,7 +78,7 @@ const EditCSSStyleInput: React.FC<Props> = ({ property, block, style }) => {
               <StyleInput
                 block={block}
                 component_type={styleInfo.component}
-                initial_value={style.initial_style}
+                initial={style.final_style}
                 style_name={property}
                 type="final"
               />

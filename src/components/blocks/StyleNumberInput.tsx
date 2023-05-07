@@ -10,21 +10,21 @@ import { BlockDBProps } from "~/types/db";
 type Props = {
   type: "initial" | "final";
   style_name: string;
-  initial_value: number;
+  initial: number;
   block: BlockDBProps;
 };
 
 const StyleNumberInput: React.FC<Props> = ({
   type,
   style_name,
-  initial_value,
+  initial,
   block,
 }) => {
   const updateStyle = useSetAtom(updateStyleAtom);
   const [numberValue, setNumberValue] = useState<number | "">("");
 
   useEffect(() => {
-    setNumberValue(initial_value);
+    setNumberValue(initial);
   }, [block.id]);
 
   useEffect(() => {

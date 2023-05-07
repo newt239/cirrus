@@ -11,7 +11,7 @@ import { BlockDBProps } from "~/types/db";
 type Props = {
   type: "initial" | "final";
   style_name: string;
-  initial_value: string;
+  initial: string;
   component_type: Omit<StyleVarsProps["component"], "number">;
   block: BlockDBProps;
 };
@@ -19,7 +19,7 @@ type Props = {
 const StyleInput: React.FC<Props> = ({
   type,
   style_name,
-  initial_value,
+  initial,
   component_type,
   block,
 }) => {
@@ -27,11 +27,11 @@ const StyleInput: React.FC<Props> = ({
   const [value, setValue] = useState<string | null>(null);
 
   useEffect(() => {
-    setValue(initial_value);
+    setValue(initial);
   }, [block.id]);
 
   useEffect(() => {
-    if (value && value !== initial_value) {
+    if (value && value !== initial) {
       updateStyle({
         block_id: block.id,
         key: style_name,
