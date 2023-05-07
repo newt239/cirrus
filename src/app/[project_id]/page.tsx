@@ -1,4 +1,4 @@
-import { Box, Flex } from "~/libs/mantine/core";
+import { Flex } from "~/libs/mantine/core";
 
 import ASideBar from "~/components/features/aside/AsideBar";
 import MenuBar from "~/components/features/menubar/MenuBar";
@@ -18,19 +18,19 @@ const Theather = async ({ params }: Props) => {
   if (!project) return null;
 
   return (
-    <Flex direction="column">
+    <Flex className="grow" direction="column">
       <MenuBar project_id={project?.id} />
       <Flex h="100%">
         <SideBar project_id={project.id} />
-        <Box bg="gray.1" h="100%" w="100%">
-          <Flex gap="sm" justify="center" p="sm">
-            <Box>
+        <Flex bg="gray.1" direction="column" h="100%" w="100%">
+          <Flex gap="sm" justify="center">
+            <Flex direction="column">
               <Preview project_id={project.id} />
               <Control />
-            </Box>
+            </Flex>
           </Flex>
           <Timeline />
-        </Box>
+        </Flex>
         <ASideBar />
       </Flex>
     </Flex>

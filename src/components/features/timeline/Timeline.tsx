@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Paper, Title } from "~/libs/mantine/core";
+import { Box, Paper } from "~/libs/mantine/core";
 
 import { useAtom, useAtomValue } from "jotai";
 
@@ -15,9 +15,8 @@ const Timeline: React.FC = () => {
   };
 
   return (
-    <Box p="sm">
-      <Title order={3}>ブロック一覧</Title>
-      <Box bg="gray.3" h="200px" pos="relative" w="100%">
+    <Box className="overflow-scroll" display="flex" h="100%" w="100%">
+      <Box bg="gray.3" display="flex" h="150px" pos="relative" w="100%">
         {blocks.map((block) => (
           <Paper
             className="overflow-hidden whitespace-nowrap text-xs"
