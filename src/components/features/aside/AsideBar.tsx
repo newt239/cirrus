@@ -9,6 +9,7 @@ import { useAtomValue } from "jotai";
 import AddStyleInput from "./AddStyleInput";
 import EditCSSStyleInput from "./EditCSSStyleInput";
 import EditDuration from "./EditDuration";
+import EditLayer from "./EditLayer";
 import EditStartTime from "./EditStartTime";
 
 import { StyleVarsProps } from "~/libs/cssStyleVars";
@@ -42,6 +43,7 @@ const ASideBar: React.FC = () => {
             <Accordion.Control>選択中のブロック</Accordion.Control>
             <Accordion.Panel>
               <Stack spacing="xs">
+                <EditLayer block={block} />
                 <Flex gap="xs">
                   <EditStartTime block={block} />
                   <EditDuration block={block} />
