@@ -28,7 +28,13 @@ const EditLayer: React.FC<Props> = ({ block }) => {
   }, [layer]);
 
   return (
-    <NumberInput label="レイヤー" onChange={(v) => setLayer(v)} value={layer} />
+    <NumberInput
+      label="レイヤー"
+      max={10}
+      min={0}
+      onChange={(v) => setLayer(v)}
+      value={layer}
+    />
   );
 };
 

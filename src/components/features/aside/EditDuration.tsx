@@ -30,6 +30,7 @@ const EditDuration: React.FC<Props> = ({ block }) => {
   return (
     <NumberInput
       label="継続時間(ms)"
+      min={0}
       onChange={(v) => setDuration(v)}
       value={duration}
     />

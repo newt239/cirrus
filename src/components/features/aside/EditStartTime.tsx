@@ -30,6 +30,7 @@ const EditStartTime: React.FC<Props> = ({ block }) => {
   return (
     <NumberInput
       label="開始時間(ms)"
+      min={0}
       onChange={(v) => setStartTime(v)}
       value={startTime}
     />
