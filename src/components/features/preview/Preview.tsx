@@ -1,34 +1,15 @@
 "use client";
 
-import { useEffect } from "react";
-
 import { Box, clsx } from "~/libs/mantine/core";
 
-import { useAtom, useSetAtom } from "jotai";
-
 import Block from "~/components/features/preview/Block";
-import { blocksAtom, stylesAtom } from "~/store/jotai";
-import { getBlocks } from "~/utils/db";
+import { BlockDBProps } from "~/types/db";
 
 type Props = {
-  project_id: string;
+  blocks: BlockDBProps[];
 };
 
-const Preview: React.FC<Props> = ({ project_id }) => {
-  const [blocks, setBlocks] = useAtom(blocksAtom);
-  const setStyles = useSetAtom(stylesAtom);
-
-  useEffect(() => {
-    if (blocks.length === 0) {
-      getBlocks(project_id).then((r) => {
-        if (r) {
-          setBlocks(r.blocks);
-          setStyles(r.styles);
-        }
-      });
-    }
-  }, []);
-
+const Preview: React.FC<Props> = ({ blocks }) => {
   return (
     <Box className={clsx("w-[600px]", "h-[400px]", "bg-black", "relative")}>
       {blocks.map((block) => (

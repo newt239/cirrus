@@ -1,10 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
-
 import { Accordion, Aside, Divider, Flex, Stack } from "~/libs/mantine/core";
-
-import { useAtomValue } from "jotai";
 
 import AddStyleInput from "./AddStyleInput";
 import EditCSSStyleInput from "./EditCSSStyleInput";
@@ -13,18 +9,15 @@ import EditLayer from "./EditLayer";
 import EditStartTime from "./EditStartTime";
 
 import { StyleVarsProps } from "~/libs/cssStyleVars";
-import {
-  currentBlockAtom,
-  currentBlockIdAtom,
-  currentBlockStylesAtom,
-} from "~/store/jotai";
+import { BlockDBProps, StyleDBProps } from "~/types/db";
 
-const ASideBar: React.FC = () => {
-  const blockId = useAtomValue(currentBlockIdAtom);
-  const block = useAtomValue(useMemo(() => currentBlockAtom, [blockId]));
-  const styles = useAtomValue(useMemo(() => currentBlockStylesAtom, [blockId]));
+type Props = {
+  block: BlockDBProps;
+  styles: StyleDBProps[];
+};
 
-  if (!block) return null;
+const ASideBar: React.FC<Props> = ({ block, styles }) => {
+  if (!block || !styles) return null;
 
   return (
     <Aside

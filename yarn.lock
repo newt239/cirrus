@@ -1810,7 +1810,7 @@ __metadata:
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     server-only: "npm:^0.0.1"
-    supabase: "npm:^1.49.4"
+    supabase: "npm:1.64.8"
     tailwindcss: "npm:^3.3.1"
     typescript: "npm:^5.0.4"
   languageName: unknown
@@ -4590,6 +4590,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"minipass@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "minipass@npm:5.0.0"
+  checksum: dac2e1960990ca7c288834e7311e029828d9ae4c90fdabae95a3ea269592871feaa755a1ef9241d487e6fe59d86a43e1d8bac41c47f13c3c0add0799ab500a0b
+  languageName: node
+  linkType: hard
+
 "minizlib@npm:^2.1.1, minizlib@npm:^2.1.2":
   version: 2.1.2
   resolution: "minizlib@npm:2.1.2"
@@ -6216,16 +6223,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"supabase@npm:^1.49.4":
-  version: 1.50.0
-  resolution: "supabase@npm:1.50.0"
+"supabase@npm:1.64.8":
+  version: 1.64.8
+  resolution: "supabase@npm:1.64.8"
   dependencies:
     bin-links: "npm:^4.0.1"
     node-fetch: "npm:^3.2.10"
-    tar: "npm:6.1.13"
+    tar: "npm:6.1.15"
   bin:
     supabase: bin/supabase
-  checksum: b1e079d7b870455ae8719ee4618e8014487efcb0e283402c6f54a1a276803a5156ccf1c878621e053d262bfa4a8ae2c5aaf187e6838ff3c68b637197ebb1fe63
+  checksum: 52ec66c3a7f17f8266f8baaa8cd72987d2efadfad22f6c0b8ba776b5ee7ea18636b3d02d14f0373ddafaedb1d559b7e4c539f17dc99e1d5cf80483e8a8801d68
   languageName: node
   linkType: hard
 
@@ -6315,7 +6322,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tar@npm:6.1.13, tar@npm:^6.1.11, tar@npm:^6.1.2":
+"tar@npm:6.1.15":
+  version: 6.1.15
+  resolution: "tar@npm:6.1.15"
+  dependencies:
+    chownr: "npm:^2.0.0"
+    fs-minipass: "npm:^2.0.0"
+    minipass: "npm:^5.0.0"
+    minizlib: "npm:^2.1.1"
+    mkdirp: "npm:^1.0.3"
+    yallist: "npm:^4.0.0"
+  checksum: 815c25f8812ad65172fa0440c96e5395714cfee8b43e9b2cf85d98964bbd479da49dde364087b9e456c49317f88e19aa2304c45c9853555d85289177c3066555
+  languageName: node
+  linkType: hard
+
+"tar@npm:^6.1.11, tar@npm:^6.1.2":
   version: 6.1.13
   resolution: "tar@npm:6.1.13"
   dependencies:

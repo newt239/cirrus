@@ -94,7 +94,7 @@ const MenuBar: React.FC<Props> = ({ project_id }) => {
           </Box>
         </Menu.Target>
         <Menu.Dropdown>
-          <Link href={`/${project_id}/theater`} target="_blank">
+          <Link href={`/theater/${project_id}`} target="_blank">
             <Menu.Item icon={<IconShare size={14} />}>シェア画面</Menu.Item>
           </Link>
         </Menu.Dropdown>

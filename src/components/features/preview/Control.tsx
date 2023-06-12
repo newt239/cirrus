@@ -13,13 +13,15 @@ import {
 } from "@tabler/icons-react";
 import dayjs from "dayjs";
 import { gsap } from "gsap";
-import { useAtomValue } from "jotai";
 
-import { blocksAtom, stylesAtom } from "~/store/jotai";
+import { BlockDBProps, StyleDBProps } from "~/types/db";
 
-const Control: React.FC = () => {
-  const blocks = useAtomValue(blocksAtom);
-  const styles = useAtomValue(stylesAtom);
+type Props = {
+  blocks: BlockDBProps[];
+  styles: StyleDBProps[];
+};
+
+const Control: React.FC<Props> = ({ blocks, styles }) => {
   const { current: tl } = useRef(gsap.timeline({ paused: true }));
   const [currentTime, setCurrentTime] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);

@@ -32,27 +32,22 @@ export const deleteProject = async (id: string) => {
 export const getBlock = async (id: string) => {
   const { data, error } = await supabase
     .from("blocks")
-    .select("*, styles ( key, initial_style, final_style )")
+    .select("*, styles ( * )")
     .eq("id", id);
   if (error || !data || data.length !== 1) {
     return null;
   } else {
-    const initial_style: { [T in keyof gsap.TweenVars]: string } = {};
-    const final_style: { [T in keyof gsap.TweenVars]: string } = {};
-    if (data[0].styles && Array.isArray(data[0].styles)) {
-      data[0].styles.map((style) => {
-        initial_style[style.key as keyof gsap.TweenVars] = style.initial_style;
-        if (style.key !== "textContent") {
-          final_style[style.key as keyof gsap.TweenVars] = style.final_style;
-        }
-      });
+    if (!data[0]) {
+      return null;
+    } else if (!data[0].styles || !Array.isArray(data[0].styles)) {
+      return { ...data[0], styles: [] };
+    } else {
+      return { ...data[0], styles: data[0].styles };
     }
-    const { styles, ...rest } = data[0];
-    return { ...rest, initial_style, final_style };
   }
 };
 
-export const getBlocks = async (project_id: string) => {
+export const getProjectSource = async (project_id: string) => {
   const { data, error } = await supabase
     .from("blocks")
     .select("*, styles ( * )")
