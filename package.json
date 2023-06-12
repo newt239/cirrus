@@ -23,6 +23,7 @@
     "@supabase/supabase-js": "^2.20.0",
     "@tabler/icons-react": "^2.7.0",
     "dayjs": "^1.11.7",
+    "encoding": "^0.1.13",
     "gsap": "^3.11.4",
     "jotai": "^2.0.3",
     "nanoid": "^4.0.1",
