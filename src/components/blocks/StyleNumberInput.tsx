@@ -26,7 +26,7 @@ const StyleNumberInput: React.FC<Props> = ({
 
   useEffect(() => {
     if (block && numberValue) {
-      updateStyle(block.id, type, numberValue.toString());
+      updateStyle(`${block.id}_${style_name}`, type, numberValue.toString());
     }
   }, [numberValue]);
 

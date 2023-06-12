@@ -2,7 +2,7 @@ import { nanoid } from "nanoid";
 
 import supabase from "./supabase";
 
-import { ProjectDBProps, StyleDBProps } from "~/types/db";
+import { BlockDBProps, ProjectDBProps, StyleDBProps } from "~/types/db";
 
 export const getProjects = async () => {
   const { data, error } = await supabase.from("projects").select("*");
@@ -47,6 +47,33 @@ export const getBlock = async (id: string) => {
   }
 };
 
+export const addBlock = async (project_id: string) => {
+  const id = nanoid();
+  await supabase.from("blocks").insert([
+    {
+      id,
+      project_id,
+      name: "無題のプロジェクト",
+    },
+  ]);
+  const { data: newBlock } = await supabase
+    .from("blocks")
+    .select("*")
+    .eq("id", id);
+  return newBlock ? newBlock[0] : null;
+};
+
+export const updateBlockConfig = async (
+  id: string,
+  key: keyof BlockDBProps,
+  value: string | number
+) => {
+  const { data, error } = await supabase
+    .from("blocks")
+    .update({ [key]: value })
+    .eq("id", id);
+};
+
 export const addStyle = async (block_id: string, style_name: string) => {
   const { data, error } = await supabase.from("styles").insert({
     id: `${block_id}_${style_name}`,
@@ -88,20 +115,4 @@ export const getProjectSource = async (project_id: string) => {
     });
     return { blocks: editedData, styles: styleData };
   }
-};
-
-export const addBlock = async (project_id: string) => {
-  const id = nanoid();
-  await supabase.from("blocks").insert([
-    {
-      id,
-      project_id,
-      name: "無題のプロジェクト",
-    },
-  ]);
-  const { data: newBlock } = await supabase
-    .from("blocks")
-    .select("*")
-    .eq("id", id);
-  return newBlock ? newBlock[0] : null;
 };

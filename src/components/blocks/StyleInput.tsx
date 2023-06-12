@@ -29,7 +29,7 @@ const StyleInput: React.FC<Props> = ({
 
   useEffect(() => {
     if (value && value !== initial) {
-      updateStyle(block.id, type, value);
+      updateStyle(`${block.id}_${style_name}`, type, value);
     }
   }, [value]);
 

@@ -4,17 +4,14 @@ import { useEffect, useState } from "react";
 
 import { NumberInput } from "~/libs/mantine/core";
 
-import { useSetAtom } from "jotai";
-
-import { updateStartTimeAtom } from "~/store/jotai";
 import { BlockDBProps } from "~/types/db";
+import { updateBlockConfig } from "~/utils/db";
 
 type Props = {
   block: BlockDBProps;
 };
 
 const EditStartTime: React.FC<Props> = ({ block }) => {
-  const updateStartTime = useSetAtom(updateStartTimeAtom);
   const [startTime, setStartTime] = useState<number | "">(block.start);
 
   useEffect(() => {
@@ -23,7 +20,7 @@ const EditStartTime: React.FC<Props> = ({ block }) => {
 
   useEffect(() => {
     if (startTime !== "" && startTime !== block.start) {
-      updateStartTime([block.id, startTime]);
+      updateBlockConfig(block.id, "start", startTime);
     }
   }, [startTime]);
 
