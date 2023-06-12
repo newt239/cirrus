@@ -2,13 +2,11 @@ import { useEffect, useState } from "react";
 
 import { NumberInput } from "~/libs/mantine/core";
 
-import { useSetAtom } from "jotai";
-
-import { updateStyleAtom } from "~/store/jotai";
 import { BlockDBProps } from "~/types/db";
+import { updateStyle } from "~/utils/db";
 
 type Props = {
-  type: "initial" | "final";
+  type: "initial_style" | "final_style";
   style_name: string;
   initial: number;
   block: BlockDBProps;
@@ -20,7 +18,6 @@ const StyleNumberInput: React.FC<Props> = ({
   initial,
   block,
 }) => {
-  const updateStyle = useSetAtom(updateStyleAtom);
   const [numberValue, setNumberValue] = useState<number | "">("");
 
   useEffect(() => {
@@ -29,12 +26,7 @@ const StyleNumberInput: React.FC<Props> = ({
 
   useEffect(() => {
     if (block && numberValue) {
-      updateStyle({
-        block_id: block.id,
-        key: style_name,
-        type,
-        value: numberValue.toString(),
-      });
+      updateStyle(block.id, type, numberValue.toString());
     }
   }, [numberValue]);
 

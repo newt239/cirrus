@@ -5,11 +5,10 @@ import { useState } from "react";
 import { ActionIcon, TextInput } from "~/libs/mantine/core";
 
 import { IconPlus } from "@tabler/icons-react";
-import { useSetAtom } from "jotai";
 
 import { styleVars } from "~/libs/cssStyleVars";
-import { addStyleAtom } from "~/store/jotai";
 import { BlockDBProps } from "~/types/db";
+import { addStyle } from "~/utils/db";
 
 type Props = {
   block: BlockDBProps;
@@ -18,15 +17,11 @@ type Props = {
 
 const AddStyleInput: React.FC<Props> = ({ block, style_keys }) => {
   const [value, setValue] = useState("");
-  const addStyle = useSetAtom(addStyleAtom);
 
   const handleClick = async () => {
     const styleInfo = styleVars[value as keyof typeof styleVars];
     if (value !== "" && styleInfo && Object.keys(styleVars).includes(value)) {
-      addStyle({
-        block_id: block.id,
-        key: value,
-      });
+      await addStyle(block.id, value);
       setValue("");
     }
   };

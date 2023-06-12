@@ -47,6 +47,29 @@ export const getBlock = async (id: string) => {
   }
 };
 
+export const addStyle = async (block_id: string, style_name: string) => {
+  const { data, error } = await supabase.from("styles").insert({
+    id: `${block_id}_${style_name}`,
+    block_id,
+    key: style_name,
+  });
+};
+
+export const updateStyle = async (
+  id: string,
+  type: "initial_style" | "final_style",
+  value: string
+) => {
+  const { data, error } = await supabase
+    .from("styles")
+    .update({ id, [type]: value })
+    .eq("id", id);
+};
+
+export const deleteStyle = async (id: string) => {
+  const { data, error } = await supabase.from("styles").delete().eq("id", id);
+};
+
 export const getProjectSource = async (project_id: string) => {
   const { data, error } = await supabase
     .from("blocks")

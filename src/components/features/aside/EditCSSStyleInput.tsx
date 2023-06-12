@@ -8,8 +8,9 @@ import { useSetAtom } from "jotai";
 import StyleInput from "~/components/blocks/StyleInput";
 import PropertyNumberInput from "~/components/blocks/StyleNumberInput";
 import { StyleVarsProps, styleVars } from "~/libs/cssStyleVars";
-import { deleteStyleAtom, updateAvailabilityAtom } from "~/store/jotai";
+import { updateAvailabilityAtom } from "~/store/jotai";
 import { BlockDBProps, StyleDBProps } from "~/types/db";
+import { deleteStyle } from "~/utils/db";
 
 type Props = {
   property: keyof StyleVarsProps;
@@ -19,7 +20,6 @@ type Props = {
 
 const EditCSSStyleInput: React.FC<Props> = ({ property, block, style }) => {
   const styleInfo = styleVars[property];
-  const deleteStyle = useSetAtom(deleteStyleAtom);
   const updateAvailability = useSetAtom(updateAvailabilityAtom);
 
   // WIP: styleを一時的にオフにする
@@ -27,11 +27,8 @@ const EditCSSStyleInput: React.FC<Props> = ({ property, block, style }) => {
     updateAvailability(style.id);
   };
 
-  const handleDeleteTrash = () => {
-    deleteStyle({
-      block_id: block.id,
-      key: property,
-    });
+  const handleDeleteTrash = async () => {
+    await deleteStyle(style.id);
   };
 
   return (
@@ -53,7 +50,7 @@ const EditCSSStyleInput: React.FC<Props> = ({ property, block, style }) => {
             block={block}
             initial={Number(style.initial_style)}
             style_name={property}
-            type="initial"
+            type="initial_style"
           />
         ) : (
           <StyleInput
@@ -61,7 +58,7 @@ const EditCSSStyleInput: React.FC<Props> = ({ property, block, style }) => {
             component_type={styleInfo.component}
             initial={style.initial_style}
             style_name={property}
-            type="initial"
+            type="initial_style"
           />
         )}
         {block.change && styleInfo.change && (
@@ -72,7 +69,7 @@ const EditCSSStyleInput: React.FC<Props> = ({ property, block, style }) => {
                 block={block}
                 initial={Number(style.final_style)}
                 style_name={property}
-                type="final"
+                type="final_style"
               />
             ) : (
               <StyleInput
@@ -80,7 +77,7 @@ const EditCSSStyleInput: React.FC<Props> = ({ property, block, style }) => {
                 component_type={styleInfo.component}
                 initial={style.final_style}
                 style_name={property}
-                type="final"
+                type="final_style"
               />
             )}
           </>

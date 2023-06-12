@@ -2,14 +2,12 @@ import { useEffect, useState } from "react";
 
 import { ColorInput, TextInput } from "~/libs/mantine/core";
 
-import { useSetAtom } from "jotai";
-
 import { StyleVarsProps } from "~/libs/cssStyleVars";
-import { updateStyleAtom } from "~/store/jotai";
 import { BlockDBProps } from "~/types/db";
+import { updateStyle } from "~/utils/db";
 
 type Props = {
-  type: "initial" | "final";
+  type: "initial_style" | "final_style";
   style_name: string;
   initial: string;
   component_type: Omit<StyleVarsProps["component"], "number">;
@@ -23,7 +21,6 @@ const StyleInput: React.FC<Props> = ({
   component_type,
   block,
 }) => {
-  const updateStyle = useSetAtom(updateStyleAtom);
   const [value, setValue] = useState<string | null>(null);
 
   useEffect(() => {
@@ -32,12 +29,7 @@ const StyleInput: React.FC<Props> = ({
 
   useEffect(() => {
     if (value && value !== initial) {
-      updateStyle({
-        block_id: block.id,
-        key: style_name,
-        type,
-        value,
-      });
+      updateStyle(block.id, type, value);
     }
   }, [value]);
 
