@@ -44,7 +44,6 @@ export interface Database {
           layer: number;
           name: string | null;
           project_id: string;
-          sourse: string | null;
           start: number;
           type: string;
           updated_at: string;
@@ -58,7 +57,6 @@ export interface Database {
           layer?: number;
           name?: string | null;
           project_id: string;
-          sourse?: string | null;
           start?: number;
           type?: string;
           updated_at?: string;
@@ -72,11 +70,43 @@ export interface Database {
           layer?: number;
           name?: string | null;
           project_id?: string;
-          sourse?: string | null;
           start?: number;
           type?: string;
           updated_at?: string;
         };
+        Relationships: [
+          {
+            foreignKeyName: "blocks_project_id_fkey";
+            columns: ["project_id"];
+            referencedRelation: "projects";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      images: {
+        Row: {
+          created_at: string | null;
+          id: string;
+          source: string | null;
+        };
+        Insert: {
+          created_at?: string | null;
+          id: string;
+          source?: string | null;
+        };
+        Update: {
+          created_at?: string | null;
+          id?: string;
+          source?: string | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "images_id_fkey";
+            columns: ["id"];
+            referencedRelation: "blocks";
+            referencedColumns: ["id"];
+          }
+        ];
       };
       projects: {
         Row: {
@@ -103,6 +133,14 @@ export interface Database {
           last_edit_at?: string;
           name?: string;
         };
+        Relationships: [
+          {
+            foreignKeyName: "projects_creator_fkey";
+            columns: ["creator"];
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          }
+        ];
       };
       styles: {
         Row: {
@@ -135,6 +173,14 @@ export interface Database {
           initial_style?: string;
           key?: string;
         };
+        Relationships: [
+          {
+            foreignKeyName: "styles_block_id_fkey";
+            columns: ["block_id"];
+            referencedRelation: "blocks";
+            referencedColumns: ["id"];
+          }
+        ];
       };
     };
     Views: {
@@ -186,6 +232,14 @@ export interface Database {
           public?: boolean | null;
           updated_at?: string | null;
         };
+        Relationships: [
+          {
+            foreignKeyName: "buckets_owner_fkey";
+            columns: ["owner"];
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          }
+        ];
       };
       migrations: {
         Row: {
@@ -206,6 +260,7 @@ export interface Database {
           id?: number;
           name?: string;
         };
+        Relationships: [];
       };
       objects: {
         Row: {
@@ -241,6 +296,20 @@ export interface Database {
           path_tokens?: string[] | null;
           updated_at?: string | null;
         };
+        Relationships: [
+          {
+            foreignKeyName: "objects_bucketId_fkey";
+            columns: ["bucket_id"];
+            referencedRelation: "buckets";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "objects_owner_fkey";
+            columns: ["owner"];
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          }
+        ];
       };
     };
     Views: {

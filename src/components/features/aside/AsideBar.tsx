@@ -2,6 +2,8 @@
 
 import { Accordion, Aside, Divider, Flex, Stack } from "~/libs/mantine/core";
 
+import { useLiveQuery } from "dexie-react-hooks";
+
 import AddStyleInput from "./AddStyleInput";
 import EditCSSStyleInput from "./EditCSSStyleInput";
 import EditDuration from "./EditDuration";
@@ -9,14 +11,16 @@ import EditLayer from "./EditLayer";
 import EditStartTime from "./EditStartTime";
 
 import { StyleVarsProps } from "~/libs/cssStyleVars";
-import { BlockDBProps, StyleDBProps } from "~/types/db";
+import { db } from "~/utils/dexie";
 
 type Props = {
-  block: BlockDBProps;
-  styles: StyleDBProps[];
+  block_id: string;
 };
 
-const ASideBar: React.FC<Props> = ({ block, styles }) => {
+const ASideBar: React.FC<Props> = ({ block_id }) => {
+  const block = useLiveQuery(() => db.blocks.get(block_id));
+  const styles = useLiveQuery(() => db.styles.where({ block_id }).toArray());
+
   if (!block || !styles) return null;
 
   return (

@@ -1,8 +1,10 @@
+import dayjs from "dayjs";
 import { nanoid } from "nanoid";
 
 import supabase from "./supabase";
 
 import { BlockDBProps, ProjectDBProps, StyleDBProps } from "~/types/db";
+import { db } from "~/utils/dexie";
 
 export const getProjects = async () => {
   const { data, error } = await supabase.from("projects").select("*");
@@ -49,13 +51,22 @@ export const getBlock = async (id: string) => {
 
 export const addBlock = async (project_id: string) => {
   const id = nanoid();
-  await supabase.from("blocks").insert([
-    {
-      id,
-      project_id,
-      name: "無題のプロジェクト",
-    },
-  ]);
+  const timestamp = dayjs().toISOString();
+  const data: BlockDBProps = {
+    id,
+    name: id,
+    project_id,
+    type: "text",
+    created_at: timestamp,
+    updated_at: timestamp,
+    start: 0,
+    duration: 3000,
+    change: true,
+    is_visible: true,
+    layer: 1,
+  };
+  await db.blocks.add(data);
+  await supabase.from("blocks").insert(data);
   const { data: newBlock } = await supabase
     .from("blocks")
     .select("*")
@@ -68,18 +79,26 @@ export const updateBlockConfig = async (
   key: keyof BlockDBProps,
   value: string | number
 ) => {
-  const { data, error } = await supabase
+  await db.blocks.update(id, { [key]: value });
+  await supabase
     .from("blocks")
     .update({ [key]: value })
     .eq("id", id);
 };
 
 export const addStyle = async (block_id: string, style_name: string) => {
-  const { data, error } = await supabase.from("styles").insert({
+  const data: StyleDBProps = {
     id: `${block_id}_${style_name}`,
     block_id,
     key: style_name,
-  });
+    initial_style: "",
+    final_style: "",
+    created_at: dayjs().toISOString(),
+    change: true,
+    available: true,
+  };
+  await db.styles.add(data);
+  await supabase.from("styles").insert(data);
 };
 
 export const updateStyle = async (
@@ -87,14 +106,16 @@ export const updateStyle = async (
   type: "initial_style" | "final_style",
   value: string
 ) => {
-  const { data, error } = await supabase
+  await db.styles.update(id, { [type]: value });
+  await supabase
     .from("styles")
     .update({ id, [type]: value })
     .eq("id", id);
 };
 
 export const deleteStyle = async (id: string) => {
-  const { data, error } = await supabase.from("styles").delete().eq("id", id);
+  await db.styles.delete(id);
+  await supabase.from("styles").delete().eq("id", id);
 };
 
 export const getProjectSource = async (project_id: string) => {
@@ -105,14 +126,14 @@ export const getProjectSource = async (project_id: string) => {
   if (error || !data) {
     return null;
   } else {
-    const styleData: StyleDBProps[] = [];
-    const editedData = data.map((block) => {
+    const editedStyles: StyleDBProps[] = [];
+    const blocks = data.map((block) => {
       if (block.styles && Array.isArray(block.styles)) {
-        styleData.push(...block.styles);
+        editedStyles.push(...block.styles);
       }
       const { styles, ...rest } = block;
       return rest;
     });
-    return { blocks: editedData, styles: styleData };
+    return { blocks, styles: editedStyles };
   }
 };

@@ -11,7 +11,7 @@ const Theather = async ({ params }: Props) => {
 
   if (!block || !block.styles) return null;
 
-  return <ASideBar block={block} styles={block.styles} />;
+  return <ASideBar block_id={params.block_id} />;
 };
 
 export default Theather;

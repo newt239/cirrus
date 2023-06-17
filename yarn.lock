@@ -2054,6 +2054,8 @@ __metadata:
     "@types/react-dom": "npm:^18.0.11"
     autoprefixer: "npm:^10.4.14"
     dayjs: "npm:^1.11.7"
+    dexie: "npm:^3.2.4"
+    dexie-react-hooks: "npm:^1.1.6"
     encoding: "npm:^0.1.13"
     eslint: "npm:^8.34.0"
     eslint-config-next: "npm:^13.4.5"
@@ -2469,6 +2471,24 @@ __metadata:
   version: 1.1.0
   resolution: "detect-node-es@npm:1.1.0"
   checksum: 1b6b1d458e726d595ffa8938d80f1e5e4e079297beeb1ceb77d3640d92cfabafe4ce21a794a9c5127e96cc8302b54cbd6bbd21766b36b86d3b59ddd52647198d
+  languageName: node
+  linkType: hard
+
+"dexie-react-hooks@npm:^1.1.6":
+  version: 1.1.6
+  resolution: "dexie-react-hooks@npm:1.1.6"
+  peerDependencies:
+    "@types/react": ">=16"
+    dexie: ^3.2 || ^4.0.1-alpha
+    react: ">=16"
+  checksum: 81f41cf6a620076a2dea3068fbe09aee656ad00e4b9d9e2842e4f5370816f68c1954046cf8271b834dc3d99c973fc28d83a48448eb01ccc486b8a639342e4c0f
+  languageName: node
+  linkType: hard
+
+"dexie@npm:^3.2.4":
+  version: 3.2.4
+  resolution: "dexie@npm:3.2.4"
+  checksum: 66b85f8002bc24e35da1f4c94485d0238d0c72565a1bbbf74d6277f4c9d0b46864e2be38fcc47fe08d8ab4d63a3b109708a096f3a0819be69903583efef2edeb
   languageName: node
   linkType: hard
 

@@ -5,6 +5,7 @@ import { Flex } from "~/libs/mantine/core";
 import MenuBar from "~/components/features/menubar/MenuBar";
 import Control from "~/components/features/preview/Control";
 import Preview from "~/components/features/preview/Preview";
+import UpdateData from "~/components/features/preview/UpdateData";
 import SideBar from "~/components/features/side/SideBar";
 import Timeline from "~/components/features/timeline/Timeline";
 import { getProjectInfo, getProjectSource } from "~/utils/db";
@@ -22,14 +23,15 @@ const StudioLayout = async ({ params, children }: Props) => {
 
   return (
     <Flex className="grow" direction="column">
+      <UpdateData blocks={source.blocks} styles={source.styles} />
       <MenuBar project_id={project?.id} />
       <Flex h="100%">
         <SideBar project_id={project.id} />
         <Flex bg="gray.1" direction="column" h="100%" w="100%">
           <Flex gap="sm" justify="center">
             <Flex direction="column">
-              <Preview blocks={source.blocks} />
-              <Control blocks={source.blocks} styles={source.styles} />
+              <Preview project_id={params.project_id} />
+              <Control project_id={params.project_id} />
             </Flex>
           </Flex>
           <Timeline blocks={source.blocks} project_id={params.project_id} />
