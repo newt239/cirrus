@@ -38,6 +38,9 @@ const EditCSSStyleInput: React.FC<Props> = ({ property, block, style }) => {
           <PropertyNumberInput
             block={block}
             initial={Number(style.initial_style)}
+            max={styleInfo.max}
+            min={styleInfo.min}
+            precision={styleInfo.precision}
             style_name={property}
             type="initial_style"
           />
@@ -57,6 +60,9 @@ const EditCSSStyleInput: React.FC<Props> = ({ property, block, style }) => {
               <PropertyNumberInput
                 block={block}
                 initial={Number(style.final_style)}
+                max={styleInfo.max}
+                min={styleInfo.min}
+                precision={styleInfo.precision}
                 style_name={property}
                 type="final_style"
               />

@@ -1,4 +1,4 @@
-import { Box, FileInput, Modal, Text } from "~/libs/mantine/core";
+import { Box, FileInput, Modal } from "~/libs/mantine/core";
 
 type Props = {
   opened: boolean;
@@ -17,17 +17,11 @@ const AddImageModal: React.FC<Props> = ({ opened, onClose, onChange }) => {
         withCloseButton
       >
         <Box>
-          <Box>
-            <Text>画像を選択してください</Text>
-          </Box>
-          <Box>
-            <FileInput
-              label="ファイルを選択"
-              onChange={onChange}
-              placeholder="https://example.com/image.png"
-              withAsterisk
-            />
-          </Box>
+          <FileInput
+            accept="image/*"
+            label="ファイルを選択"
+            onChange={onChange}
+          />
         </Box>
       </Modal>
     </Box>

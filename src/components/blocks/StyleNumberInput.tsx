@@ -8,6 +8,9 @@ import { updateStyle } from "~/utils/db";
 type Props = {
   type: "initial_style" | "final_style";
   style_name: string;
+  min: number;
+  max: number;
+  precision: number;
   initial: number;
   block: BlockDBProps;
 };
@@ -15,6 +18,9 @@ type Props = {
 const StyleNumberInput: React.FC<Props> = ({
   type,
   style_name,
+  min,
+  max,
+  precision,
   initial,
   block,
 }) => {
@@ -32,8 +38,12 @@ const StyleNumberInput: React.FC<Props> = ({
 
   return (
     <NumberInput
+      max={max}
+      min={min}
       onChange={(v) => setNumberValue(v)}
+      precision={precision}
       size="xs"
+      step={Math.pow(10, -precision)}
       value={numberValue}
     />
   );

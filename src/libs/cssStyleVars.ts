@@ -9,6 +9,7 @@ export type StyleVarsProps = { label: string } & (
       default: number;
       min: number;
       max: number;
+      precision: number;
       change: boolean;
     }
   | {
@@ -49,6 +50,7 @@ export const styleVars: { [key in keyof gsap.TweenVars]: StyleVarsProps } = {
     default: 0,
     min: 0,
     max: 100,
+    precision: 2,
     change: true,
   },
   opacity: {
@@ -57,6 +59,7 @@ export const styleVars: { [key in keyof gsap.TweenVars]: StyleVarsProps } = {
     default: 1,
     min: 0,
     max: 1,
+    precision: 2,
     change: true,
   },
   scale: {
@@ -65,6 +68,7 @@ export const styleVars: { [key in keyof gsap.TweenVars]: StyleVarsProps } = {
     default: 1,
     min: 0,
     max: 100,
+    precision: 2,
     change: true,
   },
   translateX: {
@@ -73,6 +77,7 @@ export const styleVars: { [key in keyof gsap.TweenVars]: StyleVarsProps } = {
     default: 0,
     min: -1000,
     max: 1000,
+    precision: 2,
     change: true,
   },
   translateY: {
@@ -81,6 +86,7 @@ export const styleVars: { [key in keyof gsap.TweenVars]: StyleVarsProps } = {
     default: 0,
     min: -1000,
     max: 1000,
+    precision: 2,
     change: true,
   },
 };

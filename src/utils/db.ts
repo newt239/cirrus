@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 import { getImageParams } from "./functions";
 import supabase from "./supabase";
 
+import { styleVars } from "~/libs/cssStyleVars";
 import {
   BlockDBProps,
   ImageDBProps,
@@ -100,7 +101,7 @@ export const addImage = async (project_id: string, file: File) => {
   await supabase.from("blocks").insert(blockData);
   const result = await supabase.storage.from("blocks").upload(block_id, file);
   if (result.data) {
-    const { width, height } = getImageParams(file);
+    const { width, height } = await getImageParams(file);
     const url = await supabase.storage.from("blocks").getPublicUrl(block_id);
     const { data: newBlock } = await supabase
       .from("blocks")
@@ -136,16 +137,24 @@ export const updateBlockConfig = async (
 export const deleteBlock = async (id: string) => {
   await db.blocks.delete(id);
   await supabase.from("blocks").delete().eq("id", id);
+  await db.styles.where({ block_id: id }).delete();
+  await supabase.from("styles").delete().eq("block_id", id);
+  await db.images.delete(id);
+  await supabase.from("images").delete().eq("block_id", id);
   await supabase.storage.from("blocks").remove([id]);
 };
 
-export const addStyle = async (block_id: string, style_name: string) => {
+export const addStyle = async (
+  block_id: string,
+  styleName: keyof gsap.TweenVars
+) => {
+  const styleInfo = styleVars[styleName];
   const data: StyleDBProps = {
-    id: `${block_id}_${style_name}`,
+    id: `${block_id}_${styleName}`,
     block_id,
-    key: style_name,
-    initial_style: "",
-    final_style: "",
+    key: styleName.toString(),
+    initial_style: styleInfo.default.toString(),
+    final_style: styleInfo.default.toString(),
     created_at: dayjs().toISOString(),
     change: true,
     available: true,

@@ -3,7 +3,10 @@ import ASideBar from "~/components/features/aside/AsideBar";
 import { getBlock } from "~/utils/db";
 
 type Props = {
-  params: { block_id: string };
+  params: {
+    project_id: string;
+    block_id: string;
+  };
 };
 
 const Theather = async ({ params }: Props) => {
@@ -11,7 +14,7 @@ const Theather = async ({ params }: Props) => {
 
   if (!block || !block.styles) return null;
 
-  return <ASideBar block_id={params.block_id} />;
+  return <ASideBar block_id={params.block_id} project_id={params.project_id} />;
 };
 
 export default Theather;
