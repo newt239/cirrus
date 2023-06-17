@@ -582,20 +582,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@markuplint/jsx-parser@npm:^3.7.0":
-  version: 3.7.0
-  resolution: "@markuplint/jsx-parser@npm:3.7.0"
-  dependencies:
-    "@markuplint/html-parser": "npm:3.8.0"
-    "@markuplint/ml-ast": "npm:3.1.0"
-    "@markuplint/parser-utils": "npm:3.8.0"
-    "@typescript-eslint/types": "npm:^5.59.2"
-    "@typescript-eslint/typescript-estree": "npm:^5.59.2"
-    tslib: "npm:^2.5.0"
-  checksum: 2cf34c3757daaf274e8d0e57e19abdfd0752535029c09b122217dd98a77966e91353bdf9098f514d9f434681a8fd74bb341789e5a04bd34a721b091b1a1cdaa2
-  languageName: node
-  linkType: hard
-
 "@markuplint/ml-ast@npm:3.1.0":
   version: 3.1.0
   resolution: "@markuplint/ml-ast@npm:3.1.0"
@@ -668,17 +654,6 @@ __metadata:
   peerDependencies:
     "@markuplint/ml-core": 3.x
   checksum: dd44c34dd5ceb427a48210e34501c0ac6acade788497717ef0c03f46ffad8d28ea45491259ee305efe6bf23338bf3c0d66d9d9952514669c24483bef2d2abf9f
-  languageName: node
-  linkType: hard
-
-"@markuplint/react-spec@npm:^3.8.0":
-  version: 3.8.0
-  resolution: "@markuplint/react-spec@npm:3.8.0"
-  dependencies:
-    "@markuplint/ml-spec": "npm:3.9.0"
-  peerDependencies:
-    "@markuplint/ml-core": 3.x
-  checksum: d5a1e7d7065e8c6b29a2cd9ff69b2d510080eb0b306d4ba9a88175ed0ae30a988dcbdbe57993a7a52a62fba738b754e6ac21ccc62a32ff704213508b76004e42
   languageName: node
   linkType: hard
 
@@ -1373,13 +1348,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/types@npm:5.59.9, @typescript-eslint/types@npm:^5.59.2":
-  version: 5.59.9
-  resolution: "@typescript-eslint/types@npm:5.59.9"
-  checksum: 9909d87be503649e6418062ab516f9af13298c29e0add6e150edb87c61fa0ee3cb9cc41550a163ce91f9743815396598811f738f205af9e564278e17b5d86597
-  languageName: node
-  linkType: hard
-
 "@typescript-eslint/typescript-estree@npm:5.57.1":
   version: 5.57.1
   resolution: "@typescript-eslint/typescript-estree@npm:5.57.1"
@@ -1398,24 +1366,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/typescript-estree@npm:^5.59.2":
-  version: 5.59.9
-  resolution: "@typescript-eslint/typescript-estree@npm:5.59.9"
-  dependencies:
-    "@typescript-eslint/types": "npm:5.59.9"
-    "@typescript-eslint/visitor-keys": "npm:5.59.9"
-    debug: "npm:^4.3.4"
-    globby: "npm:^11.1.0"
-    is-glob: "npm:^4.0.3"
-    semver: "npm:^7.3.7"
-    tsutils: "npm:^3.21.0"
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  checksum: d551f2a6b660472c222f914e2973ec6fb4059fa72c72470269f7fa52c4d94b4c7771aa8dd1eb6058ab688748128a483f2e0901169c4fabf7e4408893d274f460
-  languageName: node
-  linkType: hard
-
 "@typescript-eslint/visitor-keys@npm:5.57.1":
   version: 5.57.1
   resolution: "@typescript-eslint/visitor-keys@npm:5.57.1"
@@ -1423,16 +1373,6 @@ __metadata:
     "@typescript-eslint/types": "npm:5.57.1"
     eslint-visitor-keys: "npm:^3.3.0"
   checksum: 32d4992f4de62140f8fe542835b1ba1e69274d3326b79812ed1836eee3af0a26eed4611b8b83dbf8cb5d0627bace25328c5d1242011019eb71b13840cd01a2d7
-  languageName: node
-  linkType: hard
-
-"@typescript-eslint/visitor-keys@npm:5.59.9":
-  version: 5.59.9
-  resolution: "@typescript-eslint/visitor-keys@npm:5.59.9"
-  dependencies:
-    "@typescript-eslint/types": "npm:5.59.9"
-    eslint-visitor-keys: "npm:^3.3.0"
-  checksum: 09df68f48d30dbd62bf648d51fe6a24e0dbaa7ab1d894abe3e9fe7f048b691e0467907e2dbfe3d9bf8eff2e556953ef83fd450cceb2c7efaef166f633f2d0aaf
   languageName: node
   linkType: hard
 
@@ -2044,8 +1984,6 @@ __metadata:
     "@mantine/hooks": "npm:^6.0.13"
     "@mantine/modals": "npm:^6.0.13"
     "@mantine/next": "npm:^6.0.13"
-    "@markuplint/jsx-parser": "npm:^3.7.0"
-    "@markuplint/react-spec": "npm:^3.8.0"
     "@supabase/auth-helpers-nextjs": "npm:^0.7.2"
     "@supabase/supabase-js": "npm:^2.24.0"
     "@tabler/icons-react": "npm:^2.7.0"

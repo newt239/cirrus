@@ -71,7 +71,6 @@ const ASideBar: React.FC<Props> = ({ project_id, block_id }) => {
                   <Flex align="center" direction="column">
                     <img
                       alt={block.name!}
-                      decoding="async"
                       src={image.source!}
                       width={Math.min(image.width, ASIBEBAR_WIDTH - 50)}
                     />
