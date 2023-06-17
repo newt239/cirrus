@@ -6,6 +6,8 @@ export type BlockDBProps = Database["public"]["Tables"]["blocks"]["Row"];
 
 export type StyleDBProps = Database["public"]["Tables"]["styles"]["Row"];
 
+export type ImageDBProps = Database["public"]["Tables"]["images"]["Row"];
+
 export type StyleProps = {
   key: string;
   initial_style: { [T in keyof gsap.TweenVars]: string };

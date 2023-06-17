@@ -17,7 +17,15 @@ const Preview: React.FC<Props> = ({ project_id }) => {
   if (!blocks) return null;
 
   return (
-    <Box className={clsx("w-[600px]", "h-[400px]", "bg-black", "relative")}>
+    <Box
+      className={clsx(
+        "w-[600px]",
+        "h-[400px]",
+        "bg-black",
+        "relative",
+        "overflow-hidden"
+      )}
+    >
       {blocks.map((block) => (
         <Block block={block} key={block.id} />
       ))}

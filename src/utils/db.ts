@@ -1,9 +1,15 @@
 import dayjs from "dayjs";
 import { nanoid } from "nanoid";
 
+import { getImageParams } from "./functions";
 import supabase from "./supabase";
 
-import { BlockDBProps, ProjectDBProps, StyleDBProps } from "~/types/db";
+import {
+  BlockDBProps,
+  ImageDBProps,
+  ProjectDBProps,
+  StyleDBProps,
+} from "~/types/db";
 import { db } from "~/utils/dexie";
 
 export const getProjects = async () => {
@@ -49,7 +55,7 @@ export const getBlock = async (id: string) => {
   }
 };
 
-export const addBlock = async (project_id: string) => {
+export const addText = async (project_id: string) => {
   const id = nanoid();
   const timestamp = dayjs().toISOString();
   const data: BlockDBProps = {
@@ -72,6 +78,47 @@ export const addBlock = async (project_id: string) => {
     .select("*")
     .eq("id", id);
   return newBlock ? newBlock[0] : null;
+};
+
+export const addImage = async (project_id: string, file: File) => {
+  const block_id = nanoid();
+  const timestamp = dayjs().toISOString();
+  const blockData: BlockDBProps = {
+    id: block_id,
+    name: block_id,
+    project_id,
+    type: "image",
+    created_at: timestamp,
+    updated_at: timestamp,
+    start: 0,
+    duration: 3000,
+    change: true,
+    is_visible: true,
+    layer: 1,
+  };
+  await db.blocks.add(blockData);
+  await supabase.from("blocks").insert(blockData);
+  const result = await supabase.storage.from("blocks").upload(block_id, file);
+  if (result.data) {
+    const { width, height } = getImageParams(file);
+    const url = await supabase.storage.from("blocks").getPublicUrl(block_id);
+    const { data: newBlock } = await supabase
+      .from("blocks")
+      .select("*")
+      .eq("id", block_id);
+    const imageData: ImageDBProps = {
+      block_id,
+      project_id,
+      source: url.data.publicUrl,
+      width,
+      height,
+    };
+    await db.images.add(imageData);
+    await supabase.from("images").insert(imageData);
+    return newBlock ? newBlock[0] : null;
+  } else {
+    return null;
+  }
 };
 
 export const updateBlockConfig = async (
@@ -128,12 +175,14 @@ export const getProjectSource = async (project_id: string) => {
   } else {
     const editedStyles: StyleDBProps[] = [];
     const blocks = data.map((block) => {
-      if (block.styles && Array.isArray(block.styles)) {
-        editedStyles.push(...block.styles);
-      }
       const { styles, ...rest } = block;
+      if (styles) editedStyles.push(...styles);
       return rest;
     });
-    return { blocks, styles: editedStyles };
+    const { data: images } = await supabase
+      .from("images")
+      .select("*")
+      .eq("project_id", project_id);
+    return { blocks, styles: editedStyles, images };
   }
 };

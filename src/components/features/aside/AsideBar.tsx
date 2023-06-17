@@ -20,6 +20,7 @@ type Props = {
 const ASideBar: React.FC<Props> = ({ block_id }) => {
   const block = useLiveQuery(() => db.blocks.get(block_id));
   const styles = useLiveQuery(() => db.styles.where({ block_id }).toArray());
+  const image = useLiveQuery(() => db.images.get(block_id));
 
   if (!block || !styles) return null;
 

@@ -23,7 +23,11 @@ const StudioLayout = async ({ params, children }: Props) => {
 
   return (
     <Flex className="grow" direction="column">
-      <UpdateData blocks={source.blocks} styles={source.styles} />
+      <UpdateData
+        blocks={source.blocks}
+        images={source.images}
+        styles={source.styles}
+      />
       <MenuBar project_id={project?.id} />
       <Flex h="100%">
         <SideBar project_id={project.id} />

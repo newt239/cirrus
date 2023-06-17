@@ -4,14 +4,21 @@ import Link from "next/link";
 
 import { Box, Paper } from "~/libs/mantine/core";
 
+import { useLiveQuery } from "dexie-react-hooks";
+
 import { BlockDBProps } from "~/types/db";
+import { db } from "~/utils/dexie";
 
 type Props = {
   project_id: string;
   blocks: BlockDBProps[];
 };
 
-const Timeline: React.FC<Props> = ({ project_id, blocks }) => {
+const Timeline: React.FC<Props> = ({ project_id }) => {
+  const blocks = useLiveQuery(() => db.blocks.where({ project_id }).toArray());
+
+  if (!blocks) return null;
+
   return (
     <Box className="overflow-scroll" display="flex" h="100%" w="100%">
       <Box bg="gray.3" display="flex" h="150px" pos="relative" w="100%">

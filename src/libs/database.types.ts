@@ -85,25 +85,37 @@ export interface Database {
       };
       images: {
         Row: {
-          created_at: string | null;
-          id: string;
+          block_id: string;
+          height: number;
+          project_id: string;
           source: string | null;
+          width: number;
         };
         Insert: {
-          created_at?: string | null;
-          id: string;
+          block_id: string;
+          height?: number;
+          project_id: string;
           source?: string | null;
+          width?: number;
         };
         Update: {
-          created_at?: string | null;
-          id?: string;
+          block_id?: string;
+          height?: number;
+          project_id?: string;
           source?: string | null;
+          width?: number;
         };
         Relationships: [
           {
-            foreignKeyName: "images_id_fkey";
-            columns: ["id"];
+            foreignKeyName: "images_block_id_fkey";
+            columns: ["block_id"];
             referencedRelation: "blocks";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "images_project_id_fkey";
+            columns: ["project_id"];
+            referencedRelation: "projects";
             referencedColumns: ["id"];
           }
         ];
@@ -273,6 +285,7 @@ export interface Database {
           owner: string | null;
           path_tokens: string[] | null;
           updated_at: string | null;
+          version: string | null;
         };
         Insert: {
           bucket_id?: string | null;
@@ -284,6 +297,7 @@ export interface Database {
           owner?: string | null;
           path_tokens?: string[] | null;
           updated_at?: string | null;
+          version?: string | null;
         };
         Update: {
           bucket_id?: string | null;
@@ -295,6 +309,7 @@ export interface Database {
           owner?: string | null;
           path_tokens?: string[] | null;
           updated_at?: string | null;
+          version?: string | null;
         };
         Relationships: [
           {
@@ -316,6 +331,15 @@ export interface Database {
       [_ in never]: never;
     };
     Functions: {
+      can_insert_object: {
+        Args: {
+          bucketid: string;
+          name: string;
+          owner: string;
+          metadata: Json;
+        };
+        Returns: undefined;
+      };
       extension: {
         Args: {
           name: string;
