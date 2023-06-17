@@ -4,6 +4,7 @@ import { Box, Flex } from "~/libs/mantine/core";
 
 import Control from "~/components/features/preview/Control";
 import Preview from "~/components/features/preview/Preview";
+import UpdateData from "~/components/features/preview/UpdateData";
 import { getProjectInfo, getProjectSource } from "~/utils/db";
 
 type Props = {
@@ -19,12 +20,15 @@ const Theater = async ({ params }: Props) => {
   return (
     <>
       {project && (
-        <Flex gap="sm" justify="center" p="sm">
-          <Box>
-            <Preview blocks={source.blocks} />
-            <Control blocks={source.blocks} styles={source.styles} />
-          </Box>
-        </Flex>
+        <>
+          <UpdateData blocks={source.blocks} styles={source.styles} />
+          <Flex gap="sm" justify="center" p="sm">
+            <Box>
+              <Preview project_id={params.project_id} />
+              <Control project_id={params.project_id} />
+            </Box>
+          </Flex>
+        </>
       )}
     </>
   );
