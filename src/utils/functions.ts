@@ -5,6 +5,7 @@ export const getImageParams = (f: File) => {
   img.onload = () => {
     width = img.naturalWidth;
     height = img.naturalHeight;
+    console.log(img);
     URL.revokeObjectURL(img.src);
   };
   img.src = URL.createObjectURL(f);

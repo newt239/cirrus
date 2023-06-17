@@ -1,7 +1,17 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { Accordion, Aside, Divider, Flex, Stack } from "~/libs/mantine/core";
+import {
+  Accordion,
+  ActionIcon,
+  Aside,
+  Box,
+  Divider,
+  Flex,
+  Stack,
+} from "~/libs/mantine/core";
 
+import { IconTrash } from "@tabler/icons-react";
 import { useLiveQuery } from "dexie-react-hooks";
 
 import AddStyleInput from "./AddStyleInput";
@@ -11,6 +21,7 @@ import EditLayer from "./EditLayer";
 import EditStartTime from "./EditStartTime";
 
 import { StyleVarsProps } from "~/libs/cssStyleVars";
+import { deleteBlock } from "~/utils/db";
 import { db } from "~/utils/dexie";
 
 type Props = {
@@ -33,35 +44,60 @@ const ASideBar: React.FC<Props> = ({ block_id }) => {
     >
       <Aside.Section grow>
         <Accordion
-          defaultValue={["asset", "history"]}
+          defaultValue={["block"]}
           multiple
           styles={{ label: { padding: "0.5rem", paddingLeft: 0 } }}
         >
-          <Accordion.Item value="asset">
-            <Accordion.Control>選択中のブロック</Accordion.Control>
-            <Accordion.Panel>
-              <Stack spacing="xs">
-                <EditLayer block={block} />
-                <Flex gap="xs">
-                  <EditStartTime block={block} />
-                  <EditDuration block={block} />
-                </Flex>
-                <Divider />
-                <AddStyleInput
-                  block={block}
-                  style_keys={styles.map((style) => style.key)}
-                />
-                {styles.map((style, i) => (
-                  <EditCSSStyleInput
+          {block && (
+            <Accordion.Item value="block">
+              <Accordion.Control>選択中のブロック</Accordion.Control>
+              <Accordion.Panel>
+                <Stack spacing="xs">
+                  <Flex gap="xs" justify="space-between">
+                    <Box>{block.name}</Box>
+                    <Box>
+                      <ActionIcon
+                        onClick={() => {
+                          deleteBlock(block.id);
+                        }}
+                      >
+                        <IconTrash />
+                      </ActionIcon>
+                    </Box>
+                  </Flex>
+                  {block.type === "image" && image && (
+                    <Box>
+                      <img
+                        alt={block.name!}
+                        decoding="async"
+                        height={image.height}
+                        src={image.source!}
+                        width={image.width}
+                      />
+                    </Box>
+                  )}
+                  <EditLayer block={block} />
+                  <Flex gap="xs">
+                    <EditStartTime block={block} />
+                    <EditDuration block={block} />
+                  </Flex>
+                  <Divider />
+                  <AddStyleInput
                     block={block}
-                    key={i}
-                    property={style.key as keyof StyleVarsProps}
-                    style={style}
+                    style_keys={styles.map((style) => style.key)}
                   />
-                ))}
-              </Stack>
-            </Accordion.Panel>
-          </Accordion.Item>
+                  {styles.map((style, i) => (
+                    <EditCSSStyleInput
+                      block={block}
+                      key={i}
+                      property={style.key as keyof StyleVarsProps}
+                      style={style}
+                    />
+                  ))}
+                </Stack>
+              </Accordion.Panel>
+            </Accordion.Item>
+          )}
         </Accordion>
       </Aside.Section>
     </Aside>

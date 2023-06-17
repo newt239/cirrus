@@ -21,7 +21,11 @@ const Theater = async ({ params }: Props) => {
     <>
       {project && (
         <>
-          <UpdateData blocks={source.blocks} styles={source.styles} />
+          <UpdateData
+            blocks={source.blocks}
+            images={source.images}
+            styles={source.styles}
+          />
           <Flex gap="sm" justify="center" p="sm">
             <Box>
               <Preview project_id={params.project_id} />

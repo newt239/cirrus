@@ -133,6 +133,12 @@ export const updateBlockConfig = async (
     .eq("id", id);
 };
 
+export const deleteBlock = async (id: string) => {
+  await db.blocks.delete(id);
+  await supabase.from("blocks").delete().eq("id", id);
+  await supabase.storage.from("blocks").remove([id]);
+};
+
 export const addStyle = async (block_id: string, style_name: string) => {
   const data: StyleDBProps = {
     id: `${block_id}_${style_name}`,

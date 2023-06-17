@@ -21,8 +21,10 @@ const Block: React.FC<Props> = ({ block }) => {
           alt={block.name!}
           className={clsx("absolute", "top-1/2", "left-1/2", "hidden")}
           decoding="async"
+          height={image.height}
           id={`object-${block.id}`}
-          src={image?.source!}
+          src={image.source!}
+          width={image.width}
         />
       ) : (
         <div
